@@ -88,8 +88,8 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
   addImage() {
     const lorem = [
       'http://www.zhlzw.com/UploadFiles/Article_UploadFiles/201204/20120412123916285.jpg',
-      'http://img4.imgtn.bdimg.com/it/u=1121411494,3214851046&fm=27&gp=0.jpg',
-      'http://img1.imgtn.bdimg.com/it/u=3718109466,2415039746&fm=27&gp=0.jpg',
+      'http://img4.imgtn.bdimg.com/it/u=1293919120,3114443152&fm=27&gp=0.jpg',
+      'http://pic71.nipic.com/file/20150610/13549908_104823135000_2.jpg',
       'http://img.taopic.com/uploads/allimg/121115/240487-12111520035993.jpg'
     ];
 

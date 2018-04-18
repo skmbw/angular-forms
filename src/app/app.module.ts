@@ -7,6 +7,7 @@ import {FormsModule} from '@angular/forms';
 import {MasonryModule} from './masonry.module';
 import {MasonryDemoComponent} from './masonry-demo/masonry-demo.component';
 import {MatCardModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {MatCardModule} from '@angular/material';
     BrowserModule,
     FormsModule,
     MatCardModule,
-    MasonryModule
+    MasonryModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

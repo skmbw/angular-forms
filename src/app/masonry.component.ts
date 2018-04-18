@@ -72,7 +72,7 @@ export class AngularMasonryComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this._msnry.layout();
     });
-
+    // this._msnry.layout();
     // console.log('AngularMasonryComponent:', 'Layout');
   }
 
@@ -87,7 +87,7 @@ export class AngularMasonryComponent implements OnInit, OnDestroy {
     }
 
     if (this.useImagesLoaded) {
-      imagesLoaded(element, (instance: any) => {
+      imagesLoaded(element, () => {
         this._element.nativeElement.appendChild(element);
 
         // Tell Masonry that a child element has been added
@@ -103,7 +103,6 @@ export class AngularMasonryComponent implements OnInit, OnDestroy {
     } else {
       // Tell Masonry that a child element has been added
       this._msnry.appended(element);
-
       // layout if first item
       if (isFirstItem) {
         this.layout();

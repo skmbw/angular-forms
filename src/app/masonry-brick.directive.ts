@@ -27,7 +27,7 @@ export class MasonryBrickDirective implements OnDestroy, AfterViewInit {
     this._parent.remove(this._element.nativeElement);
   }
 
-  /** When HTML in brick changes dinamically, observe that and change layout */
+  /** When HTML in brick changes dynamically, observe that and change layout */
   private watchForHtmlChanges(): void {
     MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 

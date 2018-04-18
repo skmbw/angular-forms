@@ -1,12 +1,22 @@
-<h1>Angular5 Masonry</h1>
+<div class="container">
+  <div class="row">
+    <h1>Angular5 Masonry</h1>
+  </div>
+  <div class="row">
+    <button (click)="addText()">Add text brick</button>
+    <button (click)="addImage()">Add image brick</button>
+  </div>
+  <masonry [options]="options" [useImagesLoaded]="true"
+           fxLayout="row" fxLayout.xs="column"
+           fxLayoutAlign="start"
+           fxLayoutGap="5px"
+           fxLayoutGap.xs="5" class="mt-2 mb-1">
+    <mat-card masonry-brick *ngFor="let brick of bricks" fxFlex="30">
+      <img *ngIf="brick.image" src="{{brick.image}}" style="width:100%;">
+      <p *ngIf="brick.text">{{brick.text}}</p>
+      <button (click)="remove(brick)">Remove</button>
+    </mat-card>
+  </masonry>
 
-<button (click)="addText()">Add text brick</button>
-<button (click)="addImage()">Add image brick</button>
+</div>
 
-<masonry [options]="options" [useImagesLoaded]="true">
-  <mat-card masonry-brick *ngFor="let brick of bricks" class="mt-3 col-4">
-    <img *ngIf="brick.image" src="{{brick.image}}" style="width:100%;">
-    <p *ngIf="brick.text">{{brick.text}}</p>
-    <button (click)="remove(brick)">Remove</button>
-  </mat-card>
-</masonry>
