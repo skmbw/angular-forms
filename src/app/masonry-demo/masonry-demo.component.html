@@ -1,0 +1,12 @@
+<h1>Angular5 Masonry</h1>
+
+<button (click)="addText()">Add text brick</button>
+<button (click)="addImage()">Add image brick</button>
+
+<masonry [options]="options" [useImagesLoaded]="true">
+  <mat-card masonry-brick *ngFor="let brick of bricks" class="mt-3 col-4">
+    <img *ngIf="brick.image" src="{{brick.image}}" style="width:100%;">
+    <p *ngIf="brick.text">{{brick.text}}</p>
+    <button (click)="remove(brick)">Remove</button>
+  </mat-card>
+</masonry>
