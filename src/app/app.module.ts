@@ -10,6 +10,7 @@ import {MatCardModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ArticleService} from './service/article.service';
 import {HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatCardModule,
     MasonryModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     ArticleService

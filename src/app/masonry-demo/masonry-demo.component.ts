@@ -19,7 +19,7 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
   @ViewChild(AngularMasonryComponent) masonry: AngularMasonryComponent;
   columnTop: string;
   articleList: Article[] = [];
-  jsonBean: JsonBean = new JsonBean();
+  jsonBean: JsonBean = {};
   bricks: any[] = [];
   page = 0;
 
@@ -58,21 +58,6 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id.',
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at tortor eu lacus imperdiet volutpat.' +
       ' Aliquam erat volutpat. Integer et.',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porttitor in leo sagittis aliquam. ' +
-      'Quisque porta nisi sed diam sollicitudin.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nunc nibh, ' +
-      'faucibus in commodo tincidunt, placerat a eros. Suspendisse nisi ex, semper at vehicula non, congue sit amet nibh. Donec.',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper, velit porta tincidunt pulvinar, ' +
-      'ligula nisl posuere metus, quis bibendum neque lacus non urna. Sed ut diam auctor, sagittis purus.',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer venenatis facilisis tortor ac elementum.' +
-      ' Aliquam vestibulum, lorem id semper sollicitudin, nulla nibh fringilla felis, ut rhoncus elit ex sit amet dui.' +
-      ' Sed eleifend felis in luctus varius. Maecenas venenatis id.',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet, tortor ac euismod tincidunt, ' +
-      'elit est convallis tortor, id venenatis massa ipsum nec nisl. In mattis felis luctus neque tristique, ' +
-      'id varius libero finibus. Aliquam mattis lobortis diam eget venenatis.',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae fermentum neque, sit amet laoreet lorem. ' +
-      'Suspendisse nibh lacus, sollicitudin at metus id, convallis posuere lectus. Duis nec facilisis nibh. ' +
-      'Nunc consequat maximus fringilla. Phasellus turpis arcu, auctor nec nunc non, posuere tristique neque. Sed feugiat elementum quam,' +
-      ' in ultrices.',
       'orem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sit amet felis malesuada accumsan.' +
       ' Quisque sed fermentum justo. Vestibulum maximus diam condimentum elit placerat cursus. Vivamus ac eros vulputate,' +
       ' lobortis felis vel, ultricies dolor. Donec in eros sit amet lorem pretium rutrum. Vestibulum viverra, ' +
@@ -123,9 +108,9 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
       console.log('滚动到底部');
       // this.addImage();
       // this.addText();
-      // this.addImage();
+      this.addImage();
       // this.addText();
-      // this.addImage();
+      this.addImage();
       // this.addText();
       this.articleService.list(this.page).subscribe(articles => {
         this.jsonBean = articles;
