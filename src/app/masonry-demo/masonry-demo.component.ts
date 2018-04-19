@@ -21,6 +21,7 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
   articleList: Article[] = [];
   jsonBean: JsonBean = new JsonBean();
   bricks: any[] = [];
+  page = 0;
 
   // Options
   options: MasonryOptions = {
@@ -107,7 +108,7 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
     });
 
     // 初始化
-    this.articleService.list().subscribe(articles => {
+    this.articleService.list(this.page).subscribe(articles => {
       this.jsonBean = articles;
       // console.log(this.articleList.length);
       for (const article of this.jsonBean.data) {
@@ -126,12 +127,13 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
       // this.addText();
       // this.addImage();
       // this.addText();
-      this.articleService.list().subscribe(articles => {
+      this.articleService.list(this.page).subscribe(articles => {
         this.jsonBean = articles;
         // console.log(this.articleList.length);
         for (const article of this.jsonBean.data) {
           this.bricks.push({text: article.title + article.summary});
         }
+        this.page++;
       });
     }
   }

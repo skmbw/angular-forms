@@ -16,8 +16,8 @@ export class ArticleService {
   constructor(private httpClient: HttpClient) {
   }
 
-  list(): Observable<JsonBean> {
-    return this.httpClient.get<JsonBean>(PREFIX + 'article/list')
+  list(page: number): Observable<JsonBean> {
+    return this.httpClient.get<JsonBean>(PREFIX + 'article/list?pageSize=10&page=' + page)
       .pipe(
         catchError(this.handleError('', {}))
       );
