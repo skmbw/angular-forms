@@ -10,8 +10,8 @@
            fxLayout="row" fxLayout.xs="column"
            fxLayoutAlign="start"
            fxLayoutGap="5px"
-           fxLayoutGap.xs="5" class="mt-2 mb-1">
-    <mat-card masonry-brick *ngFor="let brick of bricks" fxFlex="30">
+           fxLayoutGap.xs="5px">
+    <mat-card masonry-brick *ngFor="let brick of bricks" fxFlex="30" fxFlex.xs="auto">
       <img *ngIf="brick.image" src="{{brick.image}}" style="width:100%;">
       <p *ngIf="brick.text">{{brick.text}}</p>
       <button (click)="remove(brick)">Remove</button>
