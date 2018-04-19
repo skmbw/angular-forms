@@ -134,6 +134,7 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
           this.bricks.push({text: article.title + article.summary});
         }
         this.page++;
+        console.log(this.page);
       });
     }
   }
