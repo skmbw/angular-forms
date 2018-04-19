@@ -4,6 +4,9 @@ import {AngularMasonryComponent} from '../masonry.component';
 import {MediaChange, ObservableMedia} from '@angular/flex-layout';
 import {filter} from 'rxjs/operators/filter';
 import {fromEvent} from 'rxjs/observable/fromEvent';
+import {ArticleService} from '../service/article.service';
+import {Article} from '../model/article.model';
+import {JsonBean} from '../model/jsonbean';
 
 @Component({
   selector: 'app-masonry-demo',
@@ -15,33 +18,8 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
   // Inject AngularMasonryComponent instance from template
   @ViewChild(AngularMasonryComponent) masonry: AngularMasonryComponent;
   columnTop: string;
-  // Some bricks
-  // bricks = [
-  //   { id: 0, size: 'sm' },
-  //   { id: 1, size: 'sm' },
-  //   { id: 2, size: 'lg' },
-  //   { id: 3, size: 'sm' },
-  //   { id: 4, size: 'md' },
-  //   { id: 5, size: 'lg' },
-  //   { id: 6, size: 'sm' },
-  //   { id: 7, size: 'sm' },
-  //   { id: 8, size: 'sm' },
-  //   { id: 9, size: 'md' },
-  //   { id: 10, size: 'lg' },
-  //   { id: 11, size: 'sm' },
-  //   { id: 12, size: 'sm' },
-  //   { id: 13, size: 'sm' },
-  //   { id: 14, size: 'lg' },
-  //   { id: 15, size: 'lg' }
-  // ];
-
-  // bricks = [
-  //   { id: 0, image: 'http://www.planwallpaper.com/static/images/butterfly-wallpaper.jpeg' },
-  //   { id: 1, image: 'http://www.planwallpaper.com/static/images/i-should-buy-a-boat.jpg' },
-  //   { id: 2, image: 'http://www.intrawallpaper.com/static/images/8810721-full-hd-wallpapers-27699_tQsN85h_aTROZZr.jpg' },
-  //   { id: 3, image: 'http://www.intrawallpaper.com/static/images/4k-wallpaper-154.jpg' },
-  // ];
-
+  articleList: Article[] = [];
+  jsonBean: JsonBean = new JsonBean();
   bricks: any[] = [];
 
   // Options
@@ -50,7 +28,7 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
   };
   // ObservableMedia 并不是真正意义上的 Observable. 它仅仅是一个被用来暴露额外方法 如 isActive()的外壳。
   // 用.asObservable() 来转换成Observable，然后就可以用RxJs操作符了 如such as media.asObservable().filter(….).
-  constructor(media: ObservableMedia) {
+  constructor(media: ObservableMedia, private articleService: ArticleService) {
     media.asObservable()
       .pipe(
         filter((change: MediaChange) => change.mqAlias === 'xs')
@@ -68,6 +46,10 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
     });
 
     // this.bricks.push({ id: 4, image: 'http://www.planwallpaper.com/static/images/butterfly-wallpaper.jpeg' });
+    // this.articleService.list().subscribe(articles => this.jsonBean = articles);
+    // for (const article of this.jsonBean.data) {
+    //   this.bricks.push(article.title);
+    // }
   }
 
   addText() {
@@ -118,6 +100,43 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
     this.bricks.splice(this.bricks.indexOf(brick), 1);
   }
 
+  ngOnInit() {
+    this.columnTop = '0';
+    fromEvent(window, 'scroll').subscribe((event) => {
+      this.onWindowScroll();
+    });
+
+    // 初始化
+    this.articleService.list().subscribe(articles => {
+      this.jsonBean = articles;
+      // console.log(this.articleList.length);
+      for (const article of this.jsonBean.data) {
+        this.bricks.push({text: article.title + article.summary});
+      }
+    });
+  }
+
+  onWindowScroll() {
+    // this.columnTop = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) + 'px';
+    if (this.getScrollTop() + this.getClientHeight() === this.getScrollHeight()) {
+      console.log('滚动到底部');
+      // this.addImage();
+      // this.addText();
+      // this.addImage();
+      // this.addText();
+      // this.addImage();
+      // this.addText();
+      this.articleService.list().subscribe(articles => {
+        this.jsonBean = articles;
+        // console.log(this.articleList.length);
+        for (const article of this.jsonBean.data) {
+          this.bricks.push({text: article.title + article.summary});
+        }
+      });
+    }
+  }
+
+
   // 获取滚动条当前的位置
   getScrollTop() {
     let scrollTop = 0;
@@ -146,26 +165,6 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
   getScrollHeight() {
     return Math.max(document.body.scrollHeight,
       document.documentElement.scrollHeight);
-  }
-
-  ngOnInit() {
-    this.columnTop = '0';
-    fromEvent(window, 'scroll').subscribe((event) => {
-      this.onWindowScroll();
-    });
-  }
-
-  onWindowScroll() {
-    // this.columnTop = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) + 'px';
-    if (this.getScrollTop() + this.getClientHeight() === this.getScrollHeight()) {
-      console.log('滚动到底部');
-      this.addImage();
-      this.addText();
-      this.addImage();
-      this.addText();
-      this.addImage();
-      this.addText();
-    }
   }
 
   // @HostListener('scroll', ['$event']) private onScroll($event: Event) {

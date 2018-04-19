@@ -8,6 +8,8 @@ import {MasonryModule} from './masonry.module';
 import {MasonryDemoComponent} from './masonry-demo/masonry-demo.component';
 import {MatCardModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {ArticleService} from './service/article.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,12 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FormsModule,
     MatCardModule,
     MasonryModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ArticleService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
