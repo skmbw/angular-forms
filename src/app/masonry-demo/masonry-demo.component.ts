@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MasonryOptions} from '../masonry-options';
 import {AngularMasonryComponent} from '../masonry.component';
+import {MediaChange, ObservableMedia} from '@angular/flex-layout';
+import {filter} from 'rxjs/operators/filter';
 
 @Component({
   selector: 'app-masonry-demo',
@@ -45,6 +47,18 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
   options: MasonryOptions = {
     transitionDuration: '0.3s'
   };
+  // ObservableMedia 并不是真正意义上的 Observable. 它仅仅是一个被用来暴露额外方法 如 isActive()的外壳。
+  // 用.asObservable() 来转换成Observable，然后就可以用RxJs操作符了 如such as media.asObservable().filter(….).
+  constructor(media: ObservableMedia) {
+    media.asObservable()
+      .pipe(
+        filter((change: MediaChange) => change.mqAlias === 'xs')
+      ).subscribe(() => this.loadMobileContent());
+  }
+
+  // 监听布局的变化，重新加载内容
+  loadMobileContent() {
+  }
 
   ngAfterViewInit() {
     this.masonry.layoutComplete.subscribe(() => {
