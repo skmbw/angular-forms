@@ -3,6 +3,7 @@ import {MasonryOptions} from '../masonry-options';
 import {AngularMasonryComponent} from '../masonry.component';
 import {MediaChange, ObservableMedia} from '@angular/flex-layout';
 import {filter} from 'rxjs/operators/filter';
+import {fromEvent} from 'rxjs/observable/fromEvent';
 
 @Component({
   selector: 'app-masonry-demo',
@@ -13,7 +14,7 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
 
   // Inject AngularMasonryComponent instance from template
   @ViewChild(AngularMasonryComponent) masonry: AngularMasonryComponent;
-
+  columnTop: string;
   // Some bricks
   // bricks = [
   //   { id: 0, size: 'sm' },
@@ -58,6 +59,7 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
 
   // 监听布局的变化，重新加载内容
   loadMobileContent() {
+    console.log('loadMobileContent');
   }
 
   ngAfterViewInit() {
@@ -116,7 +118,57 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
     this.bricks.splice(this.bricks.indexOf(brick), 1);
   }
 
-  ngOnInit() {
+  // 获取滚动条当前的位置
+  getScrollTop() {
+    let scrollTop = 0;
+    if (document.documentElement && document.documentElement.scrollTop) {
+      scrollTop = document.documentElement.scrollTop;
+    } else if (document.body) {
+      scrollTop = document.body.scrollTop;
+    }
+    return scrollTop;
   }
 
+  // 获取当前可是范围的高度
+  getClientHeight() {
+    let clientHeight = 0;
+    if (document.body.clientHeight && document.documentElement.clientHeight) {
+      clientHeight = Math.min(document.body.clientHeight,
+        document.documentElement.clientHeight);
+    } else {
+      clientHeight = Math.max(document.body.clientHeight,
+        document.documentElement.clientHeight);
+    }
+    return clientHeight;
+  }
+
+  // 获取文档完整的高度
+  getScrollHeight() {
+    return Math.max(document.body.scrollHeight,
+      document.documentElement.scrollHeight);
+  }
+
+  ngOnInit() {
+    this.columnTop = '0';
+    fromEvent(window, 'scroll').subscribe((event) => {
+      this.onWindowScroll();
+    });
+  }
+
+  onWindowScroll() {
+    // this.columnTop = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) + 'px';
+    if (this.getScrollTop() + this.getClientHeight() === this.getScrollHeight()) {
+      console.log('滚动到底部');
+      this.addImage();
+      this.addText();
+      this.addImage();
+      this.addText();
+      this.addImage();
+      this.addText();
+    }
+  }
+
+  // @HostListener('scroll', ['$event']) private onScroll($event: Event) {
+  //   console.log($event.srcElement.scrollLeft, $event.srcElement.scrollTop);
+  // }
 }
