@@ -1,4 +1,4 @@
-<div class="container" (scroll)="onScroll($event)">
+<div class="container">
   <div class="row">
     <h1>Angular5 Masonry</h1>
   </div>
@@ -12,7 +12,7 @@
            fxLayoutGap="5px"
            fxLayoutGap.xs="0">
     <mat-card masonry-brick *ngFor="let brick of bricks" fxFlex="30" fxFlex.xs="auto">
-      <img *ngIf="brick.image" src="{{brick.image}}" style="width:100%;">
+      <img *ngIf="brick.image" src="{{brick.image}}" class="card-img">
       <p *ngIf="brick.text">{{brick.text}}</p>
       <button (click)="remove(brick)">Remove</button>
     </mat-card>
