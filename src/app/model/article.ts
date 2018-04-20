@@ -1,3 +1,6 @@
+/**
+ * 文章
+ */
 export class Article {
   id: string;
 

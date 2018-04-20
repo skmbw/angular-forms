@@ -1,16 +1,21 @@
 <div class="container">
-  <form class="form-group">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="row mt-md-4 offset-md-3">
       <h1 class="col-md-9 text-md-center">用户注册</h1>
     </div>
     <div class="row offset-md-3">
       <mat-form-field class="col-md-9">
-        <input matInput placeholder="用户名">
+        <input matInput placeholder="账户" [(ngModel)]="user.account" name="account" #account="ngModel" required>
       </mat-form-field>
     </div>
     <div class="row offset-md-3">
       <mat-form-field class="col-md-9">
-        <input matInput type="password" placeholder="密码">
+        <input matInput type="password" placeholder="密码" [(ngModel)]="user.password" name="password" required #password="ngModel">
+      </mat-form-field>
+    </div>
+    <div class="row offset-md-3">
+      <mat-form-field class="col-md-9">
+        <input matInput type="password" placeholder="再次输入密码" [(ngModel)]="user.checkPasswd" name="checkPasswd" required #checkPasswd="ngModel">
       </mat-form-field>
     </div>
     <div class="row offset-md-3">
@@ -28,8 +33,8 @@
     </div>
 
     <div class="row col-md-9 col-sm-12 offset-md-5 offset-sm-0 mt-md-4">
-      <button mat-raised-button color="accent" class="col-md-2 col-sm-5">注册</button>
-      <button mat-raised-button class="col-md-2 col-sm-5">取消</button>
+      <button mat-raised-button type="submit" color="accent" class="col-md-2 col-sm-5">注册</button>
+      <button mat-raised-button type="reset" class="col-md-2 col-sm-5">取消</button>
     </div>
     <!--<div class="row col-md-9 offset-md-4 mt-md-4">-->
       <!--<div class="col-md-12 col-sm-12 ">-->

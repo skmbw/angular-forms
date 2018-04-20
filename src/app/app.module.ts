@@ -8,7 +8,7 @@ import {MasonryModule} from './masonry/masonry.module';
 import {MasonryDemoComponent} from './masonry-demo/masonry-demo.component';
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatCommonModule,
-  MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule
+  MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatSnackBarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ArticleService} from './service/article.service';
@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {RoutingModule} from './routing/routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {UserService} from './service/user.service';
 
 @NgModule({
   declarations: [
@@ -43,10 +44,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatSelectModule,
     MatOptionModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [
-    ArticleService
+    ArticleService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
