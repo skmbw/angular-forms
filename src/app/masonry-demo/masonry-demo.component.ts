@@ -5,7 +5,7 @@ import {MediaChange, ObservableMedia} from '@angular/flex-layout';
 import {filter} from 'rxjs/operators/filter';
 import {fromEvent} from 'rxjs/observable/fromEvent';
 import {ArticleService} from '../service/article.service';
-import {Article} from '../model/article.model';
+import {Article} from '../model/article';
 import {JsonBean} from '../model/jsonbean';
 
 @Component({
