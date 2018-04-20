@@ -1,14 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import {catchError} from 'rxjs/operators';
 import {JsonBean} from '../model/jsonbean';
-
-const PREFIX = 'http://10.0.30.233:8243/tianxun/';
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'text/json'})
-};
+import {Consts} from '../common/consts';
 
 @Injectable()
 export class ArticleService {
@@ -17,7 +13,7 @@ export class ArticleService {
   }
 
   list(page: number): Observable<JsonBean> {
-    return this.httpClient.get<JsonBean>(PREFIX + 'article/list?pageSize=10&page=' + page)
+    return this.httpClient.get<JsonBean>(Consts.URL + 'article/list?pageSize=10&page=' + page)
       .pipe(
         catchError(this.handleError('', {}))
       );

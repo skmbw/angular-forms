@@ -22,7 +22,14 @@ export class RegisterComponent implements OnInit {
       this.snackBar.open('用户名不能为空！', '确定', {
         duration: 2000,
       });
+      return;
     }
-    console.log('submit' + this.user.name + this.user.password);
+    this.userService.register(this.user).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        console.log('register success.');
+      } else {
+        console.log('register error=' + jsonBean.message);
+      }
+    });
   }
 }
