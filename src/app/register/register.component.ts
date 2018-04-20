@@ -10,6 +10,7 @@ import {UserService} from '../service/user.service';
 })
 export class RegisterComponent implements OnInit {
   user: User = new User();
+  hide = true;
 
   constructor(private snackBar: MatSnackBar, private userService: UserService) {
   }
