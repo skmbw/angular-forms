@@ -12,6 +12,7 @@ import {ArticleService} from './service/article.service';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {RoutingModule} from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RegisterComponent } from './register/register.component';
     MatCardModule,
     MasonryModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    RoutingModule
   ],
   providers: [
     ArticleService
