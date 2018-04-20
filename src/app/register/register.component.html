@@ -24,12 +24,10 @@
       </mat-form-field>
     </div>
     <div class="row offset-md-3">
-      <mat-form-field class="col-md-9">
-        <mat-radio-group [(ngModel)]="user.gender" name="gender" #gender="ngModel">
-          <mat-radio-button class="example-margin" value="1">男</mat-radio-button>
-          <mat-radio-button class="example-margin" value="2">女</mat-radio-button>
-        </mat-radio-group>
-      </mat-form-field>
+      <mat-radio-group [(ngModel)]="user.gender" name="gender" #gender="ngModel" class="col-md-9">
+        <mat-radio-button class="example-margin" value="1">男</mat-radio-button>
+        <mat-radio-button class="example-margin" value="2">女</mat-radio-button>
+      </mat-radio-group>
     </div>
 
     <div class="row col-md-9 col-sm-12 offset-md-5 offset-sm-0 mt-md-4">

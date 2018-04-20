@@ -8,7 +8,7 @@ import {MasonryModule} from './masonry/masonry.module';
 import {MasonryDemoComponent} from './masonry-demo/masonry-demo.component';
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatCommonModule,
-  MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatSnackBarModule
+  MatFormFieldModule, MatInputModule, MatOptionModule, MatRadioModule, MatSelectModule, MatSnackBarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ArticleService} from './service/article.service';
@@ -41,6 +41,7 @@ import {UserService} from './service/user.service';
     MatButtonToggleModule,
     MatCommonModule,
     MatCheckboxModule,
+    MatRadioModule,
     MatSelectModule,
     MatOptionModule,
     MatInputModule,
