@@ -11,13 +11,15 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {ArticleService} from './service/article.service';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroFormComponent,
     MasonryDemoComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
