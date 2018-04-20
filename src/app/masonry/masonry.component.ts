@@ -28,11 +28,6 @@ export class AngularMasonryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // TODO: How to load imagesloaded only if this.useImagesLoaded===true?
-    // if (this.useImagesLoaded) {
-    //     this._imagesLoaded = require('imagesloaded');
-    // }
-
     // Create masonry options object
     if (!this.options) {
       this.options = {};
@@ -98,7 +93,7 @@ export class AngularMasonryComponent implements OnInit, OnDestroy {
           this.layout();
         }
       });
-
+      // TODO 删除这个的意义是什么
       // this._element.nativeElement.removeChild(element);
     } else {
       // Tell Masonry that a child element has been added

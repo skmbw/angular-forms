@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MasonryOptions} from '../masonry-options';
-import {AngularMasonryComponent} from '../masonry.component';
+import {MasonryOptions} from '../masonry/masonry-options';
+import {AngularMasonryComponent} from '../masonry/masonry.component';
 import {MediaChange, ObservableMedia} from '@angular/flex-layout';
 import {filter} from 'rxjs/operators/filter';
 import {fromEvent} from 'rxjs/observable/fromEvent';
