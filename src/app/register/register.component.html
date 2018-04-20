@@ -23,16 +23,22 @@
         <input matInput placeholder="手机" type="number" [(ngModel)]="user.mobile" name="mobile" #mobile="ngModel">
       </mat-form-field>
     </div>
-    <div class="row offset-md-3">
+    <div class="row offset-md-3 mt-md-2">
       <mat-radio-group [(ngModel)]="user.gender" name="gender" #gender="ngModel" class="col-md-9">
         <mat-radio-button value="1">男</mat-radio-button>
         <mat-radio-button value="2">女</mat-radio-button>
       </mat-radio-group>
     </div>
 
+    <div class="row offset-md-3 mt-md-2">
+      <mat-checkbox [(ngModel)]="user.license" name="license" #license="ngModel" class="col-md-9">
+        <a href="/license">已阅读并同意用户协议！</a>
+      </mat-checkbox>
+    </div>
+
     <div class="row col-md-9 col-sm-12 offset-md-5 offset-sm-0 mt-md-4">
-      <button mat-raised-button type="submit" color="accent" class="col-md-2 col-sm-5">注册</button>
-      <button mat-raised-button type="reset" class="col-md-2 col-sm-5">取消</button>
+      <button mat-raised-button type="submit" color="accent" class="col-md-2 col-sm-12 mb-2">注册</button>
+      <button mat-raised-button type="reset" class="col-md-2 col-sm-12 mb-2">取消</button>
     </div>
 
   </form>
