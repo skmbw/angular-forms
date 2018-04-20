@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {MatIconRegistry} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import {Component, OnInit} from '@angular/core';
 export class LoginComponent implements OnInit {
   hide = true;
 
-  constructor() {
+  constructor(private registry: MatIconRegistry) {
   }
 
   ngOnInit() {
