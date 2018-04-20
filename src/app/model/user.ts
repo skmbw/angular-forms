@@ -7,7 +7,8 @@ export class User {
               public checkPasswd?: string,
               public account?: string,
               public mobile?: string,
-              public authCode?: string) {
+              public authCode?: string,
+              public gender?: number) {
 
   }
 }
