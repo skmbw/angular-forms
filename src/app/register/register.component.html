@@ -1,3 +1,41 @@
-<p>
-  register works!
-</p>
+<div class="container">
+  <form class="form-group">
+    <div class="row mt-md-4 offset-md-3">
+      <h1 class="col-md-9 text-md-center">用户注册</h1>
+    </div>
+    <div class="row offset-md-3">
+      <mat-form-field class="col-md-9">
+        <input matInput placeholder="用户名">
+      </mat-form-field>
+    </div>
+    <div class="row offset-md-3">
+      <mat-form-field class="col-md-9">
+        <input matInput type="password" placeholder="密码">
+      </mat-form-field>
+    </div>
+    <div class="row offset-md-3">
+      <mat-form-field class="col-md-9">
+        <textarea matInput placeholder="描述"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="row offset-md-3">
+      <mat-form-field class="col-md-9">
+        <mat-select placeholder="请选择">
+          <mat-option value="option">选项啊</mat-option>
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="row col-md-9 col-sm-12 offset-md-5 offset-sm-0 mt-md-4">
+      <button mat-raised-button color="accent" class="col-md-2 col-sm-5">注册</button>
+      <button mat-raised-button class="col-md-2 col-sm-5">取消</button>
+    </div>
+    <!--<div class="row col-md-9 offset-md-4 mt-md-4">-->
+      <!--<div class="col-md-12 col-sm-12 ">-->
+        <!--<button class="btn col-md-3 col-sm-5">取消</button>-->
+        <!--<button class="btn btn-outline-success col-md-3 col-sm-5">注册</button>-->
+      <!--</div>-->
+    <!--</div>-->
+  </form>
+</div>
