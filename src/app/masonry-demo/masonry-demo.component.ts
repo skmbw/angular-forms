@@ -72,9 +72,11 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
   addImage() {
     const lorem = [
       'http://www.zhlzw.com/UploadFiles/Article_UploadFiles/201204/20120412123916285.jpg',
-      'http://img4.imgtn.bdimg.com/it/u=1293919120,3114443152&fm=27&gp=0.jpg',
-      'http://pic71.nipic.com/file/20150610/13549908_104823135000_2.jpg',
-      'http://img.taopic.com/uploads/allimg/121115/240487-12111520035993.jpg'
+      'http://pics.sc.chinaz.com/files/pic/pic9/201804/bpic6470.jpg',
+      'https://t10.baidu.com/it/u=3626816463,364440236&fm=173&app=25&f=JPEG?w=640&h=960&s=B6136223474241558438FFF90300C035',
+      'http://img.taopic.com/uploads/allimg/121115/240487-12111520035993.jpg',
+      'http://pics.sc.chinaz.com/files/pic/pic9/201803/bpic6258.jpg',
+      'http://pics.sc.chinaz.com/files/pic/pic9/201803/bpic6314.jpg'
     ];
 
     const index = Math.floor(Math.random() * lorem.length);
