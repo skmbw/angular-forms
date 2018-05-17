@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatIconRegistry, MatSnackBar} from '@angular/material';
 import {User} from '../model/user';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   hide = true;
   user: User = new User();
 
-  constructor(private registry: MatIconRegistry, private snackBar: MatSnackBar) {
+  constructor(private userService: UserService, private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
