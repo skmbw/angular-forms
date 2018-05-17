@@ -95,6 +95,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
       // const brick: Brick = new Brick();
       const brick: Article = new Article();
       brick.summary = article.summary;
+      brick.id = article.id;
       const fileList = article.fileList;
       if (fileList !== undefined && fileList !== null) {
         const img: ImageFile = fileList[0];
