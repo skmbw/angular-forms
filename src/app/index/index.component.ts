@@ -12,11 +12,11 @@ import {Brick} from '../model/brick';
 import {ImageFile} from '../model/image-file';
 
 @Component({
-  selector: 'app-masonry-demo',
-  templateUrl: './masonry-demo.component.html',
-  styleUrls: ['./masonry-demo.component.css']
+  selector: 'app-index',
+  templateUrl: './index.component.html',
+  styleUrls: ['./index.component.css']
 })
-export class MasonryDemoComponent implements OnInit, AfterViewInit {
+export class IndexComponent implements OnInit, AfterViewInit {
 
   // Inject AngularMasonryComponent instance from template
   @ViewChild(AngularMasonryComponent) masonry: AngularMasonryComponent;

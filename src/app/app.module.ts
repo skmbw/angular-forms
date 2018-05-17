@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {HeroFormComponent} from './hero-form/hero-form.component';
 import {FormsModule} from '@angular/forms';
 import {MasonryModule} from './masonry/masonry.module';
-import {MasonryDemoComponent} from './masonry-demo/masonry-demo.component';
+import {IndexComponent} from './index/index.component';
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatCommonModule,
   MatFormFieldModule, MatIconModule, MatInputModule, MatOptionModule, MatRadioModule, MatSelectModule, MatSnackBarModule
@@ -23,7 +23,7 @@ import {UserService} from './service/user.service';
   declarations: [
     AppComponent,
     HeroFormComponent,
-    MasonryDemoComponent,
+    IndexComponent,
     LoginComponent,
     RegisterComponent
   ],
