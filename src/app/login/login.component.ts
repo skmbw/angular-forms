@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MatIconRegistry} from '@angular/material';
+import {MatIconRegistry, MatSnackBar} from '@angular/material';
+import {User} from '../model/user';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,26 @@ import {MatIconRegistry} from '@angular/material';
 })
 export class LoginComponent implements OnInit {
   hide = true;
+  user: User = new User();
 
-  constructor(private registry: MatIconRegistry) {
+  constructor(private registry: MatIconRegistry, private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
   }
 
+  onSubmit() {
+    if (this.user.account === undefined || this.user.account === '') {
+      this.snackBar.open('账户不能为空！', '确定', {
+        duration: 2000,
+      });
+      return;
+    }
+    if (this.user.password === undefined || this.user.password === '') {
+      this.snackBar.open('密码不能为空！', '确定', {
+        duration: 2000,
+      });
+      return;
+    }
+  }
 }
