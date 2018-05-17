@@ -24,7 +24,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   columnTop: string;
   articleList: Article[] = [];
   jsonBean: JsonBean = {};
-  bricks: any[] = [];
+  // bricks: any[] = [];
   page = 0;
 
   // Options
@@ -52,7 +52,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
   }
 
   remove(brick) {
-    this.bricks.splice(this.bricks.indexOf(brick), 1);
+    // this.bricks.splice(this.bricks.indexOf(brick), 1);
+    this.articleList.splice(this.articleList.indexOf(brick), 1);
   }
 
   ngOnInit() {
@@ -91,14 +92,16 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
   private buildBricks() {
     for (const article of this.jsonBean.data) {
-      const brick: Brick = new Brick();
-      brick.text = article.title + article.summary;
+      // const brick: Brick = new Brick();
+      const brick: Article = new Article();
+      brick.summary = article.summary;
       const fileList = article.fileList;
       if (fileList !== undefined && fileList !== null) {
         const img: ImageFile = fileList[0];
         brick.image = Consts.IMAGE_HOST + img.filePath + img.type;
       }
-      this.bricks.push(brick);
+      // this.bricks.push(brick);
+      this.articleList.push(brick);
     }
   }
 
@@ -131,8 +134,4 @@ export class IndexComponent implements OnInit, AfterViewInit {
     return Math.max(document.body.scrollHeight,
       document.documentElement.scrollHeight);
   }
-
-  // @HostListener('scroll', ['$event']) private onScroll($event: Event) {
-  //   console.log($event.srcElement.scrollLeft, $event.srcElement.scrollTop);
-  // }
 }

@@ -1,18 +1,18 @@
 <div class="container mt-md-4">
-  <h1>Angular5 Masonry</h1>
-  <div class="row col-md-12">
-    <button (click)="addText()" type="button" class="btn btn-default">Add text brick</button>
-    <button (click)="addImage()" type="button" class="btn btn-outline-success">Add image brick</button>
-  </div>
+  <!--<h1>Angular5 Masonry</h1>-->
+  <!--<div class="row col-md-12">-->
+    <!--<button (click)="addText()" type="button" class="btn btn-default">Add text brick</button>-->
+    <!--<button (click)="addImage()" type="button" class="btn btn-outline-success">Add image brick</button>-->
+  <!--</div>-->
   <masonry [options]="options" [useImagesLoaded]="true"
            fxLayout="row" fxLayout.xs="column"
            fxLayoutAlign="start"
            fxLayoutGap="4px"
            fxLayoutGap.xs="0" class="row col-md-12 col-sm-12">
-    <mat-card masonry-brick *ngFor="let brick of bricks" fxFlex="31" fxFlex.xs="auto" class="col-md-4 col-sm-12 mt-2">
-      <img *ngIf="brick.image" src="{{brick.image}}" class="card-img">
-      <p *ngIf="brick.text">{{brick.text}}</p>
-      <button (click)="remove(brick)">Remove</button>
+    <mat-card masonry-brick *ngFor="let article of articleList" fxFlex="31" fxFlex.xs="auto" class="col-md-4 col-sm-12 mt-2">
+      <img *ngIf="article.image" src="{{article.image}}" class="card-img">
+      <p *ngIf="article.summary">{{article.summary}}</p>
+      <button (click)="remove(article)">Remove</button>
     </mat-card>
   </masonry>
 </div>

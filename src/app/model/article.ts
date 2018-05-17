@@ -96,4 +96,5 @@ export class Article {
   /**鄙视数*/
   despiseNumber: number;
   fileList: ImageFile[];
+  image: string;
 }
