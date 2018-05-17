@@ -13,7 +13,7 @@ export class ArticleService {
   }
 
   list(page: number): Observable<JsonBean> {
-    return this.httpClient.get<JsonBean>(Consts.URL + 'article/list?pageSize=10&page=' + page)
+    return this.httpClient.get<JsonBean>(Consts.URL + 'article/query?pageSize=10&page=' + page)
       .pipe(
         catchError(this.handleError('', {}))
       );

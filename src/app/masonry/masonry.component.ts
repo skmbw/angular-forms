@@ -8,6 +8,7 @@ import {MasonryOptions} from './masonry-options';
 // const Masonry = require('masonry-layout');
 import * as Masonry from 'masonry-layout';
 import * as imagesLoaded from 'imagesloaded';
+import {MasonryBrickDirective} from './masonry-brick.directive';
 
 @Component({
   selector: '[masonry], masonry',
@@ -35,6 +36,7 @@ export class AngularMasonryComponent implements OnInit, OnDestroy {
 
     // Set default itemSelector
     if (!this.options.itemSelector) {
+      // 这里是默认的选择器名称，见MasonryBrickDirective
       this.options.itemSelector = '[masonry-brick], masonry-brick';
     }
 

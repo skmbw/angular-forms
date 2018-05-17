@@ -1,3 +1,5 @@
+import {ImageFile} from './image-file';
+
 /**
  * 文章
  */
@@ -93,4 +95,5 @@ export class Article {
 
   /**鄙视数*/
   despiseNumber: number;
+  fileList: ImageFile[];
 }

@@ -7,6 +7,9 @@ import {fromEvent} from 'rxjs/observable/fromEvent';
 import {ArticleService} from '../service/article.service';
 import {Article} from '../model/article';
 import {JsonBean} from '../model/jsonbean';
+import {Consts} from '../common/consts';
+import {Brick} from '../model/brick';
+import {ImageFile} from '../model/image-file';
 
 @Component({
   selector: 'app-masonry-demo',
@@ -98,9 +101,7 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
     this.articleService.list(this.page).subscribe(articles => {
       this.jsonBean = articles;
       // console.log(this.articleList.length);
-      for (const article of this.jsonBean.data) {
-        this.bricks.push({text: article.title + article.summary});
-      }
+      this.buildBricks();
     });
   }
 
@@ -110,22 +111,35 @@ export class MasonryDemoComponent implements OnInit, AfterViewInit {
       console.log('滚动到底部');
       // this.addImage();
       // this.addText();
-      this.addImage();
+      // this.addImage();
       // this.addText();
-      this.addImage();
+      // this.addImage();
       // this.addText();
       this.articleService.list(this.page).subscribe(articles => {
         this.jsonBean = articles;
         // console.log(this.articleList.length);
-        for (const article of this.jsonBean.data) {
-          this.bricks.push({text: article.title + article.summary});
-        }
+        // for (const article of this.jsonBean.data) {
+        //   this.bricks.push({text: article.title + article.summary});
+        // }
+        this.buildBricks();
         this.page++;
         console.log(this.page);
       });
     }
   }
 
+  private buildBricks() {
+    for (const article of this.jsonBean.data) {
+      const brick: Brick = new Brick();
+      brick.text = article.title + article.summary;
+      const fileList = article.fileList;
+      if (fileList !== undefined && fileList !== null) {
+        const img: ImageFile = fileList[0];
+        brick.image = Consts.IMAGE_HOST + img.filePath + img.type;
+      }
+      this.bricks.push(brick);
+    }
+  }
 
   // 获取滚动条当前的位置
   getScrollTop() {
