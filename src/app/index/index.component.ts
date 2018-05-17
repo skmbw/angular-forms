@@ -10,6 +10,7 @@ import {JsonBean} from '../model/jsonbean';
 import {Consts} from '../common/consts';
 import {Brick} from '../model/brick';
 import {ImageFile} from '../model/image-file';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-index',
@@ -32,7 +33,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   };
   // ObservableMedia 并不是真正意义上的 Observable. 它仅仅是一个被用来暴露额外方法 如 isActive()的外壳。
   // 用.asObservable() 来转换成Observable，然后就可以用RxJs操作符了 如such as media.asObservable().filter(….).
-  constructor(media: ObservableMedia, private articleService: ArticleService) {
+  constructor(media: ObservableMedia, private articleService: ArticleService, private snackBar: MatSnackBar) {
     media.asObservable()
       .pipe(
         filter((change: MediaChange) => change.mqAlias === 'xs')
@@ -48,43 +49,6 @@ export class IndexComponent implements OnInit, AfterViewInit {
     this.masonry.layoutComplete.subscribe(() => {
       console.log('layout');
     });
-
-    // this.bricks.push({ id: 4, image: 'http://www.planwallpaper.com/static/images/butterfly-wallpaper.jpeg' });
-    // this.articleService.list().subscribe(articles => this.jsonBean = articles);
-    // for (const article of this.jsonBean.data) {
-    //   this.bricks.push(article.title);
-    // }
-  }
-
-  addText() {
-    const lorem = ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sodales.',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id.',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at tortor eu lacus imperdiet volutpat.' +
-      ' Aliquam erat volutpat. Integer et.',
-      'orem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sit amet felis malesuada accumsan.' +
-      ' Quisque sed fermentum justo. Vestibulum maximus diam condimentum elit placerat cursus. Vivamus ac eros vulputate,' +
-      ' lobortis felis vel, ultricies dolor. Donec in eros sit amet lorem pretium rutrum. Vestibulum viverra, ' +
-      'nisl volutpat maximus malesuada, ex.'
-    ];
-
-    const index = Math.floor(Math.random() * lorem.length);
-
-    this.bricks.push({text: lorem[index]});
-  }
-
-  addImage() {
-    const lorem = [
-      'http://www.zhlzw.com/UploadFiles/Article_UploadFiles/201204/20120412123916285.jpg',
-      'http://pics.sc.chinaz.com/files/pic/pic9/201804/bpic6470.jpg',
-      'https://t10.baidu.com/it/u=3626816463,364440236&fm=173&app=25&f=JPEG?w=640&h=960&s=B6136223474241558438FFF90300C035',
-      'http://img.taopic.com/uploads/allimg/121115/240487-12111520035993.jpg',
-      'http://pics.sc.chinaz.com/files/pic/pic9/201803/bpic6258.jpg',
-      'http://pics.sc.chinaz.com/files/pic/pic9/201803/bpic6314.jpg'
-    ];
-
-    const index = Math.floor(Math.random() * lorem.length);
-
-    this.bricks.push({image: lorem[index]});
   }
 
   remove(brick) {
@@ -106,24 +70,21 @@ export class IndexComponent implements OnInit, AfterViewInit {
   }
 
   onWindowScroll() {
-    // this.columnTop = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) + 'px';
     if (this.getScrollTop() + this.getClientHeight() === this.getScrollHeight()) {
       console.log('滚动到底部');
-      // this.addImage();
-      // this.addText();
-      // this.addImage();
-      // this.addText();
-      // this.addImage();
-      // this.addText();
       this.articleService.list(this.page).subscribe(articles => {
         this.jsonBean = articles;
-        // console.log(this.articleList.length);
-        // for (const article of this.jsonBean.data) {
-        //   this.bricks.push({text: article.title + article.summary});
-        // }
-        this.buildBricks();
-        this.page++;
-        console.log(this.page);
+
+        if (this.jsonBean.code !== 1) {
+          console.log('没有更多数据了。');
+          this.snackBar.open('没有更多数据了，亲！', '确定', {
+            duration: 2000,
+          });
+        } else {
+          this.buildBricks();
+          this.page++;
+          console.log(this.page);
+        }
       });
     }
   }

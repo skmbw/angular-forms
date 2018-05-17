@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import {RoutingModule} from './routing/routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserService} from './service/user.service';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {UserService} from './service/user.service';
     HeroFormComponent,
     IndexComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ArticleDetailComponent
   ],
   imports: [
     BrowserModule,
