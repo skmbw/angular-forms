@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {JsonBean} from '../model/jsonbean';
 import {User} from '../model/user';
 import {Consts} from '../common/consts';
+import {JsUtils} from '../common/js-utils';
 
 /**
  * 用户服务
@@ -19,7 +20,7 @@ export class UserService {
   }
 
   login(user: User): Observable<JsonBean> {
-    const body = 'account=' + user.account + '&password=' + user.password;
+    const body = JsUtils.toQueryString(user);
     return this.httpClient.post(Consts.URL + 'user/login', body, Consts.HTML);
   }
 }

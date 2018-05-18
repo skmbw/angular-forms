@@ -1,5 +1,3 @@
-import {deprecate} from 'util';
-
 // deprecate
 export class JsUtils {
   // 获取滚动条当前的位置
@@ -30,5 +28,19 @@ export class JsUtils {
   static getScrollHeight() {
     return Math.max(document.body.scrollHeight,
       document.documentElement.scrollHeight);
+  }
+
+  static toQueryString(obj: any): string {
+    let rs = '';
+    for (const p in obj) {
+      // for in statement must filtered with an if statement
+      if (obj.hasOwnProperty(p)) {
+        const v = obj[p];
+        if (v !== undefined && v !== null) {
+          rs += p + '=' + v + '&';
+        }
+      }
+    }
+    return rs.substring(0, rs.length - 1);
   }
 }
