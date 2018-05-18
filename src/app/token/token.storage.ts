@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
+import {User} from '../model/user';
 
 const TOKEN_ID = 'sess_token_id';
+const USER_ID = 'sess_user_id';
 
 @Injectable()
 export class TokenStorage {
@@ -22,5 +24,14 @@ export class TokenStorage {
     // return localStorage.getItem(TOKEN_ID);
     // sessionStorage 在浏览器关闭时，会清除数据
     return window.sessionStorage.getItem(TOKEN_ID);
+  }
+
+  public saveUser(user: User) {
+    window.sessionStorage.setItem(USER_ID, JSON.stringify(user));
+  }
+
+  public getUser(): User {
+    const us = window.sessionStorage.getItem(USER_ID);
+    return JSON.parse(us);
   }
 }

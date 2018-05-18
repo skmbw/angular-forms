@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       if (jsonBean.code === 1) {
         const user: User = jsonBean.data;
         this.tokenStorage.saveToken(user.tokenId);
+        this.tokenStorage.saveUser(user);
         this.router.navigateByUrl('/index').catch();
       } else {
         this.snackBar.open(jsonBean.message, '确定', {duration: 2000});
