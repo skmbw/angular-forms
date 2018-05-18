@@ -41,10 +41,10 @@
             <a class="nav-link" href="/register">注册</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">问题</a>
+            <a class="nav-link disabled" href="#">问题</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">推荐</a>
+            <a class="nav-link" id="userCenter">用户</a>
           </li>
           <!--<li class="nav-item dropdown">-->
             <!--<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"-->
@@ -75,5 +75,9 @@
   <!--</div>-->
 <!--</footer>-->
 <script type="text/javascript" src="./assets/js/jquery.slim.min.js"></script>
+<script type="text/javascript">
+  var n = window.sessionStorage.getItem('sess_user_name');
+  $('#userCenter').text(n);
+</script>
 </body>
 </html>

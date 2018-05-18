@@ -3,6 +3,7 @@ import {User} from '../model/user';
 
 const TOKEN_ID = 'sess_token_id';
 const USER_ID = 'sess_user_id';
+const USER_NAME = 'sess_user_name';
 
 @Injectable()
 export class TokenStorage {
@@ -28,6 +29,7 @@ export class TokenStorage {
 
   public saveUser(user: User) {
     window.sessionStorage.setItem(USER_ID, JSON.stringify(user));
+    window.sessionStorage.setItem(USER_NAME, user.account);
   }
 
   public getUser(): User {

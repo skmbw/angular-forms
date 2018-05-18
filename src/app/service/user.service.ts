@@ -20,7 +20,7 @@ export class UserService {
   }
 
   login(user: User): Observable<JsonBean> {
-    const body = JsUtils.toQueryString(user);
-    return this.httpClient.post(Consts.URL + 'user/login', body, Consts.HTML);
+    // const body = JsUtils.toQueryString(user);
+    return this.httpClient.post(Consts.URL + 'user/login', user, Consts.JSON);
   }
 }
