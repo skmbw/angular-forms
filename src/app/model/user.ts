@@ -8,7 +8,8 @@ export class User {
               public account?: string,
               public mobile?: string,
               public license?: string,
-              public gender?: number) {
+              public gender?: number,
+              public tokenId?: string) {
 
   }
 }

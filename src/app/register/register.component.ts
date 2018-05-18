@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
     // 这里是测试，直接跳转（应用内路由跳转）
-    this.router.navigateByUrl('/login').catch();
+    // this.router.navigateByUrl('/login').catch();
     this.userService.register(this.user).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         console.log('register success.');

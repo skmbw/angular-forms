@@ -16,13 +16,13 @@ export class TokenInterceptor implements HttpInterceptor {
     let request = req;
     const token = this.tokenStorage.getToken();
     if (token !== null) {
-      request = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer' + token)});
-      // request = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY, token)});
+      // request = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer' + token)});
+      request = req.clone({headers: req.headers.set('tokenId', token)});
     }
     return next.handle(request).do((err: any) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
-          this.router.navigate(['login']).catch();
+          this.router.navigate(['/login']).catch();
         }
       }
     });

@@ -91,6 +91,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   }
 
   private buildBricks() {
+    // const articleList: Article[] = [this.jsonBean.data];
     for (const article of this.jsonBean.data) {
       // const brick: Brick = new Brick();
       const brick: Article = new Article();

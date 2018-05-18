@@ -19,6 +19,7 @@ export class UserService {
   }
 
   login(user: User): Observable<JsonBean> {
-    return this.httpClient.post(Consts.URL + 'user/login', user, Consts.JSON);
+    const body = 'account=' + user.account + '&password=' + user.password;
+    return this.httpClient.post(Consts.URL + 'user/login', body, Consts.HTML);
   }
 }
