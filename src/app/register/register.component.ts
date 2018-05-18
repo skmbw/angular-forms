@@ -42,9 +42,13 @@ export class RegisterComponent implements OnInit {
     // this.router.navigateByUrl('/login').catch();
     this.userService.register(this.user).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
-        console.log('register success.');
+        this.snackBar.open('注册成功，请登录。', '确定', {duration: 2000});
+        // 两秒后跳转
+        setTimeout(() => {
+          this.router.navigateByUrl('/login').catch();
+        }, 2000);
       } else {
-        console.log('register error=' + jsonBean.message);
+        this.snackBar.open(jsonBean.message, '确定', {duration: 2000});
       }
     });
   }
