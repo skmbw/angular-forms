@@ -1,23 +1,22 @@
 <div class="container">
   <form #userForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="row mt-md-4 offset-md-3">
-      <h1 class="col-md-9 text-md-center">用户登录</h1>
-    </div>
-    <div class="row offset-md-3">
-      <mat-form-field class="col-md-9">
+      <h1 class="col-md-8 text-md-center">用户登录</h1>
+      <mat-form-field class="col-md-8">
         <input matInput placeholder="账户" [(ngModel)]="user.account" name="account" #account="ngModel" type="text" required>
       </mat-form-field>
-    </div>
-    <div class="row offset-md-3">
-      <mat-form-field class="col-md-9">
+
+      <mat-form-field class="col-md-8">
         <input matInput placeholder="密码" [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password" name="password" #password="ngModel" required>
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </div>
 
-    <div class="row col-md-9 col-sm-12 offset-md-5 offset-sm-0 mt-md-4">
-      <button mat-raised-button type="submit" color="accent" class="col-md-2 col-sm-12 mb-2">登录</button>
-      <button mat-raised-button type="reset" class="col-md-2 col-sm-12 mb-2">取消</button>
+    <div class="row offset-md-3 mt-md-4">
+      <div class="col-md-12 offset-md-2">
+        <button mat-raised-button type="submit" color="accent" class="col-md-2 col-sm-12 mb-2">登录</button>
+        <button mat-raised-button type="reset" class="col-md-2 col-sm-12 mb-2">取消</button>
+      </div>
     </div>
   </form>
 </div>
