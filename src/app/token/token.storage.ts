@@ -17,7 +17,7 @@ export class TokenStorage {
   }
 
   public saveToken(token: string) {
-    window.sessionStorage.removeItem(TOKEN_ID);
+    // window.sessionStorage.removeItem(TOKEN_ID); // 会导致刷新页面，sessionStorage失效
     window.sessionStorage.setItem(TOKEN_ID, token);
   }
 
