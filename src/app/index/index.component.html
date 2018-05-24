@@ -1,15 +1,10 @@
-<div class="container-fluid mt-md-4 ml-xl-4 ml-md-4">
-  <!--<h1>Angular5 Masonry</h1>-->
-  <!--<div class="row col-md-12">-->
-    <!--<button (click)="addText()" type="button" class="btn btn-default">Add text brick</button>-->
-    <!--<button (click)="addImage()" type="button" class="btn btn-outline-success">Add image brick</button>-->
-  <!--</div>-->
+<div class="container mt-xl-2">
   <masonry [options]="options" [useImagesLoaded]="true"
            fxLayout="row" fxLayout.xs="column"
            fxLayoutAlign="start"
-           fxLayoutGap="8px"
-           fxLayoutGap.xs="2px" fxLayoutGap.lg="4px" fxLayoutGap.md="4px" fxLayoutGap.sm="2px" class="row col-xl-12 col-sm-12">
-    <mat-card masonry-brick *ngFor="let article of articleList" fxFlex="24" fxFlex.xs="auto" class="col-xl-3 col-sm-12 mt-2">
+           fxLayoutGap="4px"
+           fxLayoutGap.xs="2px" fxLayoutGap.lg="4px" fxLayoutGap.md="2px" fxLayoutGap.sm="2px" class="row col-xl-12 col-sm-12">
+    <mat-card masonry-brick *ngFor="let article of articleList" fxFlex="32" fxFlex.xs="auto" class="col-xl-4 col-sm-12 mt-2">
       <a href="article/detail/{{article.id}}">
         <img *ngIf="article.image" src="{{article.image}}" class="card-img">
         <p *ngIf="article.summary">{{article.summary}}</p>
