@@ -10,7 +10,6 @@ import {JsonBean} from '../model/jsonbean';
 import {Consts} from '../common/consts';
 import {ImageFile} from '../model/image-file';
 import {MatSnackBar} from '@angular/material';
-import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-index',
@@ -34,8 +33,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   };
   // ObservableMedia 并不是真正意义上的 Observable. 它仅仅是一个被用来暴露额外方法 如 isActive()的外壳。
   // 用.asObservable() 来转换成Observable，然后就可以用RxJs操作符了 如such as media.asObservable().filter(….).
-  constructor(media: ObservableMedia, private articleService: ArticleService, private snackBar: MatSnackBar,
-              private app: AppComponent) {
+  constructor(media: ObservableMedia, private articleService: ArticleService, private snackBar: MatSnackBar) {
     media.asObservable()
       .pipe(
         filter((change: MediaChange) => change.mqAlias === 'xs')
@@ -70,7 +68,6 @@ export class IndexComponent implements OnInit, AfterViewInit {
       // console.log(this.articleList.length);
       this.buildBricks();
     });
-    this.app.userName = window.sessionStorage.getItem('sess_user_name');
   }
 
   onWindowScroll() {

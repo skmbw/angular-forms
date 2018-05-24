@@ -2,7 +2,8 @@
  * 用户
  */
 export class User {
-  constructor(public name?: string,
+  constructor(public id?: string,
+              public name?: string,
               public password?: string,
               public checkPasswd?: string,
               public account?: string,

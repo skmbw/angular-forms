@@ -4,6 +4,7 @@ import {User} from '../model/user';
 import {UserService} from '../service/user.service';
 import {TokenStorage} from '../token/token.storage';
 import {Router} from '@angular/router';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   user: User = new User();
 
   constructor(private userService: UserService, private snackBar: MatSnackBar,
-              private tokenStorage: TokenStorage, private router: Router) {
+              private tokenStorage: TokenStorage, private router: Router, private app: AppComponent) {
   }
 
   ngOnInit() {
@@ -39,6 +40,8 @@ export class LoginComponent implements OnInit {
         const user: User = jsonBean.data;
         this.tokenStorage.saveToken(user.tokenId);
         this.tokenStorage.saveUser(user);
+        this.app.userName = user.account;
+        this.app.userId = user.id;
         this.router.navigateByUrl('/index').catch();
       } else {
         this.snackBar.open(jsonBean.message, '确定', {duration: 2000});

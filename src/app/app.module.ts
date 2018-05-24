@@ -32,6 +32,7 @@ import {UserService} from './service/user.service';
 import {ArticleDetailComponent} from './article-detail/article-detail.component';
 import {TokenStorage} from './token/token.storage';
 import {TokenInterceptor} from './token/token.interceptor';
+import {UserCenterComponent} from './user-center/user-center.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {TokenInterceptor} from './token/token.interceptor';
     IndexComponent,
     LoginComponent,
     RegisterComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    UserCenterComponent
   ],
   imports: [
     BrowserModule,
