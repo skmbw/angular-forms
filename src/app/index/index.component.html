@@ -9,7 +9,7 @@
            fxLayoutAlign="start"
            fxLayoutGap="4px"
            fxLayoutGap.xs="0" class="row col-md-12 col-sm-12">
-    <mat-card masonry-brick *ngFor="let article of articleList" fxFlex="31" fxFlex.xs="auto" class="col-md-4 col-sm-12 mt-2">
+    <mat-card masonry-brick *ngFor="let article of articleList" fxFlex="32" fxFlex.xs="auto" class="col-md-4 col-sm-12 mt-2">
       <a href="article/detail/{{article.id}}">
         <img *ngIf="article.image" src="{{article.image}}" class="card-img">
         <p *ngIf="article.summary">{{article.summary}}</p>
