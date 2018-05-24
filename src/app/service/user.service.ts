@@ -4,14 +4,16 @@ import {Observable} from 'rxjs/Observable';
 import {JsonBean} from '../model/jsonbean';
 import {User} from '../model/user';
 import {Consts} from '../common/consts';
+import {CommonService} from './common.service';
 
 /**
  * 用户服务
  */
 @Injectable()
-export class UserService {
+export class UserService extends CommonService {
 
   constructor(private httpClient: HttpClient) {
+    super();
   }
 
   register(user: User): Observable<JsonBean> {
