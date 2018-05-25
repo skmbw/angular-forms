@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatPaginator} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 
@@ -16,7 +16,8 @@ export class AccountComponent implements OnInit {
 
   displayedColumns = ['created', 'state', 'number', 'title'];
   exampleDatabase: ExampleHttpDao | null;
-  data: MatTableDataSource<GithubIssue[]> = {};
+  // data: MatTableDataSource<GithubIssue[]> = {};
+  data: GithubIssue[] = [];
 
   resultsLength = 0;
   isLoadingResults = true;
@@ -29,7 +30,7 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     this.exampleDatabase = new ExampleHttpDao(this.http);
-    this.data.paginator = this.paginator;
+    // this.data.paginator = this.paginator;
     // If the user changes the sort order, reset back to the first page.
     // this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
@@ -56,7 +57,8 @@ export class AccountComponent implements OnInit {
           this.isRateLimitReached = true;
           return of([]);
         })
-      ).subscribe(data => this.data = new MatTableDataSource<GithubIssue[]>(data));
+      ).subscribe(data => this.data = data);
+      // ).subscribe(data => this.data = new MatTableDataSource<GithubIssue[]>(data));
   }
 }
 
