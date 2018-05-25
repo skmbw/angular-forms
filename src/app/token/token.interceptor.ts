@@ -17,7 +17,9 @@ export class TokenInterceptor implements HttpInterceptor {
     const token = this.tokenStorage.getToken();
     if (token !== null) {
       // request = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer' + token)});
-      request = req.clone({headers: req.headers.set('tokenId', token)});
+      if (!req.url.indexOf('github.com')) {
+        request = req.clone({headers: req.headers.set('tokenId', token)});
+      }
     }
     return next.handle(request).do((err: any) => {
       if (err instanceof HttpErrorResponse) {

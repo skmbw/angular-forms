@@ -20,6 +20,7 @@ import {
   MatListModule,
   MatOptionModule,
   MatPaginatorModule,
+  MatProgressSpinnerModule,
   MatRadioModule,
   MatSelectModule,
   MatSidenavModule,
@@ -84,7 +85,8 @@ import {AccountComponent} from './account/account.component';
     MatTabsModule,
     MatPaginatorModule,
     MatTableModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     ArticleService,
