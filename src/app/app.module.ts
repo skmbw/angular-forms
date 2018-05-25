@@ -13,13 +13,15 @@ import {
   MatCardModule,
   MatCheckboxModule,
   MatCommonModule,
+  MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatOptionModule,
   MatRadioModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ArticleService} from './service/article.service';
@@ -64,7 +66,9 @@ import {UserCenterComponent} from './user-center/user-center.component';
     MatInputModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule,
+    MatDividerModule
   ],
   providers: [
     ArticleService,
