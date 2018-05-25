@@ -29,8 +29,11 @@
           <li class="nav-item">
             <a class="nav-link disabled" href="#">问题</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="userName">
             <a class="nav-link" routerLink="user/center/{{userId}}">{{userName}}</a>
+          </li>
+          <li class="nav-item" *ngIf="userName">
+            <a class="nav-link" routerLink="user/logout">退出</a>
           </li>
           <!--<li class="nav-item dropdown">-->
           <!--<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"-->
