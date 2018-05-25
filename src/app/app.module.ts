@@ -19,8 +19,10 @@ import {
   MatInputModule,
   MatListModule,
   MatOptionModule,
+  MatPaginatorModule,
   MatRadioModule,
   MatSelectModule,
+  MatSidenavModule,
   MatSnackBarModule,
   MatTableModule,
   MatTabsModule,
@@ -40,6 +42,7 @@ import {TokenInterceptor} from './token/token.interceptor';
 import {UserCenterComponent} from './user-center/user-center.component';
 import {ArticleListComponent} from './article-list/article-list.component';
 import {QuestionListComponent} from './question-list/question-list.component';
+import {AccountComponent} from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,8 @@ import {QuestionListComponent} from './question-list/question-list.component';
     ArticleDetailComponent,
     UserCenterComponent,
     ArticleListComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +82,9 @@ import {QuestionListComponent} from './question-list/question-list.component';
     MatListModule,
     MatDividerModule,
     MatTabsModule,
-    MatTableModule
+    MatPaginatorModule,
+    MatTableModule,
+    MatSidenavModule
   ],
   providers: [
     ArticleService,

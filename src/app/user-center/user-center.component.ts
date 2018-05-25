@@ -13,7 +13,7 @@ export class UserCenterComponent implements OnInit {
   constructor(private userService: UserService, private router: ActivatedRoute) {
   }
 
-  user: User;
+  user: User = new User();
   ngOnInit() {
     this.router.params.subscribe(params => {
       const userId = params['id'];

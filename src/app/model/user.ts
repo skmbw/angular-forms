@@ -10,7 +10,8 @@ export class User {
               public mobile?: string,
               public license?: string,
               public gender?: number,
-              public tokenId?: string) {
+              public tokenId?: string,
+              public title?: string) {
 
   }
 }
