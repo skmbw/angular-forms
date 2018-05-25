@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {UserService} from '../service/user.service';
+import {User} from '../model/user';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-user-center',
@@ -7,9 +10,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class UserCenterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService, private router: ActivatedRoute) {
+  }
 
+  user: User;
   ngOnInit() {
+    this.router.params.subscribe(params => {
+      const userId = params['id'];
+      this.userService.detail(userId).subscribe(jsonBean => {
+        if (jsonBean.code === 1) {
+          this.user = jsonBean.data;
+        }
+      });
+    });
   }
 
 }

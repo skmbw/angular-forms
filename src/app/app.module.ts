@@ -17,10 +17,13 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  MatListModule,
   MatOptionModule,
   MatRadioModule,
   MatSelectModule,
   MatSnackBarModule,
+  MatTableModule,
+  MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -35,6 +38,8 @@ import {ArticleDetailComponent} from './article-detail/article-detail.component'
 import {TokenStorage} from './token/token.storage';
 import {TokenInterceptor} from './token/token.interceptor';
 import {UserCenterComponent} from './user-center/user-center.component';
+import {ArticleListComponent} from './article-list/article-list.component';
+import {QuestionListComponent} from './question-list/question-list.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,9 @@ import {UserCenterComponent} from './user-center/user-center.component';
     LoginComponent,
     RegisterComponent,
     ArticleDetailComponent,
-    UserCenterComponent
+    UserCenterComponent,
+    ArticleListComponent,
+    QuestionListComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +75,10 @@ import {UserCenterComponent} from './user-center/user-center.component';
     MatSnackBarModule,
     MatIconModule,
     MatToolbarModule,
-    MatDividerModule
+    MatListModule,
+    MatDividerModule,
+    MatTabsModule,
+    MatTableModule
   ],
   providers: [
     ArticleService,

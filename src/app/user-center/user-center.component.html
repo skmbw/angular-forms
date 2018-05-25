@@ -1,14 +1,58 @@
 <div class="container">
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span>First Row</span>
-    </mat-toolbar-row>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{user.name}}</mat-card-title>
+      <mat-card-subtitle>{{user.account}}</mat-card-subtitle>
+    </mat-card-header>
 
-    <mat-divider></mat-divider>
+    <mat-card-content class="container mt-xl-4 mt-4">
+      <div class="row">
+        <div class="col-xl-2">
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        </div>
+        <div class="col-xl-10">
+          <div class="container">
+            <div class="row">
 
-    <mat-toolbar-row>
-      <span>Second Row</span>
-    </mat-toolbar-row>
-  </mat-toolbar>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>
+        我这里是用户的介绍啊，不想当裁缝的司机不是好厨子。The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-tab-group class="mt-xl-4 mt-md-4 mt-4">
+    <mat-tab label="问题">
+      <app-question-list></app-question-list>
+    </mat-tab>
+    <mat-tab label="回答">
+
+    </mat-tab>
+    <mat-tab label="文章">
+      <app-article-list></app-article-list>
+    </mat-tab>
+    <mat-tab label="订单">
+
+    </mat-tab>
+    <mat-tab label="吐槽">
+
+    </mat-tab>
+    <mat-tab label="关注">
+
+    </mat-tab>
+    <mat-tab label="积分">
+
+    </mat-tab>
+  </mat-tab-group>
 </div>
 
