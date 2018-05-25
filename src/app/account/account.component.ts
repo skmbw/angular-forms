@@ -29,7 +29,6 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     this.exampleDatabase = new ExampleHttpDao(this.http);
-    const self = this;
     // If the user changes the sort order, reset back to the first page.
     // this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
@@ -38,7 +37,7 @@ export class AccountComponent implements OnInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return self.exampleDatabase.getRepoIssues('true', 'desc', this.paginator.pageIndex);
+          return this.exampleDatabase.getRepoIssues('true', 'desc', this.paginator.pageIndex);
         }),
         map(data => {
           // Flip flag to show that loading has finished.
