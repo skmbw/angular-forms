@@ -17,7 +17,7 @@ import {MatSnackBar} from '@angular/material';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit, AfterViewInit {
-
+  // 注入DomSanitizer然后使用bypassSecurityTrustHtml转换html内容，这样就能显示html了
   // Inject AngularMasonryComponent instance from template
   @ViewChild(AngularMasonryComponent) masonry: AngularMasonryComponent;
   columnTop: string;
