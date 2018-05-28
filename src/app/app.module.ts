@@ -44,6 +44,7 @@ import {UserCenterComponent} from './user-center/user-center.component';
 import {ArticleListComponent} from './article-list/article-list.component';
 import {QuestionListComponent} from './question-list/question-list.component';
 import {AccountComponent} from './account/account.component';
+import {LogoutComponent} from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {AccountComponent} from './account/account.component';
     UserCenterComponent,
     ArticleListComponent,
     QuestionListComponent,
-    AccountComponent
+    AccountComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
