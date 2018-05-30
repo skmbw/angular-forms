@@ -1,12 +1,12 @@
 <div class="container">
-  <h1 class="mt-xl-4 mb-xl-4">{{article.title}}</h1>
+  <h1 class="mt-4 mb-4">{{article.title}}</h1>
   <div class="row col-xl-12">
     <span>时间：{{article.createDate}}</span>
-    <mat-icon class="ml-xl-2">face</mat-icon><span><a href="user/detail/{{article.authorId}}">作者：{{article.authorName}}</a></span>
+    <mat-icon class="ml-xl-2">face</mat-icon><span><a routerLink="user/detail/{{article.authorId}}">作者：{{article.authorName}}</a></span>
     <span class="ml-xl-2">价格：{{article.price}}</span>
     <span class="ml-xl-2"><mat-icon>shopping</mat-icon></span><span>：{{article.number}}</span>
   </div>
-  <div class="row mt-xl-4">
+  <div class="row mt-4">
     <div class="col-xl-12" [innerHTML]="content">
     </div>
   </div>
@@ -15,6 +15,37 @@
     <div class="col-xl-12">扫码打赏TA</div>
     <div class="col-xl-12">
       <img src="../../assets/img/alipay-ecode.jpg" class="alipay-img">
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-xl-12">
+      <mat-tab-group>
+        <mat-tab label="用户评论" style="min-height: 200px;">
+          亲，还没有评论哦，赶快来一发吧
+        </mat-tab>
+        <mat-tab label="购买记录">
+          <!--<ng-template matTabContent>-->
+            <!--The First Content-->
+          <!--</ng-template>-->
+          还没有购买记录。
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-xl-12">
+      <mat-form-field class="w-100">
+        <textarea matInput placeholder="您的吐槽..."></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row mt-xl-2 mb-4">
+    <div class="col-xl-12">
+      <button mat-raised-button type="button" color="accent" class="col-md-2 col-sm-12 mb-2">吐槽</button>
+      <button mat-raised-button type="reset" class="col-md-2 col-sm-12 mb-2">取消</button>
     </div>
   </div>
 </div>
