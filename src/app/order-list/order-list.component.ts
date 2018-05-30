@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-order-list',
@@ -6,8 +6,11 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
+  @Input()
+  articleId: string = null;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
