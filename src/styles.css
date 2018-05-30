@@ -106,3 +106,11 @@ a:focus {
 .widewrapper a {
   color: #e9e4da;
 }
+
+.bg-orange {
+  background-color: #e84423;
+}
+
+.height-20 {
+  height: 20px;
+}
