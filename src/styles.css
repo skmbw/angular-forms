@@ -114,3 +114,8 @@ a:focus {
 .height-20 {
   height: 20px;
 }
+/*bootstrap4 改为了 .img-fluid，这里兼容一下以前数据*/
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
