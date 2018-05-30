@@ -97,4 +97,5 @@ export class Article {
   despiseNumber: number;
   fileList: ImageFile[];
   image: string;
+  content: string;
 }
