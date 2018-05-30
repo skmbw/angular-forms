@@ -21,14 +21,11 @@
   <div class="row mt-4">
     <div class="col-xl-12">
       <mat-tab-group>
-        <mat-tab label="用户评论" style="min-height: 200px;">
-          亲，还没有评论哦，赶快来一发吧
+        <mat-tab label="用户评论">
+          <app-article-comment></app-article-comment>
         </mat-tab>
         <mat-tab label="购买记录">
-          <!--<ng-template matTabContent>-->
-            <!--The First Content-->
-          <!--</ng-template>-->
-          还没有购买记录。
+          <app-order-list></app-order-list>
         </mat-tab>
       </mat-tab-group>
     </div>
