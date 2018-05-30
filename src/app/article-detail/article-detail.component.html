@@ -2,7 +2,7 @@
   <h1 class="mt-4 mb-4">{{article.title}}</h1>
   <div class="row col-xl-12">
     <span>时间：{{article.createDate}}</span>
-    <mat-icon class="ml-xl-2">face</mat-icon><span><a routerLink="user/detail/{{article.authorId}}">作者：{{article.authorName}}</a></span>
+    <mat-icon class="ml-xl-2">face</mat-icon><span><a routerLink="/user/detail/{{article.authorId}}">作者：{{article.authorName}}</a></span>
     <span class="ml-xl-2">价格：{{article.price}}</span>
     <span class="ml-xl-2"><mat-icon>shopping</mat-icon></span><span>：{{article.number}}</span>
   </div>
