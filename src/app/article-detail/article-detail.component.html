@@ -22,10 +22,10 @@
     <div class="col-xl-12">
       <mat-tab-group>
         <mat-tab label="用户评论">
-          <app-article-comment [articleId]="article.authorId"></app-article-comment>
+          <app-article-comment [articleId]="article.id"></app-article-comment>
         </mat-tab>
         <mat-tab label="购买记录">
-          <app-order-list [articleId]="article.authorId"></app-order-list>
+          <app-order-list [articleId]="article.id"></app-order-list>
         </mat-tab>
       </mat-tab-group>
     </div>
