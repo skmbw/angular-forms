@@ -14,9 +14,11 @@ import {Consts} from '../common/consts';
 export class ArticleDetailComponent implements OnInit {
   article: Article = new Article(); // template中要显示，需要初始化，否则会找不到属性
   content: any;
-  image = {server: Consts.IMAGE_HOST};
+  comment: string = null;
+
   constructor(private articleService: ArticleService, private snackBar: MatSnackBar,
-              private router: ActivatedRoute, private sanitizer: DomSanitizer) { }
+              private router: ActivatedRoute, private sanitizer: DomSanitizer) {
+  }
 
   ngOnInit() {
     this.router.params.subscribe(params => {
@@ -34,4 +36,13 @@ export class ArticleDetailComponent implements OnInit {
     });
   }
 
+  public addComment() {
+    if (this.comment === null || this.comment.trim() === '') {
+      this.snackBar.open('吐槽不能为空啊，亲！', null, {
+        duration: 2000,
+      });
+      return;
+    }
+    alert(this.comment);
+  }
 }
