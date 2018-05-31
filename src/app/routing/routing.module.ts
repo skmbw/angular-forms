@@ -8,6 +8,7 @@ import {RegisterComponent} from '../register/register.component';
 import {ArticleDetailComponent} from '../article-detail/article-detail.component';
 import {UserCenterComponent} from '../user-center/user-center.component';
 import {LogoutComponent} from '../logout/logout.component';
+import {ArticlePublishComponent} from '../article-publish/article-publish.component';
 
 const routes: Routes = [
   // 默认路由，这个路由会把一个与空路径"完全匹配"的 URL 重定向到路径为 '/index' 的路由
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'index', component: IndexComponent},
   {path: 'hero', component: HeroFormComponent},
   {path: 'article/detail/:id', component: ArticleDetailComponent},
+  {path: 'article/write', component: ArticlePublishComponent},
   {path: 'user/center/:id', component: UserCenterComponent},
   {path: 'user/logout', component: LogoutComponent}
 ];

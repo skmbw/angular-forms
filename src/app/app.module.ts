@@ -47,6 +47,7 @@ import {AccountComponent} from './account/account.component';
 import {LogoutComponent} from './logout/logout.component';
 import {ArticleCommentComponent} from './article-comment/article-comment.component';
 import {OrderListComponent} from './order-list/order-list.component';
+import {ArticlePublishComponent} from './article-publish/article-publish.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import {OrderListComponent} from './order-list/order-list.component';
     AccountComponent,
     LogoutComponent,
     ArticleCommentComponent,
-    OrderListComponent
+    OrderListComponent,
+    ArticlePublishComponent
   ],
   imports: [
     BrowserModule,
