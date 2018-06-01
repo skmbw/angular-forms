@@ -9,6 +9,11 @@ export class AppComponent implements OnInit {
   userName: string;
   userId: string;
   // user: User;
+  active = false;
+
+  constructor() {
+
+  }
 
   ngOnInit(): void {
     this.userName = window.sessionStorage.getItem('sess_user_name');
