@@ -29,7 +29,7 @@ import {
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
-// import {FlexLayoutModule} from '@angular/flex-layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {ArticleService} from './service/article.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LoginComponent} from './login/login.component';
@@ -75,7 +75,7 @@ import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
     ReactiveFormsModule,
     MatCardModule,
     MasonryModule,
-    // FlexLayoutModule,
+    FlexLayoutModule,
     HttpClientModule,
     RoutingModule,
     MatFormFieldModule,
