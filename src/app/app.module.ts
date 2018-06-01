@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {HeroFormComponent} from './hero-form/hero-form.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MasonryModule} from './masonry/masonry.module';
 import {IndexComponent} from './index/index.component';
 import {
@@ -29,7 +29,7 @@ import {
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
-import {FlexLayoutModule} from '@angular/flex-layout';
+// import {FlexLayoutModule} from '@angular/flex-layout';
 import {ArticleService} from './service/article.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LoginComponent} from './login/login.component';
@@ -48,6 +48,8 @@ import {LogoutComponent} from './logout/logout.component';
 import {ArticleCommentComponent} from './article-comment/article-comment.component';
 import {OrderListComponent} from './order-list/order-list.component';
 import {ArticlePublishComponent} from './article-publish/article-publish.component';
+import {AskComponent} from './ask/ask.component';
+import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -64,14 +66,16 @@ import {ArticlePublishComponent} from './article-publish/article-publish.compone
     LogoutComponent,
     ArticleCommentComponent,
     OrderListComponent,
-    ArticlePublishComponent
+    ArticlePublishComponent,
+    AskComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MasonryModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
     HttpClientModule,
     RoutingModule,
     MatFormFieldModule,
@@ -94,7 +98,10 @@ import {ArticlePublishComponent} from './article-publish/article-publish.compone
     MatPaginatorModule,
     MatTableModule,
     MatSidenavModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    // QuillModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [
     ArticleService,

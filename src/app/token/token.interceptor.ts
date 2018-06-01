@@ -1,9 +1,9 @@
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {TokenStorage} from './token.storage';
 import {Router} from '@angular/router';
-import 'rxjs/add/operator/do';
+import {tap} from 'rxjs/internal/operators';
 
 const TOKEN_HEADER_KEY = 'Authorization';
 
@@ -21,13 +21,14 @@ export class TokenInterceptor implements HttpInterceptor {
         request = req.clone({headers: req.headers.set('tokenId', token)});
       }
     }
-    return next.handle(request).do((err: any) => {
+    // do->tap，同时编程function了
+    return next.handle(request).pipe(tap((err: any) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
           this.router.navigate(['/login']).catch();
         }
       }
-    });
+    }));
   }
 
 }

@@ -1,5 +1,4 @@
-import {of} from 'rxjs/observable/of';
-import {Observable} from 'rxjs/Observable';
+import {Observable, of} from 'rxjs';
 
 /**
  * 公共服务的一些抽象啊

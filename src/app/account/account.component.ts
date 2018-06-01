@@ -1,11 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-
-import {of} from 'rxjs/observable/of';
+import {merge, Observable, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {merge} from 'rxjs/observable/merge';
 
 @Component({
   selector: 'app-account',

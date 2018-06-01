@@ -1,9 +1,8 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MasonryOptions} from '../masonry/masonry-options';
 import {AngularMasonryComponent} from '../masonry/masonry.component';
-import {MediaChange, ObservableMedia} from '@angular/flex-layout';
-import {filter} from 'rxjs/operators/filter';
-import {fromEvent} from 'rxjs/observable/fromEvent';
+// import {MediaChange, ObservableMedia} from '@angular/flex-layout';
+import {fromEvent} from 'rxjs';
 import {ArticleService} from '../service/article.service';
 import {Article} from '../model/article';
 import {JsonBean} from '../model/jsonbean';
@@ -33,11 +32,18 @@ export class IndexComponent implements OnInit, AfterViewInit {
   };
   // ObservableMedia 并不是真正意义上的 Observable. 它仅仅是一个被用来暴露额外方法 如 isActive()的外壳。
   // 用.asObservable() 来转换成Observable，然后就可以用RxJs操作符了 如such as media.asObservable().filter(….).
-  constructor(media: ObservableMedia, private articleService: ArticleService, private snackBar: MatSnackBar) {
-    media.asObservable()
-      .pipe(
-        filter((change: MediaChange) => change.mqAlias === 'xs')
-      ).subscribe(() => this.loadMobileContent());
+  // constructor(media: ObservableMedia, private articleService: ArticleService, private snackBar: MatSnackBar) {
+  //   media.asObservable()
+  //     .pipe(
+  //       filter((change: MediaChange) => change.mqAlias === 'xs')
+  //     ).subscribe(() => this.loadMobileContent());
+  // }
+
+  constructor(private articleService: ArticleService, private snackBar: MatSnackBar) {
+    // media.asObservable()
+    //   .pipe(
+    //     filter((change: MediaChange) => change.mqAlias === 'xs')
+    //   ).subscribe(() => this.loadMobileContent());
   }
 
   // 监听布局的变化，重新加载内容
