@@ -1,21 +1,22 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MasonryOptions} from '../masonry/masonry-options';
 import {AngularMasonryComponent} from '../masonry/masonry.component';
 // import {MediaChange, ObservableMedia} from '@angular/flex-layout';
-import {fromEvent} from 'rxjs';
+import {fromEvent, Subscription} from 'rxjs';
 import {ArticleService} from '../service/article.service';
 import {Article} from '../model/article';
 import {JsonBean} from '../model/jsonbean';
 import {Consts} from '../common/consts';
 import {ImageFile} from '../model/image-file';
 import {MatSnackBar} from '@angular/material';
+import {MessageService} from '../service/message.service';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
-export class IndexComponent implements OnInit, AfterViewInit {
+export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   // 注入DomSanitizer然后使用bypassSecurityTrustHtml转换html内容，这样就能显示html了
   // Inject AngularMasonryComponent instance from template
   @ViewChild(AngularMasonryComponent) masonry: AngularMasonryComponent;
@@ -25,6 +26,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   // bricks: any[] = [];
   page = 0;
   // userName: string;
+  subscription: Subscription;
 
   // Options
   options: MasonryOptions = {
@@ -39,11 +41,16 @@ export class IndexComponent implements OnInit, AfterViewInit {
   //     ).subscribe(() => this.loadMobileContent());
   // }
 
-  constructor(private articleService: ArticleService, private snackBar: MatSnackBar) {
+  constructor(private articleService: ArticleService, private snackBar: MatSnackBar, private messageService: MessageService) {
     // media.asObservable()
     //   .pipe(
     //     filter((change: MediaChange) => change.mqAlias === 'xs')
     //   ).subscribe(() => this.loadMobileContent());
+    this.subscription = this.messageService.getMessage().subscribe(message => {
+      // this.articleList.push(null);
+      // 这里执行查询操作，然后刷新瀑布流
+      console.log('收到数据' + message.text.toString());
+    });
   }
 
   // 监听布局的变化，重新加载内容
@@ -111,6 +118,10 @@ export class IndexComponent implements OnInit, AfterViewInit {
       // this.bricks.push(brick);
       this.articleList.push(brick);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   // 获取滚动条当前的位置

@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from '@angular/material';
-import {IndexComponent} from './index/index.component';
+import {MessageService} from './service/message.service';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +13,7 @@ export class AppComponent implements OnInit {
   // user: User;
   keyword: string = null;
 
-  @ViewChild(IndexComponent)
-  indexComponent: IndexComponent;
-
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBar: MatSnackBar, private messageService: MessageService) {
   }
 
   ngOnInit(): void {
@@ -31,6 +28,6 @@ export class AppComponent implements OnInit {
       this.snackBar.open('搜索条件不能为空哦，亲！', '', {duration: 2000});
       return;
     }
-    alert('敬请期待！');
+    this.messageService.sendMessage(this.keyword);
   }
 }

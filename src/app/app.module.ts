@@ -50,6 +50,7 @@ import {OrderListComponent} from './order-list/order-list.component';
 import {ArticlePublishComponent} from './article-publish/article-publish.component';
 import {AskComponent} from './ask/ask.component';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
+import {MessageService} from './service/message.service';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
     ArticleService,
     UserService,
     TokenStorage,
-    [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}]
+    [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
