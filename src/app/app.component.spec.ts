@@ -1,6 +1,7 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-describe('AppComponent', () => {
+import {async, TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+
+describe('FroalaAppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [

@@ -51,6 +51,8 @@ import {ArticlePublishComponent} from './article-publish/article-publish.compone
 import {AskComponent} from './ask/ask.component';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 import {MessageService} from './service/message.service';
+import {FroalaComponent} from './article-publish/froala.component';
+import {FroalaAppComponent} from './article-publish/froala-app.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import {MessageService} from './service/message.service';
     ArticleCommentComponent,
     OrderListComponent,
     ArticlePublishComponent,
-    AskComponent
+    AskComponent,
+    FroalaComponent,
+    FroalaAppComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +104,6 @@ import {MessageService} from './service/message.service';
     MatTableModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
-    // QuillModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
