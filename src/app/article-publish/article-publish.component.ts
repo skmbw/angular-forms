@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Article} from '../model/article';
 
 @Component({
   selector: 'app-article-publish',
@@ -6,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./article-publish.component.css']
 })
 export class ArticlePublishComponent implements OnInit {
+  content: string = null;
+  article: Article = new Article();
 
   constructor() {
 
