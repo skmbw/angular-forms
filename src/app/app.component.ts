@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatSnackBar} from '@angular/material';
+import {IndexComponent} from './index/index.component';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +11,12 @@ export class AppComponent implements OnInit {
   userName: string;
   userId: string;
   // user: User;
-  active = false;
+  keyword: string = null;
 
-  constructor() {
+  @ViewChild(IndexComponent)
+  indexComponent: IndexComponent;
 
+  constructor(private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -20,5 +24,13 @@ export class AppComponent implements OnInit {
     this.userId = window.sessionStorage.getItem('sess_user_id');
     // this.userId = this.user.id;
     // this.userName = this.user.account;
+  }
+
+  public search() {
+    if (this.keyword === null || this.keyword.trim() === '') {
+      this.snackBar.open('搜索条件不能为空哦，亲！', '', {duration: 2000});
+      return;
+    }
+    alert('敬请期待！');
   }
 }

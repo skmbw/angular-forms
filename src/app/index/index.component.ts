@@ -20,7 +20,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   // Inject AngularMasonryComponent instance from template
   @ViewChild(AngularMasonryComponent) masonry: AngularMasonryComponent;
   columnTop: string;
-  articleList: Article[] = [];
+  public articleList: Article[] = [];
   jsonBean: JsonBean = {};
   // bricks: any[] = [];
   page = 0;
