@@ -37,7 +37,7 @@ export class ArticlePublishComponent implements OnInit {
         tabSize: 4
       },
       // 上传图片，视频等稳健配置
-      imageUploadURL: Consts.URL + 'sns/uploadPhoto', // GLOBAL.INCONFIG.getIP()+接口名称,
+      imageUploadURL: Consts.URL + 'article/upload', // 文件上传接口名称
       // imageUploadURL:"http://11.177.50.63:9999/emanager/sns/uploadPhoto",//本地路径
       imageUploadParams: {uid: this.article.id}, // 接口其他传参,默认为空对象{},
       imageUploadMethod: 'POST', // POST/GET,
