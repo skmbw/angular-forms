@@ -1,66 +1,68 @@
 <div class="container">
   <h2 class="text-center mt-xl-4">写文章</h2>
-  <div class="row mt-xl-4">
-    <div class="col-12">
-      <mat-form-field class="col-12"><!--color="accent"-->
-        <input matInput placeholder="文章标题" [(ngModel)]="article.title" name="title" #title="ngModel" type="text" required>
-      </mat-form-field>
+  <form #userForm="ngForm" (ngSubmit)="submit()">
+    <div class="row mt-xl-4">
+      <div class="col-12">
+        <mat-form-field class="col-12"><!--color="accent"-->
+          <input matInput placeholder="文章标题" [(ngModel)]="article.title" name="title" #title="ngModel" type="text" required>
+        </mat-form-field>
+      </div>
     </div>
-  </div>
-  <div class="row mt-xl-2">
-    <div class="col-12">
-      <mat-form-field class="col-12">
-        <textarea matInput placeholder="文章摘要" [(ngModel)]="article.summary" name="summary" #summary="ngModel" required></textarea>
-      </mat-form-field>
+    <div class="row mt-xl-2">
+      <div class="col-12">
+        <mat-form-field class="col-12">
+          <textarea matInput placeholder="文章摘要" [(ngModel)]="article.summary" name="summary" #summary="ngModel" required></textarea>
+        </mat-form-field>
+      </div>
     </div>
-  </div>
-  <div class="row mt-xl-2">
-    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-      <mat-form-field class="col-12">
-        <mat-select placeholder="是否收费" [(ngModel)]="article.firstFree" name="firstFree" #firstFree="ngModel">
-          <!--<mat-option *ngFor="let food of foods" [value]="food.value">-->
-            <!--{{ food.viewValue }}-->
-          <!--</mat-option>-->
-          <mat-option value="是">是</mat-option>
-          <mat-option value="否">否</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div class="row mt-xl-2">
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+        <mat-form-field class="col-12">
+          <mat-select placeholder="是否收费" [(ngModel)]="article.firstFree" name="firstFree" #firstFree="ngModel">
+            <!--<mat-option *ngFor="let food of foods" [value]="food.value">-->
+              <!--{{ food.viewValue }}-->
+            <!--</mat-option>-->
+            <mat-option value="是">是</mat-option>
+            <mat-option value="否">否</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+        <mat-form-field class="col-12">
+          <input matInput type="text" placeholder="文章价格">
+        </mat-form-field>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+        <mat-form-field class="col-12">
+          <mat-select placeholder="分类" [(ngModel)]="article.category" name="category" #category="ngModel">
+            <mat-option value="教育">教育</mat-option>
+            <mat-option value="IT技术">IT技术</mat-option>
+            <mat-option value="生活休闲">生活休闲</mat-option>
+            <mat-option value="职业技能">职业技能</mat-option>
+            <mat-option value="情感">情感</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+        <mat-form-field class="col-12">
+          <input matInput type="text" placeholder="专题">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="col-12" [froalaEditor] [(froalaModel)]="content"></div>
+      </div>
     </div>
 
-    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-      <mat-form-field class="col-12">
-        <input matInput type="text" placeholder="文章价格">
-      </mat-form-field>
+    <div class="row mt-4 col-12">
+      <div class="col-12 offset-xl-4 offset-lg-4 offset-sm-0">
+        <button mat-raised-button type="submit" color="accent" class="col-md-2 col-sm-12 mb-2">登录</button>
+        <button mat-raised-button type="reset" class="col-md-2 col-sm-12 mb-2">取消</button>
+      </div>
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-      <mat-form-field class="col-12">
-        <mat-select placeholder="分类">
-          <mat-option value="教育">教育</mat-option>
-          <mat-option value="IT技术">IT技术</mat-option>
-          <mat-option value="生活休闲">生活休闲</mat-option>
-          <mat-option value="职业技能">职业技能</mat-option>
-          <mat-option value="情感">情感</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-      <mat-form-field class="col-12">
-        <input matInput type="text" placeholder="专题">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row mt-4">
-    <div class="col-12">
-      <div class="col-12" [froalaEditor] [(froalaModel)]="content"></div>
-    </div>
-  </div>
-
-  <div class="row mt-4 col-12">
-    <div class="col-12 offset-xl-4 offset-lg-4 offset-sm-0">
-      <button mat-raised-button type="submit" color="accent" class="col-md-2 col-sm-12 mb-2">登录</button>
-      <button mat-raised-button type="reset" class="col-md-2 col-sm-12 mb-2">取消</button>
-    </div>
-  </div>
+  </form>
 </div>
 <!--<app-froala-demo></app-froala-demo>-->
 
