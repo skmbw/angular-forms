@@ -3,6 +3,7 @@ import {Article} from '../model/article';
 import {MatSnackBar} from '@angular/material';
 import {ArticleService} from '../service/article.service';
 import {Consts} from '../common/consts';
+import {TokenStorage} from '../token/token.storage';
 
 @Component({
   selector: 'app-article-publish',
@@ -14,7 +15,7 @@ export class ArticlePublishComponent implements OnInit {
   article: Article = new Article();
   option: Object = null;
 
-  constructor(private snackBar: MatSnackBar, private articleService: ArticleService) {
+  constructor(private snackBar: MatSnackBar, private articleService: ArticleService, private tokenStorage: TokenStorage) {
 
   }
 
@@ -39,14 +40,29 @@ export class ArticlePublishComponent implements OnInit {
       // 上传图片，视频等稳健配置
       imageUploadURL: Consts.URL + 'article/upload', // 文件上传接口名称
       // imageUploadURL:"http://11.177.50.63:9999/emanager/sns/uploadPhoto",//本地路径
-      imageUploadParams: {uid: this.article.id}, // 接口其他传参,默认为空对象{},
+      imageUploadParams: {'tokenId': this.tokenStorage.getToken()}, // 接口其他传参,默认为空对象{},
       imageUploadMethod: 'POST', // POST/GET,
       // 事件, 每次输入,就将值传递给父组件, 或者使用失去焦点的时候传递。
       events: {
         'froalaEditor.keyup': function (e, editor) {
           // that.froala.emit(that.froalaText);
           // console.log(editor.selection.get());
+        },
+        'froalaEditor.image.inserted': function (e, editor, $img, response) {
+          // console.log('froalaEditor.image.inserted');
+          $img.removeAttr('style');
+          $img.removeClass();
+          $img.addClass('img-fluid');
         }
+        // ,
+        // 'froalaEditor.image.uploaded': function (e, editor, response) {
+        //   console.log('froalaEditor.image.uploaded');
+        //   // const obj = JSON.parse(response);
+        //   // const host = obj.link;
+        //   // response.link = Consts.IMAGE_HOST + host;
+        //   // response = {'link': response.data.url};
+        //   return true;
+        // }
       }
     };
   }
@@ -54,6 +70,10 @@ export class ArticlePublishComponent implements OnInit {
   public submit() {
     if (this.article.title === null) {
       this.snackBar.open('文章标题不能为空。', null, {duration: 2000});
+      return;
+    }
+    if (this.article.content === null) {
+      this.snackBar.open('文章内容不能为空。', null, {duration: 2000});
       return;
     }
   }
