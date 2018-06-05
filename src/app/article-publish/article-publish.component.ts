@@ -5,6 +5,8 @@ import {ArticleService} from '../service/article.service';
 import {Consts} from '../common/consts';
 import {TokenStorage} from '../token/token.storage';
 
+// import * as $ from 'jquery';
+
 @Component({
   selector: 'app-article-publish',
   templateUrl: './article-publish.component.html',
@@ -76,5 +78,13 @@ export class ArticlePublishComponent implements OnInit {
       this.snackBar.open('文章内容不能为空。', null, {duration: 2000});
       return;
     }
+    this.article.content = this.content;
+    this.articleService.save(this.article).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.snackBar.open('文章保存成功。', null, {duration: 2000});
+      } else {
+        this.snackBar.open('文章保存失败。', null, {duration: 2000});
+      }
+    });
   }
 }
