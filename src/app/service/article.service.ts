@@ -27,7 +27,6 @@ export class ArticleService extends CommonService {
   }
 
   save(article: Article) {
-    // const body = JsUtils.toQueryString(article); // httpClient默认发送的是json参数
     return this.httpClient.post(Consts.URL + 'article/doAdd', article, Consts.JSON)
       .pipe(catchError(this.handleError('', {})));
   }
