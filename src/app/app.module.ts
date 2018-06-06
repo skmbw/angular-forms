@@ -53,6 +53,7 @@ import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 import {MessageService} from './service/message.service';
 import {FroalaComponent} from './article-publish/froala.component';
 import {FroalaAppComponent} from './article-publish/froala-app.component';
+import {QuestionComponent} from './question/question.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import {FroalaAppComponent} from './article-publish/froala-app.component';
     ArticlePublishComponent,
     AskComponent,
     FroalaComponent,
-    FroalaAppComponent
+    FroalaAppComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,

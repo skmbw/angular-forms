@@ -13,13 +13,10 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav nav-pills mr-auto">
           <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <a class="nav-link" routerLink="index">首页</a>
+            <a class="nav-link" routerLink="article">文章</a>
           </li>
           <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <a class="nav-link" routerLink="ask">提问</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <a class="nav-link" routerLink="article/write">写作</a>
+            <a class="nav-link" routerLink="question">问题</a>
           </li>
           <li class="nav-item" *ngIf="!userName" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <a class="nav-link" routerLink="login">登录</a>
@@ -28,6 +25,12 @@
             <!--这里使用routerLink不行，难道是这个index.html不受angular5模板控制？-->
             <!--是index.html不受angular5模板控制，因为它不属于任何一个组件，现在移到AppComponent中，受控制了-->
             <a class="nav-link" routerLink="register">注册</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" routerLink="ask">提问</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" routerLink="article/write">写作</a>
           </li>
           <li class="nav-item" *ngIf="userName" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <a class="nav-link" routerLink="user/center/{{userId}}">{{userName}}</a>

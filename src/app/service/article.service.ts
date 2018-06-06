@@ -15,7 +15,7 @@ export class ArticleService extends CommonService {
   }
 
   list(page: number): Observable<JsonBean> {
-    return this.httpClient.get<JsonBean>(Consts.URL + 'article/list?pageSize=10&page=' + page)
+    return this.httpClient.get<JsonBean>(Consts.URL + 'article/list?pageSize=20&page=' + page)
       .pipe(
         catchError(this.handleError('', {}))
       );
