@@ -2,31 +2,35 @@
   <div class="row col-12">
     <mat-card *ngFor="let question of questionList" class="col-12 mt-4">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{question.asker}}</mat-card-title>
-        <mat-card-subtitle>{{question.askerName}}</mat-card-subtitle>
+        <div mat-card-avatar class="mr-2">
+          <img src="{{imageHost}}img/avatar/{{question.asker}}.jpeg" class="header-image">
+        </div>
+        <mat-card-title>{{question.askerName}}</mat-card-title>
+        <mat-card-subtitle>{{question.askDate | date}}</mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content class="container mt-xl-4 mt-4">
-        <div class="row">
-          <div class="col-xl-2" *ngIf="question.filePath">
-            <img mat-card-image src="{{imageHost}}{{question.filePath}}{{question.type}}">
-          </div>
-          <div class="col-xl-10">
-            <div class="container">
-              <div class="row">
-                {{question.title}}
+        <a href="question/detail/{{question.id}}">
+          <div class="row">
+            <div class="col-xl-2" *ngIf="question.filePath">
+              <img mat-card-image src="{{imageHost}}{{question.filePath}}{{question.type}}">
+            </div>
+            <div class="col-xl-10">
+              <div class="container">
+                <div class="row">
+                  {{question.title}}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <p>
-          {{question.summary}}
-        </p>
+          <p>
+            {{question.summary}}
+          </p>
+        </a>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
+        <button mat-button>赞</button>
+        <button mat-button>分享</button>
       </mat-card-actions>
     </mat-card>
 
