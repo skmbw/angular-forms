@@ -3,6 +3,8 @@ import {Question} from '../model/question';
 import {MatSnackBar} from '@angular/material';
 import {QuestionService} from '../service/question.service';
 import {BaseComponent} from '../common/base.component';
+import {Consts} from '../common/consts';
+import {TokenStorage} from '../token/token.storage';
 
 @Component({
   selector: 'app-ask',
@@ -11,8 +13,37 @@ import {BaseComponent} from '../common/base.component';
 })
 export class AskComponent extends BaseComponent implements OnInit {
   question = new Question();
+  option = {
+    language: 'zh_cn', // 配置语言
+    placeholderText: '请输入内容', // 文本框提示内容
+    charCounterCount: true, // 是否开启统计字数
+    // charCounterMax: 200, // 最大输入字数,目前只支持英文字母
+    // 注意导航条的配置, 按照官方的文档,无法配置,只能使用toolbarButtons来配置了。
+    toolbarButtons: ['fullscreen', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'align', 'insertLink', 'insertImage',
+      'insertHR', 'subscript', 'superscript'],
+    codeMirror: false, // 高亮显示html代码
+    codeMirrorOptions: { // 配置html代码参数
+      tabSize: 4
+    },
+    // 上传图片，视频等配置
+    imageUploadURL: Consts.URL + 'question/upload', // 文件上传接口名称
+    imageUploadFileName: 'imageList[0]',
+    imageUploadParams: {'tokenId': this.tokenStorage.getToken()}, // 接口其他传参,默认为空对象{},
+    imageUploadMethod: 'POST',
+    // 事件, 每次输入,就将值传递给父组件, 或者使用失去焦点的时候传递。
+    events: {
+      'froalaEditor.image.inserted': function (e, editor, $img, response) {
+        // console.log('froalaEditor.image.inserted');
+        $img.removeAttr('style');
+        // const src = Consts.IMAGE_HOST + $img.attr('src');
+        // $img.attr('src', src);
+        $img.removeClass();
+        $img.addClass('img-fluid');
+      }
+    }
+  };
 
-  constructor(private questionService: QuestionService, private snackBar: MatSnackBar) {
+  constructor(private questionService: QuestionService, private snackBar: MatSnackBar, private tokenStorage: TokenStorage) {
     super(snackBar);
   }
 

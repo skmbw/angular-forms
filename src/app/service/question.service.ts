@@ -23,7 +23,7 @@ export class QuestionService extends CommonService {
   }
 
   public save(question: Question): Observable<JsonBean> {
-    return this.httpClient.post(Consts.URL + 'question/doAdd', question, Consts.JSON)
+    return this.httpClient.post(Consts.URL + 'question/ask', question, Consts.JSON)
       .pipe(catchError(this.handleError()));
   }
 

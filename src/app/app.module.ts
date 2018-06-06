@@ -55,6 +55,7 @@ import {FroalaComponent} from './article-publish/froala.component';
 import {FroalaAppComponent} from './article-publish/froala-app.component';
 import {QuestionComponent} from './question/question.component';
 import {QuestionService} from './service/question.service';
+import {QuestionDetailComponent} from './question-detail/question-detail.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import {QuestionService} from './service/question.service';
     AskComponent,
     FroalaComponent,
     FroalaAppComponent,
-    QuestionComponent
+    QuestionComponent,
+    QuestionDetailComponent
   ],
   imports: [
     BrowserModule,
