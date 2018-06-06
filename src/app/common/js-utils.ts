@@ -1,4 +1,6 @@
 // deprecate
+import {MatSnackBar} from '@angular/material';
+
 export class JsUtils {
   // 获取滚动条当前的位置
   static getScrollTop() {
@@ -42,5 +44,9 @@ export class JsUtils {
       }
     }
     return rs.substring(0, rs.length - 1);
+  }
+
+  static alert(snackBar: MatSnackBar) {
+    snackBar.open('', null, {duration: 2000});
   }
 }

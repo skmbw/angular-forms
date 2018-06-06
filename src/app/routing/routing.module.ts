@@ -11,6 +11,7 @@ import {LogoutComponent} from '../logout/logout.component';
 import {ArticlePublishComponent} from '../article-publish/article-publish.component';
 import {AskComponent} from '../ask/ask.component';
 import {QuestionComponent} from '../question/question.component';
+import {QuestionDetailComponent} from '../question-detail/question-detail.component';
 
 const routes: Routes = [
   // 默认路由，这个路由会把一个与空路径"完全匹配"的 URL 重定向到路径为 '/index' 的路由
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'user/center/:id', component: UserCenterComponent},
   {path: 'user/logout', component: LogoutComponent},
   {path: 'ask', component: AskComponent},
-  {path: 'question', component: QuestionComponent}
+  {path: 'question', component: QuestionComponent},
+  {path: 'question/detail/:id', component: QuestionDetailComponent}
 ];
 
 @NgModule({
