@@ -54,6 +54,7 @@ import {MessageService} from './service/message.service';
 import {FroalaComponent} from './article-publish/froala.component';
 import {FroalaAppComponent} from './article-publish/froala-app.component';
 import {QuestionComponent} from './question/question.component';
+import {QuestionService} from './service/question.service';
 
 @NgModule({
   declarations: [
@@ -114,7 +115,8 @@ import {QuestionComponent} from './question/question.component';
     UserService,
     TokenStorage,
     [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
-    MessageService
+    MessageService,
+    QuestionService
   ],
   bootstrap: [AppComponent]
 })
