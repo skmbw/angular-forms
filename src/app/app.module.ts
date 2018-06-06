@@ -56,6 +56,8 @@ import {FroalaAppComponent} from './article-publish/froala-app.component';
 import {QuestionComponent} from './question/question.component';
 import {QuestionService} from './service/question.service';
 import {QuestionDetailComponent} from './question-detail/question-detail.component';
+import {AnswerComponent} from './answer/answer.component';
+import {AnswerListComponent} from './answer-list/answer-list.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import {QuestionDetailComponent} from './question-detail/question-detail.compone
     FroalaComponent,
     FroalaAppComponent,
     QuestionComponent,
-    QuestionDetailComponent
+    QuestionDetailComponent,
+    AnswerComponent,
+    AnswerListComponent
   ],
   imports: [
     BrowserModule,

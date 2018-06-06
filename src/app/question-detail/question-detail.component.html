@@ -1,5 +1,37 @@
 <div class="container">
-  <div class="row col-12">
+  <h1 class="mt-4 mb-4">{{question.title}}</h1>
+  <div class="row col-xl-12">
+    <span>提问时间：{{question.askDate}}</span>
+    <mat-icon class="ml-xl-2">face</mat-icon><span><a routerLink="/user/detail/{{question.asker}}">提问者：{{question.askerName}}</a></span>
+    <span class="ml-xl-2">赏金：{{question.price}}</span>
+    <span class="ml-xl-2"><mat-icon>shopping</mat-icon></span><span>：{{question.number}}</span>
+  </div>
+  <div class="row mt-4">
     <div class="col-xl-12" [innerHTML]="content"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-12">扫码打赏TA</div>
+    <div class="col-xl-12">
+      <img src="../../assets/img/alipay-ecode.jpg" class="alipay-img">
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-xl-12">
+      <mat-tab-group>
+        <mat-tab label="用户回答">
+          <app-answer-list [questionId]="question.id"></app-answer-list>
+        </mat-tab>
+        <mat-tab label="已帮助">
+          <app-order-list [articleId]="question.id"></app-order-list>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <h1 class="mt-4 mb-4 text-center">我来答</h1>
+  <div class="row col-12">
+    <app-answer [questionId]="question.id"></app-answer>
   </div>
 </div>

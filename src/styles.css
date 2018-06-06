@@ -119,3 +119,8 @@ a:focus {
   max-width: 100%;
   height: auto;
 }
+
+.alipay-img {
+  width: 200px;
+  height: 200px;
+}
