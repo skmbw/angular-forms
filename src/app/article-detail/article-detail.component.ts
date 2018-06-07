@@ -27,6 +27,7 @@ export class ArticleDetailComponent implements OnInit {
         if (jsonBean.code === 1) {
           this.article = jsonBean.data;
           this.content = this.sanitizer.bypassSecurityTrustHtml(this.article.content.replace('{{image.server}}', Consts.IMAGE_URL));
+          // this.content = this.article.content.replace('{{image.server}}', Consts.IMAGE_URL); // 这个貌似也是可以的？
         } else {
           this.snackBar.open('文章不存在，亲！', '确定', {
             duration: 2000,

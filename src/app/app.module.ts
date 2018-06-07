@@ -59,6 +59,7 @@ import {QuestionDetailComponent} from './question-detail/question-detail.compone
 import {AnswerComponent} from './answer/answer.component';
 import {AnswerListComponent} from './answer-list/answer-list.component';
 import {AnswerService} from './service/answer.service';
+import {HtmlPipe} from './common/html.pipe';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import {AnswerService} from './service/answer.service';
     QuestionComponent,
     QuestionDetailComponent,
     AnswerComponent,
-    AnswerListComponent
+    AnswerListComponent,
+    HtmlPipe
   ],
   imports: [
     BrowserModule,

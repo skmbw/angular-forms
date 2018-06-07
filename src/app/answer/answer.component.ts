@@ -28,7 +28,6 @@ export class AnswerComponent extends BaseComponent implements OnInit {
     },
     // 上传图片，视频等配置
     imageUploadURL: Consts.URL + 'question/upload', // 文件上传接口名称
-    imageUploadFileName: 'imageList[0]',
     imageUploadParams: {'tokenId': this.tokenStorage.getToken()}, // 接口其他传参,默认为空对象{},
     imageUploadMethod: 'POST',
     // 事件, 每次输入,就将值传递给父组件, 或者使用失去焦点的时候传递。
@@ -55,10 +54,16 @@ export class AnswerComponent extends BaseComponent implements OnInit {
   submit() {
     const c = this.answer.content;
     if (c === null || c.trim() === '') {
-      this.alert('回答内容为空。');
+      this.alert('回答内容不能为空，亲。');
       return;
     }
 
-    alert(this.answer.content);
+    this.answerService.save(this.answer).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.alert('回答成功！');
+      } else {
+        this.alert(jsonBean.message);
+      }
+    });
   }
 }

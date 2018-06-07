@@ -1,3 +1,6 @@
-<p>
-  answer-list works!
-</p>
+<div class="container">
+  <div *ngFor="let answer of answerList" class="row col-12">
+    <div [innerHTML]="answer.content | html"></div>
+  </div>
+  <mat-divider></mat-divider>
+</div>
