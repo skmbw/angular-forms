@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterContentInit, Component, Input, OnInit} from '@angular/core';
 import {AnswerService} from '../service/answer.service';
 import {Answer} from '../model/answer';
 import {BaseComponent} from '../common/base.component';
@@ -10,9 +10,9 @@ import {Consts} from '../common/consts';
   templateUrl: './answer-list.component.html',
   styleUrls: ['./answer-list.component.css']
 })
-export class AnswerListComponent extends BaseComponent implements OnInit {
+export class AnswerListComponent extends BaseComponent implements OnInit, AfterContentInit {
   @Input()
-  questionId: string = null;
+  questionId: string;
 
   answerList: Answer[] = [];
 
@@ -20,10 +20,13 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
 
   constructor(private answerService: AnswerService, private snackBar: MatSnackBar) {
     super(snackBar);
+    // alert(this.questionId);
   }
 
   ngOnInit() {
+    // 这个时候，还没有拿到@input绑定的数据
     const param: Answer = new Answer();
+    alert(this.questionId)
     param.questionId = this.questionId;
     this.answerService.list(param).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
@@ -38,4 +41,7 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
     });
   }
 
+  ngAfterContentInit(): void {
+    // alert(this.questionId);
+  }
 }
