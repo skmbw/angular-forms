@@ -16,6 +16,8 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
 
   answerList: Answer[] = [];
 
+  imageHost = Consts.IMAGE_HOST;
+
   constructor(private answerService: AnswerService, private snackBar: MatSnackBar) {
     super(snackBar);
   }

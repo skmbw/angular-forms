@@ -1,6 +1,14 @@
 <div class="container">
-  <div *ngFor="let answer of answerList" class="row col-12">
-    <div [innerHTML]="answer.content | html"></div>
+  <div *ngFor="let answer of answerList" class="mt-3">
+    <div class="row col-12">
+      <img src="{{imageHost}}{{answer.avatar}}" class="header-image">
+      <div class="col-10">
+        <div class="col-12">{{answer.nickName}}</div>
+        <div class="col-12">{{answer.answerDate}}</div>
+      </div>
+    </div>
+    <div [innerHTML]="answer.content | html" class="row col-12 mt-2"></div>
+    <!--这里不显示，是因为外层的class中有row这个类，可能是使用了浮动和清除的原因-->
+    <mat-divider class="mt-4"></mat-divider>
   </div>
-  <mat-divider></mat-divider>
 </div>
