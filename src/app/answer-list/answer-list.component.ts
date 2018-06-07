@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {AnswerService} from '../service/answer.service';
 
 @Component({
   selector: 'app-answer-list',
@@ -9,7 +10,7 @@ export class AnswerListComponent implements OnInit {
   @Input()
   questionId: string = null;
 
-  constructor() {
+  constructor(private answerService: AnswerService) {
   }
 
   ngOnInit() {

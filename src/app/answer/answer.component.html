@@ -1,5 +1,8 @@
-<div class="container">
-  <div class="row col-12">
-    <div class="col-12" [froalaEditor]="option" [(froalaModel)]="answer.content"></div>
+<div [froalaEditor]="option" [(froalaModel)]="answer.content" class="mb-4"></div>
+
+<div class="row mt-4 mb-4 col-12">
+  <div class="col-xl-8 col-lg-8 offset-lg-4 offset-xl-4 offset-sm-0">
+    <button mat-raised-button type="submit" (click)="submit()" color="accent" class="col-xl-3 col-md-2 col-sm-12 mb-2">提 交</button>
+    <button mat-raised-button type="reset" class="col-xl-3 col-md-2 col-sm-12 mb-2">取 消</button>
   </div>
 </div>

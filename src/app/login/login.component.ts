@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(user);
         this.app.userName = user.account;
         this.app.userId = user.id;
-        this.router.navigateByUrl('/index').catch();
+        this.router.navigateByUrl('/article').catch();
       } else {
         this.snackBar.open(jsonBean.message, '确定', {duration: 2000});
       }

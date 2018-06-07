@@ -3,13 +3,15 @@ import {Consts} from '../common/consts';
 import {MatSnackBar} from '@angular/material';
 import {TokenStorage} from '../token/token.storage';
 import {Answer} from '../model/answer';
+import {AnswerService} from '../service/answer.service';
+import {BaseComponent} from '../common/base.component';
 
 @Component({
   selector: 'app-answer',
   templateUrl: './answer.component.html',
   styleUrls: ['./answer.component.css']
 })
-export class AnswerComponent implements OnInit {
+export class AnswerComponent extends BaseComponent implements OnInit {
   @Input()
   questionId: string = null;
   option = {
@@ -43,10 +45,20 @@ export class AnswerComponent implements OnInit {
   };
   answer: Answer = new Answer();
 
-  constructor(private snackBar: MatSnackBar, private tokenStorage: TokenStorage) {
+  constructor(private snackBar: MatSnackBar, private tokenStorage: TokenStorage, private answerService: AnswerService) {
+    super(snackBar);
   }
 
   ngOnInit() {
   }
 
+  submit() {
+    const c = this.answer.content;
+    if (c === null || c.trim() === '') {
+      this.alert('回答内容为空。');
+      return;
+    }
+
+    alert(this.answer.content);
+  }
 }

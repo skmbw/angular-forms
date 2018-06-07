@@ -58,6 +58,7 @@ import {QuestionService} from './service/question.service';
 import {QuestionDetailComponent} from './question-detail/question-detail.component';
 import {AnswerComponent} from './answer/answer.component';
 import {AnswerListComponent} from './answer-list/answer-list.component';
+import {AnswerService} from './service/answer.service';
 
 @NgModule({
   declarations: [
@@ -122,7 +123,8 @@ import {AnswerListComponent} from './answer-list/answer-list.component';
     TokenStorage,
     [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
     MessageService,
-    QuestionService
+    QuestionService,
+    AnswerService
   ],
   bootstrap: [AppComponent]
 })
