@@ -57,6 +57,8 @@ export class AnswerComponent extends BaseComponent implements OnInit {
       this.alert('回答内容不能为空，亲。');
       return;
     }
+    this.answer.questionId = this.questionId;
+    this.answer.targetId = this.questionId;
 
     this.answerService.save(this.answer).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
