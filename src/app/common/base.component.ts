@@ -2,7 +2,7 @@ import {MatSnackBar} from '@angular/material';
 
 export class BaseComponent {
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(protected snackBar: MatSnackBar) {
   }
 
   alert(message: string) {
