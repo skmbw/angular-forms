@@ -17,7 +17,7 @@ export class QuestionDetailComponent extends BaseComponent implements OnInit {
   content: any = null;
 
   constructor(private questionService: QuestionService, private router: ActivatedRoute,
-              private sanitizer: DomSanitizer, private snackBar: MatSnackBar) {
+              private sanitizer: DomSanitizer, snackBar: MatSnackBar) {
     super(snackBar);
   }
 

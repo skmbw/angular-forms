@@ -43,7 +43,7 @@ export class AskComponent extends BaseComponent implements OnInit {
     }
   };
 
-  constructor(private questionService: QuestionService, private snackBar: MatSnackBar, private tokenStorage: TokenStorage) {
+  constructor(private questionService: QuestionService, snackBar: MatSnackBar, private tokenStorage: TokenStorage) {
     super(snackBar);
   }
 

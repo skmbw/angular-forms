@@ -19,7 +19,7 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
 
   imageHost = Consts.IMAGE_HOST;
 
-  constructor(private answerService: AnswerService, private snackBar: MatSnackBar, private router: ActivatedRoute) {
+  constructor(private answerService: AnswerService, snackBar: MatSnackBar, private router: ActivatedRoute) {
     super(snackBar);
   }
 

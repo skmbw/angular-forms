@@ -44,7 +44,7 @@ export class AnswerComponent extends BaseComponent implements OnInit {
   };
   answer: Answer = new Answer();
 
-  constructor(private snackBar: MatSnackBar, private tokenStorage: TokenStorage, private answerService: AnswerService) {
+  constructor(snackBar: MatSnackBar, private tokenStorage: TokenStorage, private answerService: AnswerService) {
     super(snackBar);
   }
 

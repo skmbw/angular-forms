@@ -1,8 +1,6 @@
 import {MatSnackBar} from '@angular/material';
 
 export class BaseComponent {
-  constructor() {
-  }
 
   constructor(private snackBar: MatSnackBar) {
   }

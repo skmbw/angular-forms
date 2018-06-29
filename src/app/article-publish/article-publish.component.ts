@@ -80,7 +80,7 @@ export class ArticlePublishComponent implements OnInit {
     }
     this.article.content = this.content;
     this.articleService.save(this.article).subscribe(jsonBean => {
-      if (jsonBean.code === 1) {
+      if ( jsonBean.code === 1) {
         this.snackBar.open('文章保存成功。', null, {duration: 2000});
       } else {
         this.snackBar.open('文章保存失败。', null, {duration: 2000});
