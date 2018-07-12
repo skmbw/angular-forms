@@ -14,7 +14,7 @@ import {Question} from '../model/question';
 })
 export class QuestionDetailComponent extends BaseComponent implements OnInit {
   question: Question = new Question();
-  content: any = null;
+  content: any;
 
   constructor(private questionService: QuestionService, private router: ActivatedRoute,
               private sanitizer: DomSanitizer, snackBar: MatSnackBar) {

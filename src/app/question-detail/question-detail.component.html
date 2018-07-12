@@ -2,12 +2,14 @@
   <h1 class="mt-4 mb-4">{{question.title}}</h1>
   <div class="row col-xl-12">
     <span>提问时间：{{question.askDate}}</span>
-    <mat-icon class="ml-xl-2">face</mat-icon><span><a routerLink="/user/detail/{{question.asker}}">提问者：{{question.askerName}}</a></span>
-    <span class="ml-xl-2">赏金：{{question.price}}</span>
-    <span class="ml-xl-2"><mat-icon>shopping</mat-icon></span><span>：{{question.number}}</span>
+    <mat-icon class="ml-xl-2">face</mat-icon>
+    <span><a routerLink="/user/detail/{{question.asker}}">提问者：{{question.askerName}}</a></span>
+    <span class="ml-xl-2">赏金：{{question.price}} 元</span>
+    <!--<span class="ml-xl-2"><mat-icon>shopping</mat-icon></span><span>：{{question.number}}</span>-->
   </div>
   <div class="row mt-4">
-    <div class="col-xl-12" [innerHTML]="content"></div>
+    <div class="col-xl-12" [innerHTML]="content">
+    </div>
   </div>
 
   <div class="row">

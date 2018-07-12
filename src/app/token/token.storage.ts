@@ -39,8 +39,11 @@ export class TokenStorage {
     return JSON.parse(us);
   }
 
+  public getUserId(): string {
+    return window.sessionStorage.getItem(USER_ID);
+  }
+
   public getAccount(): string {
-    const us = window.sessionStorage.getItem(USER_NAME);
-    return us;
+    return window.sessionStorage.getItem(USER_NAME);
   }
 }
