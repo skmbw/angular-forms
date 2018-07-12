@@ -6,7 +6,6 @@ import {HttpClient} from '@angular/common/http';
 import {Consts} from '../common/consts';
 import {catchError} from 'rxjs/internal/operators';
 import {CommonService} from './common.service';
-import {JsUtils} from '../common/js-utils';
 
 /**
  * 问题服务
@@ -25,7 +24,7 @@ export class QuestionService extends CommonService {
 
   public save(question: Question): Observable<JsonBean> {
     // 表单请求
-    return this.httpClient.post(Consts.URL + 'question/ask', JsUtils.toQueryString(question), Consts.FORM)
+    return this.httpClient.post(Consts.URL + 'question/ask', question, Consts.JSON)
       .pipe(catchError(this.handleError()));
   }
 
