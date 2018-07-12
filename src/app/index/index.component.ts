@@ -55,12 +55,12 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // 监听布局的变化，重新加载内容
   loadMobileContent() {
-    console.log('loadMobileContent');
+    // console.log('loadMobileContent');
   }
 
   ngAfterViewInit() {
     this.masonry.layoutComplete.subscribe(() => {
-      console.log('layout');
+      // console.log('layout');
     });
   }
 
