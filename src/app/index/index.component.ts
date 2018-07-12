@@ -49,7 +49,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription = this.messageService.getMessage().subscribe(message => {
       // this.articleList.push(null);
       // 这里执行查询操作，然后刷新瀑布流
-      console.log('收到数据' + message.text.toString());
+      // console.log('收到数据' + message.text.toString());
     });
   }
 
@@ -85,12 +85,12 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onWindowScroll() {
     if (this.getScrollTop() + this.getClientHeight() === this.getScrollHeight()) {
-      console.log('滚动到底部');
+      // console.log('滚动到底部');
       this.articleService.list(this.page).subscribe(articles => {
         this.jsonBean = articles;
 
         if (this.jsonBean.code !== 1) {
-          console.log('没有更多数据了。');
+          // console.log('没有更多数据了。');
           this.snackBar.open('没有更多数据了，亲！', '确定', {
             duration: 2000,
           });
