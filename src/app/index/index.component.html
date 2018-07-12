@@ -5,7 +5,7 @@
            fxLayoutGap="4px"
            fxLayoutGap.xs="2px" class="row col-12">
     <mat-card masonry-brick *ngFor="let article of articleList" fxFlex.xl="24" fxFlex.lg="31" fxFlex.md="47" fxFlex.sm="98" fxFlex.xs="auto" class="col-xl-3 col-lg-3 col-md-4 col-sm-12 mt-2">
-      <a href="article/detail/{{article.id}}">
+      <a routerLink="/article/detail/{{article.id}}">
         <img *ngIf="article.image" src="{{article.image}}" class="card-img">
         <p *ngIf="article.summary">{{article.summary}}</p>
       </a>
