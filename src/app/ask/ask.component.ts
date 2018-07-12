@@ -75,6 +75,8 @@ export class AskComponent extends BaseComponent implements OnInit {
     this.question.terminal = 1;
     this.questionService.save(this.question).subscribe(result => {
       if (result.code === 1) {
+        // angular的双向绑定，重新赋值，可以清空表单
+        this.question = new Question();
         this.alert('提问成功，亲！');
       } else {
         this.alert(result.message);
