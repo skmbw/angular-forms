@@ -13,7 +13,7 @@ import {TokenStorage} from '../token/token.storage';
   styleUrls: ['./article-publish.component.css']
 })
 export class ArticlePublishComponent implements OnInit {
-  content: string = null;
+  // content: string = null;
   article: Article = new Article();
   option: Object = null;
 
@@ -23,7 +23,7 @@ export class ArticlePublishComponent implements OnInit {
 
   ngOnInit() {
     // 在事件中要使用外部的this,因为函数内部也有this所以讲this的值赋给that
-    const that = this;
+    // const that = this;
     // 参数配置
     // https://www.froala.com/wysiwyg-editor/docs/options?utm_expid=98676916-2.gb-QgBReTCCS2F60oBIe_g.0
     // &utm_referrer=https%3A%2F%2Fwww.google.com%2F#language
@@ -78,12 +78,19 @@ export class ArticlePublishComponent implements OnInit {
       this.snackBar.open('文章内容不能为空。', null, {duration: 2000});
       return;
     }
-    this.article.content = this.content;
+    this.article.authorId = this.tokenStorage.getUserId();
+    this.article.authorName = this.tokenStorage.getAccount();
     this.articleService.save(this.article).subscribe(jsonBean => {
-      if ( jsonBean.code === 1) {
+      if (jsonBean.code === 1) {
+        // 利用双向绑定，reset form
+        this.article = new Article();
         this.snackBar.open('文章保存成功。', null, {duration: 2000});
       } else {
-        this.snackBar.open('文章保存失败。', null, {duration: 2000});
+        let message = jsonBean.message;
+        if (message === null) {
+          message = '文章保存失败。';
+        }
+        this.snackBar.open(message, null, {duration: 2000});
       }
     });
   }
