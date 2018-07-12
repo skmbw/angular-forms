@@ -51,8 +51,6 @@ import {ArticlePublishComponent} from './article-publish/article-publish.compone
 import {AskComponent} from './ask/ask.component';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 import {MessageService} from './service/message.service';
-import {FroalaComponent} from './article-publish/froala.component';
-import {FroalaAppComponent} from './article-publish/froala-app.component';
 import {QuestionComponent} from './question/question.component';
 import {QuestionService} from './service/question.service';
 import {QuestionDetailComponent} from './question-detail/question-detail.component';
@@ -78,8 +76,6 @@ import {HtmlPipe} from './common/html.pipe';
     OrderListComponent,
     ArticlePublishComponent,
     AskComponent,
-    FroalaComponent,
-    FroalaAppComponent,
     QuestionComponent,
     QuestionDetailComponent,
     AnswerComponent,
