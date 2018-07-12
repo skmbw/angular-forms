@@ -35,7 +35,12 @@ export class TokenStorage {
   }
 
   public getUser(): User {
-    const us = window.sessionStorage.getItem(USER_ID);
+    const us = window.sessionStorage.getItem(USER_INFO);
     return JSON.parse(us);
+  }
+
+  public getAccount(): string {
+    const us = window.sessionStorage.getItem(USER_NAME);
+    return us;
   }
 }

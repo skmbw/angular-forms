@@ -32,7 +32,8 @@ export class Question {
               public serviceType?: number,
               public terminal?: number,
               public filePath?: string,
-              public type?: string) {
+              public type?: string,
+              public account?: string) {
 
   }
 }

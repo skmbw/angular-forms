@@ -71,6 +71,8 @@ export class AskComponent extends BaseComponent implements OnInit {
       this.alert('请填写问题赏金，亲！');
       return;
     }
+    this.question.account = this.tokenStorage.getAccount();
+    this.question.terminal = 1;
     this.questionService.save(this.question).subscribe(result => {
       if (result.code === 1) {
         this.alert('提问成功，亲！');

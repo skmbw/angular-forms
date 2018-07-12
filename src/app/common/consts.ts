@@ -11,4 +11,9 @@ export class Consts {
   static FORM = {
     headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'})
   };
+
+  static FORM_JSON = {
+    headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}),
+    responseType: 'json'
+  };
 }
