@@ -2,7 +2,8 @@ import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/c
 import {MasonryOptions} from '../masonry/masonry-options';
 import {AngularMasonryComponent} from '../masonry/masonry.component';
 // import {MediaChange, ObservableMedia} from '@angular/flex-layout';
-import {fromEvent, Subscription} from 'rxjs';
+// import {fromEvent, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {ArticleService} from '../service/article.service';
 import {Article} from '../model/article';
 import {JsonBean} from '../model/jsonbean';
@@ -20,7 +21,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   // 注入DomSanitizer然后使用bypassSecurityTrustHtml转换html内容，这样就能显示html了
   // Inject AngularMasonryComponent instance from template
   @ViewChild(AngularMasonryComponent) masonry: AngularMasonryComponent;
-  columnTop: string;
+  // columnTop: string;
   articleList: Article[] = [];
   jsonBean: JsonBean = {};
   // bricks: any[] = [];
@@ -70,10 +71,10 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.columnTop = '0';
-    fromEvent(window, 'scroll').subscribe((event) => {
-      this.onWindowScroll();
-    });
+    // this.columnTop = '0';
+    // fromEvent(window, 'scroll').subscribe((event) => {
+    //   this.onWindowScroll();
+    // });
 
     // 初始化
     this.articleService.list(this.page).subscribe(articles => {
@@ -97,7 +98,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
         } else {
           this.buildBricks();
           this.page++;
-          console.log(this.page);
+          // console.log(this.page);
         }
       });
     }
@@ -122,6 +123,23 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  loadMore() {
+    this.articleService.list(this.page).subscribe(articles => {
+      this.jsonBean = articles;
+
+      if (this.jsonBean.code !== 1) {
+        // console.log('没有更多数据了。');
+        this.snackBar.open('没有更多数据了，亲！', '确定', {
+          duration: 2000,
+        });
+      } else {
+        this.buildBricks();
+        this.page++;
+        // console.log(this.page);
+      }
+    });
   }
 
   // 获取滚动条当前的位置
