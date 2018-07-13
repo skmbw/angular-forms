@@ -20,7 +20,7 @@ export class AskComponent extends BaseComponent implements OnInit {
     // charCounterMax: 200, // 最大输入字数,目前只支持英文字母
     // 注意导航条的配置, 按照官方的文档,无法配置,只能使用toolbarButtons来配置了。
     toolbarButtons: ['fullscreen', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'align', 'insertLink', 'insertImage',
-      'insertHR', 'subscript', 'superscript'],
+      'insertHR'],
     codeMirror: false, // 高亮显示html代码
     codeMirrorOptions: { // 配置html代码参数
       tabSize: 4
