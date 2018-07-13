@@ -11,7 +11,8 @@ export class User {
               public license?: string,
               public gender?: number,
               public tokenId?: string,
-              public title?: string) {
+              public title?: string,
+              public avatar?: string) {
 
   }
 }
