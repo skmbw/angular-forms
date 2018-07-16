@@ -21,10 +21,10 @@
   <div class="row mt-4">
     <div class="col-xl-12">
       <mat-tab-group>
-        <mat-tab label="用户评论">
+        <mat-tab label="用户吐槽">
           <app-article-comment [articleId]="article.id"></app-article-comment>
         </mat-tab>
-        <mat-tab label="购买记录">
+        <mat-tab label="阅读购买记录">
           <app-order-list [articleId]="article.id"></app-order-list>
         </mat-tab>
       </mat-tab-group>
@@ -35,7 +35,7 @@
     <div class="row mt-5">
       <div class="col-xl-12">
         <mat-form-field class="w-100">
-          <textarea matInput placeholder="您的吐槽..." [(ngModel)]="comment" name="comment"></textarea>
+          <textarea matInput placeholder="您的吐槽..." [(ngModel)]="comment.content" name="comment"></textarea>
         </mat-form-field>
       </div>
     </div>
