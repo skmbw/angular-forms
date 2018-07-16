@@ -5,6 +5,7 @@ import {TokenStorage} from '../token/token.storage';
 import {Answer} from '../model/answer';
 import {AnswerService} from '../service/answer.service';
 import {BaseComponent} from '../common/base.component';
+import {MessageService} from '../service/message.service';
 
 @Component({
   selector: 'app-answer',
@@ -41,7 +42,8 @@ export class AnswerComponent extends BaseComponent implements OnInit {
   };
   answer: Answer = new Answer();
 
-  constructor(snackBar: MatSnackBar, private tokenStorage: TokenStorage, private answerService: AnswerService) {
+  constructor(snackBar: MatSnackBar, private tokenStorage: TokenStorage, private answerService: AnswerService,
+              private messageService: MessageService) {
     super(snackBar);
   }
 
@@ -60,6 +62,7 @@ export class AnswerComponent extends BaseComponent implements OnInit {
 
     this.answerService.save(this.answer).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
+        // this.messageService.sendMessage(this.answer);
         this.answer.content = null;
         this.alert('回答成功！');
       } else {

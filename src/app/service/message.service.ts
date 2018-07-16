@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs/index';
+import {Answer} from '../model/answer';
 
 @Injectable()
 export class MessageService {
@@ -9,6 +10,10 @@ export class MessageService {
   private subject = new Subject<any>();
 
   sendMessage(message: string) {
+    this.subject.next({ text: message });
+  }
+
+  sendMessage(message: Answer) {
     this.subject.next({ text: message });
   }
 

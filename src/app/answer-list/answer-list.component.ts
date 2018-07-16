@@ -5,6 +5,7 @@ import {BaseComponent} from '../common/base.component';
 import {MatSnackBar} from '@angular/material';
 import {Consts} from '../common/consts';
 import {ActivatedRoute} from '@angular/router';
+import {MessageService} from '../service/message.service';
 
 @Component({
   selector: 'app-answer-list',
@@ -19,7 +20,8 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
 
   imageHost = Consts.IMAGE_HOST;
 
-  constructor(private answerService: AnswerService, snackBar: MatSnackBar, private router: ActivatedRoute) {
+  constructor(private answerService: AnswerService, snackBar: MatSnackBar, private router: ActivatedRoute,
+              private messageService: MessageService) {
     super(snackBar);
   }
 
@@ -38,5 +40,14 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
         this.alert(jsonBean.message);
       }
     });
+
+    // 可以这样传递，可是很多属性没有，还需要从后台去查询，或者自己构造，比较麻烦
+    // this.messageService.getMessage().subscribe(message => {
+    //   const answer: Answer = message.text;
+    //   answer.content = answer.content.replace('localhost:8300/', Consts.IMAGE_URL)
+    //     .replace('{{image.server}}', Consts.IMAGE_URL);
+    //
+    //   this.answerList.push(answer);
+    // });
   }
 }
