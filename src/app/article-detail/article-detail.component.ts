@@ -30,6 +30,8 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
   ngOnInit() {
     this.router.params.subscribe(params => {
       this.id = params['id'];
+      // 这里先赋值，否则子组件绑定的时候，@input拿不到值
+      this.article.id = this.id;
       this.articleService.detail(this.id).subscribe(jsonBean => {
         if (jsonBean.code === 1) {
           this.article = jsonBean.data;
