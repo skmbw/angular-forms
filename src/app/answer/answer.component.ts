@@ -33,10 +33,7 @@ export class AnswerComponent extends BaseComponent implements OnInit {
     // 事件, 每次输入,就将值传递给父组件, 或者使用失去焦点的时候传递。
     events: {
       'froalaEditor.image.inserted': function (e, editor, $img, response) {
-        // console.log('froalaEditor.image.inserted');
         $img.removeAttr('style');
-        // const src = Consts.IMAGE_HOST + $img.attr('src');
-        // $img.attr('src', src);
         $img.removeClass();
         $img.addClass('img-fluid');
       }
@@ -59,9 +56,11 @@ export class AnswerComponent extends BaseComponent implements OnInit {
     }
     this.answer.questionId = this.questionId;
     this.answer.targetId = this.questionId;
+    this.answer.answerUserId = this.tokenStorage.getUserId();
 
     this.answerService.save(this.answer).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
+        this.answer.content = null;
         this.alert('回答成功！');
       } else {
         this.alert(jsonBean.message);
