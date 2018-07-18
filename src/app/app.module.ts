@@ -60,6 +60,7 @@ import {AnswerService} from './service/answer.service';
 import {HtmlPipe} from './common/html.pipe';
 import {CommentService} from './service/comment.service';
 import {ToastrModule} from 'ngx-toastr';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -118,7 +119,8 @@ import {ToastrModule} from 'ngx-toastr';
     FroalaViewModule.forRoot(),
     // 如果不在这里配置，chrome会提示脏检查错误
     ToastrModule.forRoot({timeOut: 3000,
-      positionClass: 'toast-top-center'})
+      positionClass: 'toast-top-center'}),
+    FontAwesomeModule
   ],
   providers: [
     ArticleService,

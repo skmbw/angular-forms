@@ -31,7 +31,7 @@ export class ArticleCommentComponent extends BaseComponent implements OnInit {
         this.commentList = jsonBean.data;
       } else {
         // this.alert(jsonBean.message);
-        this.toastr.success('还没有人吐槽过，来一发吧，亲！');
+        // this.toastr.success('还没有人吐槽过，来一发吧，亲！');
       }
     });
     this.messageService.getComment().subscribe(message => {

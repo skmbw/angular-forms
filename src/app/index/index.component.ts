@@ -11,6 +11,7 @@ import {Consts} from '../common/consts';
 import {ImageFile} from '../model/image-file';
 import {MatSnackBar} from '@angular/material';
 import {MessageService} from '../service/message.service';
+import {faCoffee} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-index',
@@ -28,7 +29,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   page = 0;
   // userName: string;
   subscription: Subscription;
-
+  faCoffee = faCoffee;
   // Options
   options: MasonryOptions = {
     transitionDuration: '0.3s'
@@ -68,6 +69,14 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   remove(brick) {
     // this.bricks.splice(this.bricks.indexOf(brick), 1);
     this.articleList.splice(this.articleList.indexOf(brick), 1);
+  }
+
+  zan(article: Article) {
+    alert('1');
+  }
+
+  focus(article: Article) {
+    alert('2');
   }
 
   ngOnInit() {

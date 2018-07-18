@@ -9,7 +9,7 @@
         <img *ngIf="article.image" src="{{article.image}}" class="card-img">
         <p *ngIf="article.summary">{{article.summary}}</p>
       </a>
-      <button (click)="remove(article)">Remove</button>
+      <mat-icon class="ml-xl-2">face</mat-icon><fa-icon [icon]="faCoffee"></fa-icon> <button (click)="zan(article)">点赞</button> <button (click)="focus(article)">关注</button>
     </mat-card>
   </masonry>
 
