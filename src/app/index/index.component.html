@@ -7,9 +7,9 @@
     <mat-card masonry-brick *ngFor="let article of articleList" fxFlex.xl="32" fxFlex.lg="32" fxFlex.md="48" fxFlex.sm="98" fxFlex.xs="auto" class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mt-2">
       <a routerLink="/article/detail/{{article.id}}">
         <img *ngIf="article.image" src="{{article.image}}" class="card-img">
+        <div [innerHTML]="article.summary">
+        </div>
       </a>
-      <div [innerHTML]="article.summary">
-      </div>
       <fa-icon [icon]="faCoffee"></fa-icon> <button (click)="zan(article)">点赞</button> <button (click)="focus(article)">关注</button>
     </mat-card>
   </masonry>
