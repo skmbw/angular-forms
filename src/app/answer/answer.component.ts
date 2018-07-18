@@ -6,6 +6,7 @@ import {Answer} from '../model/answer';
 import {AnswerService} from '../service/answer.service';
 import {BaseComponent} from '../common/base.component';
 import {MessageService} from '../service/message.service';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-answer',
@@ -63,7 +64,7 @@ export class AnswerComponent extends BaseComponent implements OnInit {
     this.answerService.save(this.answer).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         this.answer.avatar = '/img/avatar/' + this.answer.answerUserId + '.jpeg';
-        this.answer.answerDate = new Date().toDateString();
+        this.answer.answerDate = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'zh');
         this.answer.nickName = this.tokenStorage.getAccount();
         this.messageService.sendAnswer(this.answer);
         this.answer.content = null;
