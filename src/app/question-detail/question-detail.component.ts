@@ -24,6 +24,7 @@ export class QuestionDetailComponent extends BaseComponent implements OnInit {
   ngOnInit() {
     this.router.params.subscribe(params => {
       const id = params['id'];
+      this.question.id = id; // 因为有@Input()数据绑定，将数据及时传递给子组件
       this.questionService.detail(id).subscribe(jsonBean => {
         if (jsonBean.code === 1) {
           this.question = jsonBean.data;

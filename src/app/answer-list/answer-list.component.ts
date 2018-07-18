@@ -14,7 +14,7 @@ import {MessageService} from '../service/message.service';
 })
 export class AnswerListComponent extends BaseComponent implements OnInit {
   @Input()
-  questionId: string; // 这个参数在哪个生命周期方法中能够取到？页面显示是OK的
+  questionId: string;
 
   answerList: Answer[] = [];
 
@@ -27,8 +27,10 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
 
   ngOnInit() {
     const param: Answer = new Answer();
-    // TODO 这个时候，还没有拿到@input绑定的数据，从路由里面取数据吧
-    param.questionId = this.router.snapshot.paramMap.get('id');
+    // 这个时候，还没有拿到@input绑定的数据，从路由里面取数据吧
+    // 已经可以拿到数据了，是因为父组件是在回调中赋值的，时间上晚了，已经更改
+    // param.questionId = this.router.snapshot.paramMap.get('id');
+    param.questionId = this.questionId;
     this.answerService.list(param).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         this.answerList = jsonBean.data;
@@ -37,11 +39,11 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
             .replace('{{image.server}}', Consts.IMAGE_URL);
         }
       } else {
-        this.alert(jsonBean.message);
+        this.alert('还没有人回答，赶紧去抢答！');
       }
     });
 
-    // 可以这样传递，可是很多属性没有，还需要从后台去查询，或者自己构造，比较麻烦
+    // 接收回答的消息，并添加到list尾部
     this.messageService.getAnswer().subscribe(message => {
       const answer: Answer = new Answer();
       const msg = message.text;

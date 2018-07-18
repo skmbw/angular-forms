@@ -11,4 +11,7 @@
     <!--这里不显示，是因为外层的class中有row这个类，可能是使用了浮动和清除的原因-->
     <mat-divider class="mt-4"></mat-divider>
   </div>
+  <div *ngIf="answerList.length === 0" class="row col-12 mt-3">
+    还没有人回答，赶紧去抢答，帮助TA吧。
+  </div>
 </div>

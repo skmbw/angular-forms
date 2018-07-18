@@ -11,6 +11,7 @@ import {TokenStorage} from '../token/token.storage';
 import {BaseComponent} from '../common/base.component';
 import {MessageService} from '../service/message.service';
 import {formatDate} from '@angular/common';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-article-detail',
@@ -26,7 +27,7 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
   constructor(private articleService: ArticleService, snackBar: MatSnackBar,
               private router: ActivatedRoute, private sanitizer: DomSanitizer,
               private commentService: CommentService, private tokenStorage: TokenStorage,
-              private messageService: MessageService) {
+              private messageService: MessageService, private toastr: ToastrService) {
     super(snackBar);
   }
 
@@ -41,9 +42,7 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
           this.content = this.sanitizer.bypassSecurityTrustHtml(this.article.content.replace('{{image.server}}', Consts.IMAGE_URL));
           // this.content = this.article.content.replace('{{image.server}}', Consts.IMAGE_URL); // 这个貌似也是可以的？
         } else {
-          this.snackBar.open('文章不存在，亲！', '确定', {
-            duration: 2000,
-          });
+          this.toastr.warning('文章不存在，亲！');
         }
       });
     });
@@ -65,7 +64,7 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
         this.comment.commentDate = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'zh');
         this.messageService.sendComment(this.comment);
         this.comment = new Comment();
-        this.alert('评论成功！亲');
+        this.toastr.success('吐槽成功啊！亲');
       } else {
         this.snackBar.open(value.message, '', {duration: 2000});
       }
