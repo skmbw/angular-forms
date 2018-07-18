@@ -22,7 +22,7 @@ export class AnswerComponent extends BaseComponent implements OnInit {
     // charCounterMax: 200, // 最大输入字数,目前只支持英文字母
     // 注意导航条的配置, 按照官方的文档,无法配置,只能使用toolbarButtons来配置了。
     toolbarButtons: ['fullscreen', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'align', 'insertLink', 'insertImage',
-      'insertHR'],
+      'insertHR', 'table'],
     codeMirror: false, // 高亮显示html代码
     codeMirrorOptions: { // 配置html代码参数
       tabSize: 4
@@ -62,7 +62,10 @@ export class AnswerComponent extends BaseComponent implements OnInit {
 
     this.answerService.save(this.answer).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
-        // this.messageService.sendMessage(this.answer);
+        this.answer.avatar = '/img/avatar/' + this.answer.answerUserId + '.jpeg';
+        this.answer.answerDate = new Date().toDateString();
+        this.answer.nickName = this.tokenStorage.getAccount();
+        this.messageService.sendAnswer(this.answer);
         this.answer.content = null;
         this.alert('回答成功！');
       } else {

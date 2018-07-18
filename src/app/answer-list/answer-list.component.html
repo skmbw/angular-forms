@@ -4,7 +4,7 @@
       <img src="{{imageHost}}{{answer.avatar}}" class="header-image">
       <div class="col-10">
         <div class="col-12">{{answer.nickName}}</div>
-        <div class="col-12">{{answer.answerDate}}</div>
+        <div class="col-12">{{answer.answerDate | date:'yyyy-MM-dd HH:mm:ss'}}</div>
       </div>
     </div>
     <div [innerHTML]="answer.content | html" class="row col-12 mt-2"></div>

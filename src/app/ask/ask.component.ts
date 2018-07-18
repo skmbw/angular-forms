@@ -5,6 +5,7 @@ import {QuestionService} from '../service/question.service';
 import {BaseComponent} from '../common/base.component';
 import {Consts} from '../common/consts';
 import {TokenStorage} from '../token/token.storage';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-ask',
@@ -43,8 +44,16 @@ export class AskComponent extends BaseComponent implements OnInit {
     }
   };
 
-  constructor(private questionService: QuestionService, snackBar: MatSnackBar, private tokenStorage: TokenStorage) {
+  constructor(private questionService: QuestionService, snackBar: MatSnackBar,
+              private tokenStorage: TokenStorage, private toastr: ToastrService) {
     super(snackBar);
+    const account = this.tokenStorage.getAccount();
+    if (account === null || account === undefined) {
+      this.toastr.success('提问前必须要先登录哦，亲！', '温馨提示',  {
+        timeOut: 3000,
+        positionClass: 'toast-top-center'
+      });
+    }
   }
 
   ngOnInit() {

@@ -48,10 +48,10 @@ export class ArticlePublishComponent implements OnInit {
       imageUploadMethod: 'POST', // POST/GET,
       // 事件, 每次输入,就将值传递给父组件, 或者使用失去焦点的时候传递。
       events: {
-        'froalaEditor.keyup': function (e, editor) {
+        // 'froalaEditor.keyup': function (e, editor) {
           // that.froala.emit(that.froalaText);
           // console.log(editor.selection.get());
-        },
+        // },
         'froalaEditor.image.inserted': function (e, editor, $img, response) {
           // console.log('froalaEditor.image.inserted');
           $img.removeAttr('style');
@@ -72,7 +72,7 @@ export class ArticlePublishComponent implements OnInit {
     const account = this.tokenStorage.getAccount();
     if (account === null || account === undefined) {
       this.toastr.success('发表文章必须要先登录哦，亲！', '温馨提示',  {
-        timeOut: 2000,
+        timeOut: 3000,
         positionClass: 'toast-top-center'
       });
     }
