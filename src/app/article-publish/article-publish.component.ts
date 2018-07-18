@@ -6,7 +6,7 @@ import {Consts} from '../common/consts';
 import {TokenStorage} from '../token/token.storage';
 import {ToastrService} from 'ngx-toastr';
 
-// import * as $ from 'jquery';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-article-publish',
@@ -49,25 +49,17 @@ export class ArticlePublishComponent implements OnInit {
       imageUploadMethod: 'POST', // POST/GET,
       // 事件, 每次输入,就将值传递给父组件, 或者使用失去焦点的时候传递。
       events: {
-        // 'froalaEditor.keyup': function (e, editor) {
-          // that.froala.emit(that.froalaText);
-          // console.log(editor.selection.get());
-        // },
-        'froalaEditor.image.inserted': function (e, editor, $img, response) {
-          // console.log('froalaEditor.image.inserted');
-          $img.removeAttr('style');
-          $img.removeClass();
-          $img.addClass('img-fluid');
+        'froalaEditor.image.inserted': function (e, editor, image, response) {
+          // image已经是一个jQuery对象，不需要$重新选中
+          image.removeAttr('style');
+          image.removeClass();
+          image.addClass('img-fluid');
+        },
+        'froalaEditor.table.inserted': function (e, editor, table) {
+          // 插入的表格没有样式，因为bootstrap的问题，没有显示出来
+          // table 是一个html dom对象，需要jQuery选中一下
+          $(table).addClass('table table-bordered');
         }
-        // ,
-        // 'froalaEditor.image.uploaded': function (e, editor, response) {
-        //   console.log('froalaEditor.image.uploaded');
-        //   // const obj = JSON.parse(response);
-        //   // const host = obj.link;
-        //   // response.link = Consts.IMAGE_HOST + host;
-        //   // response = {'link': response.data.url};
-        //   return true;
-        // }
       }
     };
     const account = this.tokenStorage.getAccount();
