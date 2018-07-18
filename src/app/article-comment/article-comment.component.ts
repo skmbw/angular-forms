@@ -4,6 +4,7 @@ import {Comment} from '../model/comment';
 import {Consts} from '../common/consts';
 import {BaseComponent} from '../common/base.component';
 import {MatSnackBar} from '@angular/material';
+import {MessageService} from '../service/message.service';
 
 @Component({
   selector: 'app-article-comment',
@@ -16,19 +17,29 @@ export class ArticleCommentComponent extends BaseComponent implements OnInit {
   commentList: Comment[] = [];
   imageHost = Consts.IMAGE_HOST;
 
-  constructor(private commentService: CommentService, snackBar: MatSnackBar) {
+  constructor(private commentService: CommentService, snackBar: MatSnackBar,
+              private messageService: MessageService) {
     super(snackBar);
   }
 
   ngOnInit() {
-    const comment: Comment = new Comment();
-    comment.articleId = this.articleId;
-    this.commentService.list(comment).subscribe(jsonBean => {
+    const params: Comment = new Comment();
+    params.articleId = this.articleId;
+    this.commentService.list(params).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         this.commentList = jsonBean.data;
       } else {
         this.alert(jsonBean.message);
       }
+    });
+    this.messageService.getComment().subscribe(message => {
+      const value = message.text;
+      const comment = new Comment();
+      comment.commentDate = value.commentDate;
+      comment.content = value.content;
+      comment.nickName = value.nickName;
+      comment.userId = value.userId;
+      this.commentList.push(comment);
     });
   }
 }

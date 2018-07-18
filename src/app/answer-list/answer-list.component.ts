@@ -42,7 +42,7 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
     });
 
     // 可以这样传递，可是很多属性没有，还需要从后台去查询，或者自己构造，比较麻烦
-    this.messageService.getMessage().subscribe(message => {
+    this.messageService.getAnswer().subscribe(message => {
       const answer: Answer = new Answer();
       const msg = message.text;
       // 如果不复制一次，源头对象修改，这里也会被修改。比如情况输入框，这里就被清空了，原因是angular的双向绑定。

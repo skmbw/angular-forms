@@ -8,13 +8,19 @@ export class MessageService {
   constructor() { }
 
   private subject = new Subject<any>();
+  private commentSubject = new Subject<any>();
+  private answerSubject = new Subject<any>();
 
   sendMessage(message: string) {
     this.subject.next({ text: message });
   }
 
   sendAnswer(message: Answer) {
-    this.subject.next({ text: message });
+    this.answerSubject.next({ text: message });
+  }
+
+  sendComment(message: Comment) {
+    this.commentSubject.next({ text: message });
   }
 
   clearMessage() {
@@ -23,5 +29,13 @@ export class MessageService {
 
   getMessage(): Observable<any> {
     return this.subject.asObservable();
+  }
+
+  getComment(): Observable<Comment> {
+    return this.commentSubject.asObservable();
+  }
+
+  getAnswer(): Observable<Answer> {
+    return this.answerSubject.asObservable();
   }
 }
