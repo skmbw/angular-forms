@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs/index';
 import {Answer} from '../model/answer';
+import {Comment} from '../model/comment';
 
 @Injectable()
 export class MessageService {
@@ -31,11 +32,11 @@ export class MessageService {
     return this.subject.asObservable();
   }
 
-  getComment(): Observable<Comment> {
+  getComment(): Observable<any> {
     return this.commentSubject.asObservable();
   }
 
-  getAnswer(): Observable<Answer> {
+  getAnswer(): Observable<any> {
     return this.answerSubject.asObservable();
   }
 }
