@@ -11,7 +11,8 @@ import {Consts} from '../common/consts';
 import {ImageFile} from '../model/image-file';
 import {MatSnackBar} from '@angular/material';
 import {MessageService} from '../service/message.service';
-import {faCoffee} from '@fortawesome/free-solid-svg-icons';
+import {faHeart} from '@fortawesome/free-solid-svg-icons';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
@@ -30,7 +31,8 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   page = 0;
   // userName: string;
   subscription: Subscription;
-  faCoffee = faCoffee;
+  faHeart = faHeart;
+  faPlus = faPlus;
   // Options
   options: MasonryOptions = {
     transitionDuration: '0.3s'

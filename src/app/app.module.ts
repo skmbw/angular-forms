@@ -61,6 +61,8 @@ import {HtmlPipe} from './common/html.pipe';
 import {CommentService} from './service/comment.service';
 import {ToastrModule} from 'ngx-toastr';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {LoveService} from './service/love.service';
+import {FocusService} from './service/focus.service';
 
 @NgModule({
   declarations: [
@@ -130,7 +132,9 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     MessageService,
     QuestionService,
     AnswerService,
-    CommentService
+    CommentService,
+    LoveService,
+    FocusService
   ],
   bootstrap: [AppComponent]
 })
