@@ -9,6 +9,8 @@ import {CommentService} from '../service/comment.service';
 import {Comment} from '../model/comment';
 import {TokenStorage} from '../token/token.storage';
 import {BaseComponent} from '../common/base.component';
+import {MessageService} from '../service/message.service';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-article-detail',
@@ -23,7 +25,8 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
 
   constructor(private articleService: ArticleService, snackBar: MatSnackBar,
               private router: ActivatedRoute, private sanitizer: DomSanitizer,
-              private commentService: CommentService, private tokenStorage: TokenStorage) {
+              private commentService: CommentService, private tokenStorage: TokenStorage,
+              private messageService: MessageService) {
     super(snackBar);
   }
 
@@ -59,6 +62,8 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
     this.comment.nickName = this.tokenStorage.getAccount();
     this.commentService.save(this.comment).subscribe(value => {
       if (value.code = 1) {
+        this.comment.commentDate = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'zh');
+        this.messageService.sendComment(this.comment);
         this.comment = new Comment();
         this.alert('评论成功！亲');
       } else {
