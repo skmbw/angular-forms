@@ -12,6 +12,7 @@ import {ImageFile} from '../model/image-file';
 import {MatSnackBar} from '@angular/material';
 import {MessageService} from '../service/message.service';
 import {faCoffee} from '@fortawesome/free-solid-svg-icons';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-index',
@@ -43,7 +44,8 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   //     ).subscribe(() => this.loadMobileContent());
   // }
 
-  constructor(private articleService: ArticleService, private snackBar: MatSnackBar, private messageService: MessageService) {
+  constructor(private articleService: ArticleService, private snackBar: MatSnackBar,
+              private messageService: MessageService, private sanitizer: DomSanitizer) {
     // media.asObservable()
     //   .pipe(
     //     filter((change: MediaChange) => change.mqAlias === 'xs')
@@ -118,7 +120,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
     for (const article of this.jsonBean.data) {
       // const brick: Brick = new Brick();
       const brick: Article = new Article();
-      brick.summary = article.summary;
+      brick.summary = this.sanitizer.bypassSecurityTrustHtml(article.summary);
       brick.id = article.id;
       const fileList = article.fileList;
       if (fileList !== undefined && fileList !== null) {

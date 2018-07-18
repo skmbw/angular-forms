@@ -14,7 +14,7 @@ export class Article {
   /**
    * 摘要
    */
-  summary: string;
+  summary: any;
 
   /**
    * 分类代码
