@@ -4,6 +4,7 @@ import {MatSnackBar} from '@angular/material';
 import {ArticleService} from '../service/article.service';
 import {Consts} from '../common/consts';
 import {TokenStorage} from '../token/token.storage';
+import {ToastrService} from 'ngx-toastr';
 
 // import * as $ from 'jquery';
 
@@ -17,7 +18,8 @@ export class ArticlePublishComponent implements OnInit {
   article: Article = new Article();
   option: Object = null;
 
-  constructor(private snackBar: MatSnackBar, private articleService: ArticleService, private tokenStorage: TokenStorage) {
+  constructor(private snackBar: MatSnackBar, private articleService: ArticleService,
+              private tokenStorage: TokenStorage, private toastr: ToastrService) {
 
   }
 
@@ -67,6 +69,13 @@ export class ArticlePublishComponent implements OnInit {
         // }
       }
     };
+    const account = this.tokenStorage.getAccount();
+    if (account === null || account === undefined) {
+      this.toastr.success('发表文章必须要先登录哦，亲！', '温馨提示',  {
+        timeOut: 2000,
+        positionClass: 'toast-top-center'
+      });
+    }
   }
 
   public submit() {

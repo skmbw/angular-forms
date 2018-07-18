@@ -59,6 +59,7 @@ import {AnswerListComponent} from './answer-list/answer-list.component';
 import {AnswerService} from './service/answer.service';
 import {HtmlPipe} from './common/html.pipe';
 import {CommentService} from './service/comment.service';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -114,7 +115,8 @@ import {CommentService} from './service/comment.service';
     MatSidenavModule,
     MatProgressSpinnerModule,
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [
     ArticleService,
