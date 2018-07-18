@@ -16,12 +16,12 @@ export class AskComponent extends BaseComponent implements OnInit {
   question = new Question();
   option = {
     language: 'zh_cn', // 配置语言
-    placeholderText: '请输入内容', // 文本框提示内容
+    placeholderText: '问题的背景，前置条件，以及详细描述。精确的描述更易得到回答。', // 文本框提示内容
     charCounterCount: true, // 是否开启统计字数
     // charCounterMax: 200, // 最大输入字数,目前只支持英文字母
     // 注意导航条的配置, 按照官方的文档,无法配置,只能使用toolbarButtons来配置了。
     toolbarButtons: ['fullscreen', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'align', 'insertLink', 'insertImage',
-      'insertHR'],
+      'insertHR', 'insertTable'],
     codeMirror: false, // 高亮显示html代码
     codeMirrorOptions: { // 配置html代码参数
       tabSize: 4

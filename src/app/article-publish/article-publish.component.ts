@@ -31,7 +31,7 @@ export class ArticlePublishComponent implements OnInit {
     // &utm_referrer=https%3A%2F%2Fwww.google.com%2F#language
     this.option = {
       language: 'zh_cn', // 配置语言
-      placeholderText: '请输入内容', // 文本框提示内容
+      placeholderText: '条理清晰的文章内容，好内容才会有人付费阅读', // 文本框提示内容
       charCounterCount: true, // 是否开启统计字数
       // charCounterMax: 200, // 最大输入字数,目前只支持英文字母
       // 注意导航条的配置, 按照官方的文档,无法配置,只能使用toolbarButtons来配置了。
