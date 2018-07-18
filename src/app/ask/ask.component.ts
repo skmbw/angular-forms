@@ -6,6 +6,7 @@ import {BaseComponent} from '../common/base.component';
 import {Consts} from '../common/consts';
 import {TokenStorage} from '../token/token.storage';
 import {ToastrService} from 'ngx-toastr';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-ask',
@@ -41,6 +42,11 @@ export class AskComponent extends BaseComponent implements OnInit {
         // $img.attr('src', src);
         $img.removeClass();
         $img.addClass('img-fluid');
+      },
+      'froalaEditor.table.inserted': function (e, editor, table) {
+        // 插入的表格没有样式，因为bootstrap的问题，没有显示出来
+        // table 是一个html dom对象，需要jQuery选中一下
+        $(table).addClass('table table-bordered');
       }
     }
   };

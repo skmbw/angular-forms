@@ -7,6 +7,7 @@ import {AnswerService} from '../service/answer.service';
 import {BaseComponent} from '../common/base.component';
 import {MessageService} from '../service/message.service';
 import {formatDate} from '@angular/common';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-answer',
@@ -39,6 +40,11 @@ export class AnswerComponent extends BaseComponent implements OnInit {
         $img.removeAttr('style');
         $img.removeClass();
         $img.addClass('img-fluid');
+      },
+      'froalaEditor.table.inserted': function (e, editor, table) {
+        // 插入的表格没有样式，因为bootstrap的问题，没有显示出来
+        // table 是一个html dom对象，需要jQuery选中一下
+        $(table).addClass('table table-bordered');
       }
     }
   };
