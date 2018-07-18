@@ -116,7 +116,9 @@ import {ToastrModule} from 'ngx-toastr';
     MatProgressSpinnerModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
-    ToastrModule.forRoot()
+    // 如果不在这里配置，chrome会提示脏检查错误
+    ToastrModule.forRoot({timeOut: 3000,
+      positionClass: 'toast-top-center'})
   ],
   providers: [
     ArticleService,
