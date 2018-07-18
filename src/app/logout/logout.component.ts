@@ -16,7 +16,7 @@ export class LogoutComponent implements OnInit {
     this.storage.logout();
     this.app.userName = null;
     this.app.userId = null;
-    this.router.navigateByUrl('/index').catch();
+    this.router.navigateByUrl('/article').catch();
   }
 
 }
