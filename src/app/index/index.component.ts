@@ -14,6 +14,8 @@ import {MessageService} from '../service/message.service';
 import {faHeart} from '@fortawesome/free-solid-svg-icons';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {DomSanitizer} from '@angular/platform-browser';
+import {LoveService} from '../service/love.service';
+import {FocusService} from '../service/focus.service';
 
 @Component({
   selector: 'app-index',
@@ -47,7 +49,8 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   // }
 
   constructor(private articleService: ArticleService, private snackBar: MatSnackBar,
-              private messageService: MessageService, private sanitizer: DomSanitizer) {
+              private messageService: MessageService, private sanitizer: DomSanitizer,
+              private loveService: LoveService, private focusService: FocusService) {
     // media.asObservable()
     //   .pipe(
     //     filter((change: MediaChange) => change.mqAlias === 'xs')
@@ -76,11 +79,11 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   zan(article: Article) {
-    alert('1');
+    this.loveService.save(article.id, '1');
   }
 
   focus(article: Article) {
-    alert('2');
+    this.focusService.save(article.id, '1');
   }
 
   ngOnInit() {
