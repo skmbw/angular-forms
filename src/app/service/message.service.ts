@@ -13,7 +13,7 @@ export class MessageService {
     this.subject.next({ text: message });
   }
 
-  sendMessage(message: Answer) {
+  sendAnswer(message: Answer) {
     this.subject.next({ text: message });
   }
 
