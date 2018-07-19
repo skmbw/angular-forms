@@ -31,8 +31,8 @@
       <mat-card-actions>
         <div class="ml-3">
           <span class="primary-color hand" (click)="zan(question)" title="点赞"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{question.loveNumber}}</span>
-          <span class="primary-color hand" (click)="focus(question)" title="关注"><fa-icon [icon]="faPlus" class="fa-lg ml-4"></fa-icon> {{question.focusNumber}}</span>
-          <span class="primary-color hand" routerLink="/question/detail/{{question.id}}" title="详情"><fa-icon [icon]="faBars" class="fa-lg ml-4"></fa-icon></span>
+          <span class="primary-color hand ml-4" (click)="focus(question)" title="关注"><fa-icon [icon]="faPlus" class="fa-lg"></fa-icon> {{question.focusNumber}}</span>
+          <span class="primary-color hand ml-4" routerLink="/question/detail/{{question.id}}" title="详情"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon></span>
         </div>
       </mat-card-actions>
     </mat-card>

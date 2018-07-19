@@ -1,3 +1,35 @@
-<p>
-  article-list works!
-</p>
+<mat-card *ngFor="let article of articleList" class="col-12">
+  <mat-card-header>
+    <!--<div mat-card-avatar class="mr-2">-->
+    <!--<img src="{{imageHost}}img/avatar/{{question.asker}}.jpeg" class="header-image">-->
+    <!--</div>-->
+    <mat-card-title>{{article.authorName}}</mat-card-title>
+    <mat-card-subtitle>{{article.createDate | date:'yyyy-MM-dd HH:mm:ss'}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="container mt-xl-4 mt-4">
+    <a routerLink="/article/detail/{{article.id}}">
+      <div class="row">
+        <div class="col-xl-2" *ngIf="article.fileList">
+          <img mat-card-image src="{{imageHost}}{{article.fileList[0].filePath}}{{article.fileList[0].type}}">
+        </div>
+        <div class="col-xl-10">
+          <div class="container">
+            <div class="row">
+              {{article.title}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>
+        {{article.summary}}
+      </p>
+    </a>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="ml-3">
+      <!--<span class="primary-color hand" (click)="zan(question)" title="点赞"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{question.loveNumber}}</span>-->
+      <span class="primary-color hand" routerLink="/article/detail/{{article.id}}" title="详情"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon></span>
+    </div>
+  </mat-card-actions>
+</mat-card>
