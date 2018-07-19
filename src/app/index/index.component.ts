@@ -11,11 +11,11 @@ import {Consts} from '../common/consts';
 import {ImageFile} from '../model/image-file';
 import {MatSnackBar} from '@angular/material';
 import {MessageService} from '../service/message.service';
-import {faHeart} from '@fortawesome/free-solid-svg-icons';
-import {faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {DomSanitizer} from '@angular/platform-browser';
 import {LoveService} from '../service/love.service';
-import {FocusService} from '../service/focus.service';
+import {Love} from '../model/love';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-index',
@@ -50,7 +50,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private articleService: ArticleService, private snackBar: MatSnackBar,
               private messageService: MessageService, private sanitizer: DomSanitizer,
-              private loveService: LoveService, private focusService: FocusService) {
+              private loveService: LoveService, private toastr: ToastrService) {
     // media.asObservable()
     //   .pipe(
     //     filter((change: MediaChange) => change.mqAlias === 'xs')
@@ -73,17 +73,35 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  remove(brick) {
-    // this.bricks.splice(this.bricks.indexOf(brick), 1);
-    this.articleList.splice(this.articleList.indexOf(brick), 1);
-  }
+  // remove(brick) {
+  //   // this.bricks.splice(this.bricks.indexOf(brick), 1);
+  //   this.articleList.splice(this.articleList.indexOf(brick), 1);
+  // }
 
   zan(article: Article) {
-    this.loveService.save(article.id, '1');
+    const love = new Love();
+    love.id = article.id;
+    love.type = 1;
+    love.category = 0;
+    love.loveNumber = 1;
+    this.loveService.save(love).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.toastr.success('亲，点赞成功！');
+      }
+    });
   }
 
   focus(article: Article) {
-    this.focusService.save(article.id, '1');
+    const love = new Love();
+    love.id = article.id;
+    love.type = 1;
+    love.category = 2;
+    love.focusNumber = 1;
+    this.loveService.save(love).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.toastr.success('亲，关注成功！');
+      }
+    });
   }
 
   ngOnInit() {
@@ -127,6 +145,8 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
       const brick: Article = new Article();
       brick.summary = this.sanitizer.bypassSecurityTrustHtml(article.summary);
       brick.id = article.id;
+      brick.loveNumber = article.loveNumber;
+      brick.focusNumber = article.focusNumber;
       const fileList = article.fileList;
       if (fileList !== undefined && fileList !== null) {
         const img: ImageFile = fileList[0];
