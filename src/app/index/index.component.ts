@@ -87,6 +87,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loveService.save(love).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         this.toastr.success('亲，点赞成功！');
+        article.loveNumber++;
       }
     });
   }
@@ -100,6 +101,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loveService.save(love).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         this.toastr.success('亲，关注成功！');
+        article.focusNumber++;
       }
     });
   }
