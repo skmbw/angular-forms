@@ -1,4 +1,4 @@
-<mat-card *ngFor="let article of articleList" class="col-12">
+<mat-card *ngFor="let article of articleList" class="col-12 mt-1">
   <mat-card-header>
     <!--<div mat-card-avatar class="mr-2">-->
     <!--<img src="{{imageHost}}img/avatar/{{question.asker}}.jpeg" class="header-image">-->
@@ -21,13 +21,13 @@
           </div>
         </div>
       </div>
-      <p>
-        {{article.summary}}
-      </p>
+      <!--<p>-->
+        <!--{{article.summary}}-->
+      <!--</p>-->
     </a>
   </mat-card-content>
   <mat-card-actions>
-    <div class="ml-3">
+    <div class="ml-4">
       <!--<span class="primary-color hand" (click)="zan(question)" title="点赞"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{question.loveNumber}}</span>-->
       <span class="primary-color hand" routerLink="/article/detail/{{article.id}}" title="详情"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon></span>
     </div>

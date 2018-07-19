@@ -16,11 +16,12 @@ export class UserCenterComponent implements OnInit {
 
   url = Consts.IMAGE_HOST;
   user: User = new User();
+  userId: string = null;
 
   ngOnInit() {
     this.router.params.subscribe(params => {
-      const userId = params['id'];
-      this.userService.detail(userId).subscribe(jsonBean => {
+      this.userId = params['id'];
+      this.userService.detail(this.userId).subscribe(jsonBean => {
         if (jsonBean.code === 1) {
           this.user = jsonBean.data;
         }

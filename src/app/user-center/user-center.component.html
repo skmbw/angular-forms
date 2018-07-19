@@ -1,45 +1,52 @@
 <div class="container">
   <mat-card class="example-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+      <!--<div mat-card-avatar class="example-header-image"></div>-->
       <mat-card-title>{{user.name}}</mat-card-title>
       <mat-card-subtitle>{{user.title}}</mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content class="container mt-xl-4 mt-4">
+    <mat-card-content class="container" style="margin-left: -10px;">
       <div class="row">
-        <div class="col-xl-2">
-          <img mat-card-image src="{{url}}{{user.avatar}}" alt="头像">
+        <div class="col-lg-2">
+          <img src="{{url}}{{user.avatar}}" alt="头像" class="img-fluid col-sm-12">
         </div>
-        <div class="col-xl-10">
-          <div class="container">
-            <div class="row">
-
-            </div>
-          </div>
+        <div class="col-lg-10">
+          <table class="table table-bordered">
+            <tr>
+              <th>文章数</th><th>提问数</th><th>回答数</th><th>评论数</th>
+            </tr>
+            <tr>
+              <td>345</td><td>123</td><td>33</td><td>33</td>
+            </tr>
+            <tr>
+              <th>总收入</th><th>总支出</th><th>被关注数</th><th>排行榜</th>
+            </tr>
+            <tr>
+              <td>345</td><td>123</td><td>33</td><td>33</td>
+            </tr>
+          </table>
         </div>
       </div>
       <p>
-        我这里是用户的介绍啊，不想当裁缝的司机不是好厨子。The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
+        {{user.summary}}
       </p>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>点赞</button>
-      <button mat-button>关注</button>
-    </mat-card-actions>
+    <!--<mat-card-actions>-->
+      <!--<button mat-button>点赞</button>-->
+      <!--<button mat-button>关注</button>-->
+    <!--</mat-card-actions>-->
   </mat-card>
 
   <mat-tab-group class="mt-xl-4 mt-md-4 mt-4">
     <mat-tab label="问题">
-      <app-question-list></app-question-list>
+      <app-question-list [userId]="userId"></app-question-list>
     </mat-tab>
     <mat-tab label="回答">
 
     </mat-tab>
     <mat-tab label="文章">
-      <app-article-list></app-article-list>
+      <app-article-list [userId]="userId"></app-article-list>
     </mat-tab>
     <mat-tab label="订单">
 

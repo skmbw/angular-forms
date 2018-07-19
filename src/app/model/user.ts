@@ -12,7 +12,10 @@ export class User {
               public gender?: number,
               public tokenId?: string,
               public title?: string,
-              public avatar?: string) {
+              public avatar?: string,
+              public summary?: string,
+              public birthday?: string,
+              public signature?: string) {
 
   }
 }

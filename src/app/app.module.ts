@@ -15,6 +15,7 @@ import {
   MatCommonModule,
   MatDividerModule,
   MatFormFieldModule,
+  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -117,6 +118,7 @@ import {FocusService} from './service/focus.service';
     MatTableModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
+    MatGridListModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     // 如果不在这里配置，chrome会提示脏检查错误
