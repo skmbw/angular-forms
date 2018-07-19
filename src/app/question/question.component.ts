@@ -3,7 +3,7 @@ import {QuestionService} from '../service/question.service';
 import {Question} from '../model/question';
 import {MatSnackBar} from '@angular/material';
 import {Consts} from '../common/consts';
-import {faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {ToastrService} from 'ngx-toastr';
 import {LoveService} from '../service/love.service';
 import {Love} from '../model/love';
@@ -19,6 +19,7 @@ export class QuestionComponent implements OnInit {
   imageHost = Consts.IMAGE_HOST;
   faHeart = faHeart;
   faPlus = faPlus;
+  faBars = faBars;
 
   constructor(private questionService: QuestionService, private snackBar: MatSnackBar,
               private toastr: ToastrService, private loveService: LoveService) {
