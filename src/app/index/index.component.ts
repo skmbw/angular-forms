@@ -23,28 +23,16 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
-  // 注入DomSanitizer然后使用bypassSecurityTrustHtml转换html内容，这样就能显示html了
-  // Inject AngularMasonryComponent instance from template
   @ViewChild(AngularMasonryComponent) masonry: AngularMasonryComponent;
-  // columnTop: string;
   articleList: Article[] = [];
   jsonBean: JsonBean = {};
   page = 1;
   subscription: Subscription;
   faHeart = faHeart;
   faPlus = faPlus;
-  // Options
   options: MasonryOptions = {
     transitionDuration: '0.3s'
   };
-  // ObservableMedia 并不是真正意义上的 Observable. 它仅仅是一个被用来暴露额外方法 如 isActive()的外壳。
-  // 用.asObservable() 来转换成Observable，然后就可以用RxJs操作符了 如such as media.asObservable().filter(….).
-  // constructor(media: ObservableMedia, private articleService: ArticleService, private snackBar: MatSnackBar) {
-  //   media.asObservable()
-  //     .pipe(
-  //       filter((change: MediaChange) => change.mqAlias === 'xs')
-  //     ).subscribe(() => this.loadMobileContent());
-  // }
 
   constructor(private articleService: ArticleService, private snackBar: MatSnackBar,
               private messageService: MessageService, private sanitizer: DomSanitizer,
@@ -56,7 +44,6 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.masonry.layoutComplete.subscribe(() => {
-      // console.log('layout');
     });
   }
 
@@ -113,7 +100,10 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   loadMore() {
-    this.articleService.list(this.page).subscribe(articles => {
+    const article = new Article();
+    article.page = this.page;
+    article.pageSize = 20;
+    this.articleService.list(article).subscribe(articles => {
       this.jsonBean = articles;
 
       if (this.jsonBean.code !== 1) {

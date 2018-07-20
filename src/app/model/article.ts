@@ -98,4 +98,6 @@ export class Article {
   fileList: ImageFile[];
   image: string;
   content: string;
+  page?: number;
+  pageSize?: number;
 }

@@ -39,7 +39,10 @@ export class ArticleListComponent implements OnInit {
         startWith({}),
         switchMap(() => {
           // this.isLoadingResults = true;
-          return this.articleService.list(this.paginator.pageIndex + 1);
+          const article = new Article();
+          article.page = this.paginator.pageIndex + 1;
+          article.firstFree = true;
+          return this.articleService.list(article);
         }),
         map(jsonBean => {
           // this.isLoadingResults = false;

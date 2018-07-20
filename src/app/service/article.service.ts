@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {JsonBean} from '../model/jsonbean';
 import {Consts} from '../common/consts';
 import {CommonService} from './common.service';
 import {Article} from '../model/article';
+import {JsUtils} from '../common/js-utils';
 
 @Injectable()
 export class ArticleService extends CommonService {
@@ -14,8 +15,13 @@ export class ArticleService extends CommonService {
     super();
   }
 
-  list(page: number): Observable<JsonBean> {
-    return this.httpClient.get<JsonBean>(Consts.URL + 'article/list?pageSize=10&page=' + page)
+  list(article: Article): Observable<JsonBean> {
+    const body = JsUtils.toQueryString(article);
+    return this.httpClient.post<JsonBean>(Consts.URL + 'article/list', body,
+      {
+        headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded;'}),
+        responseType: 'json'
+      })
       .pipe(
         catchError(this.handleError('', {}))
       );
