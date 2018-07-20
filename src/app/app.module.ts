@@ -13,6 +13,7 @@ import {
   MatCardModule,
   MatCheckboxModule,
   MatCommonModule,
+  MatDialogModule,
   MatDividerModule,
   MatFormFieldModule,
   MatGridListModule,
@@ -65,6 +66,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {LoveService} from './service/love.service';
 import {FocusService} from './service/focus.service';
 import {MyAnswerComponent} from './my-answer/my-answer.component';
+import {PasswordComponent} from './password/password.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,8 @@ import {MyAnswerComponent} from './my-answer/my-answer.component';
     AnswerComponent,
     AnswerListComponent,
     HtmlPipe,
-    MyAnswerComponent
+    MyAnswerComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -118,6 +121,7 @@ import {MyAnswerComponent} from './my-answer/my-answer.component';
     MatTabsModule,
     MatPaginatorModule,
     MatTableModule,
+    MatDialogModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
     MatGridListModule,
@@ -127,6 +131,10 @@ import {MyAnswerComponent} from './my-answer/my-answer.component';
     ToastrModule.forRoot({timeOut: 3000,
       positionClass: 'toast-top-center'}),
     FontAwesomeModule
+  ],
+  // dialog content factory，里面的组件作为dialog的内容
+  entryComponents: [
+    PasswordComponent
   ],
   providers: [
     ArticleService,

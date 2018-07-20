@@ -3,6 +3,8 @@ import {UserService} from '../service/user.service';
 import {User} from '../model/user';
 import {ActivatedRoute} from '@angular/router';
 import {Consts} from '../common/consts';
+import {MatDialog} from '@angular/material';
+import {PasswordComponent} from '../password/password.component';
 
 @Component({
   selector: 'app-user-center',
@@ -11,12 +13,14 @@ import {Consts} from '../common/consts';
 })
 export class UserCenterComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: ActivatedRoute) {
+  constructor(private userService: UserService, private router: ActivatedRoute,
+              private dialog: MatDialog) {
   }
 
   url = Consts.IMAGE_HOST;
   user: User = new User();
   userId: string = null;
+  result: any = null;
 
   ngOnInit() {
     this.router.params.subscribe(params => {
@@ -29,4 +33,16 @@ export class UserCenterComponent implements OnInit {
     });
   }
 
+  updatePassword() {
+    const dialogRef = this.dialog.open(PasswordComponent, {
+      width: '650px',
+      height: '400px',
+      data: {name: this.user.name, id: this.user.id}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.result = result;
+    });
+  }
 }
