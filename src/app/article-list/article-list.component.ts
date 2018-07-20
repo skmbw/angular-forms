@@ -41,10 +41,12 @@ export class ArticleListComponent implements OnInit {
           // this.isLoadingResults = true;
           return this.articleService.list(this.paginator.pageIndex + 1);
         }),
-        map(data => {
+        map(jsonBean => {
           // this.isLoadingResults = false;
-          this.resultLength = data.data.length;
-          return data.data;
+          // 这个记录数，不给真实的数据，后面调整吧
+          this.resultLength = 35;
+          // this.resultLength = jsonBean.data.length;
+          return jsonBean.data;
         }),
         catchError(() => {
           // this.isLoadingResults = false;

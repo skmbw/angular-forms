@@ -29,9 +29,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   // columnTop: string;
   articleList: Article[] = [];
   jsonBean: JsonBean = {};
-  // bricks: any[] = [];
-  page = 0;
-  // userName: string;
+  page = 1;
   subscription: Subscription;
   faHeart = faHeart;
   faPlus = faPlus;
@@ -51,32 +49,16 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private articleService: ArticleService, private snackBar: MatSnackBar,
               private messageService: MessageService, private sanitizer: DomSanitizer,
               private loveService: LoveService, private toastr: ToastrService) {
-    // media.asObservable()
-    //   .pipe(
-    //     filter((change: MediaChange) => change.mqAlias === 'xs')
-    //   ).subscribe(() => this.loadMobileContent());
     this.subscription = this.messageService.getMessage().subscribe(message => {
-      // this.articleList.push(null);
       // 这里执行查询操作，然后刷新瀑布流
-      // console.log('收到数据' + message.text.toString());
     });
   }
-
-  // 监听布局的变化，重新加载内容
-  // loadMobileContent() {
-  // console.log('loadMobileContent');
-  // }
 
   ngAfterViewInit() {
     this.masonry.layoutComplete.subscribe(() => {
       // console.log('layout');
     });
   }
-
-  // remove(brick) {
-  //   // this.bricks.splice(this.bricks.indexOf(brick), 1);
-  //   this.articleList.splice(this.articleList.indexOf(brick), 1);
-  // }
 
   zan(article: Article) {
     const love = new Love();
@@ -107,43 +89,11 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this.columnTop = '0';
-    // fromEvent(window, 'scroll').subscribe((event) => {
-    //   this.onWindowScroll();
-    // });
-
-    // 初始化
-    this.articleService.list(this.page).subscribe(articles => {
-      this.jsonBean = articles;
-      // console.log(this.articleList.length);
-      this.buildBricks();
-    });
-  }
-
-  onWindowScroll() {
-    if (this.getScrollTop() + this.getClientHeight() === this.getScrollHeight()) {
-      // console.log('滚动到底部');
-      this.articleService.list(this.page).subscribe(articles => {
-        this.jsonBean = articles;
-
-        if (this.jsonBean.code !== 1) {
-          // console.log('没有更多数据了。');
-          this.snackBar.open('没有更多数据了，亲！', '确定', {
-            duration: 2000,
-          });
-        } else {
-          this.buildBricks();
-          this.page++;
-          // console.log(this.page);
-        }
-      });
-    }
+    this.loadMore();
   }
 
   private buildBricks() {
-    // const articleList: Article[] = [this.jsonBean.data];
     for (const article of this.jsonBean.data) {
-      // const brick: Brick = new Brick();
       const brick: Article = new Article();
       brick.summary = this.sanitizer.bypassSecurityTrustHtml(article.summary);
       brick.id = article.id;
@@ -154,7 +104,6 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
         const img: ImageFile = fileList[0];
         brick.image = Consts.IMAGE_HOST + img.filePath + img.type;
       }
-      // this.bricks.push(brick);
       this.articleList.push(brick);
     }
   }
@@ -168,45 +117,13 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
       this.jsonBean = articles;
 
       if (this.jsonBean.code !== 1) {
-        // console.log('没有更多数据了。');
         this.snackBar.open('没有更多数据了，亲！', '确定', {
           duration: 2000,
         });
       } else {
         this.buildBricks();
         this.page++;
-        // console.log(this.page);
       }
     });
-  }
-
-  // 获取滚动条当前的位置
-  getScrollTop() {
-    let scrollTop = 0;
-    if (document.documentElement && document.documentElement.scrollTop) {
-      scrollTop = document.documentElement.scrollTop;
-    } else if (document.body) {
-      scrollTop = document.body.scrollTop;
-    }
-    return scrollTop;
-  }
-
-  // 获取当前可是范围的高度
-  getClientHeight() {
-    let clientHeight = 0;
-    if (document.body.clientHeight && document.documentElement.clientHeight) {
-      clientHeight = Math.min(document.body.clientHeight,
-        document.documentElement.clientHeight);
-    } else {
-      clientHeight = Math.max(document.body.clientHeight,
-        document.documentElement.clientHeight);
-    }
-    return clientHeight;
-  }
-
-  // 获取文档完整的高度
-  getScrollHeight() {
-    return Math.max(document.body.scrollHeight,
-      document.documentElement.scrollHeight);
   }
 }
