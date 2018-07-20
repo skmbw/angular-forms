@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Consts} from '../common/consts';
 import {MatDialog} from '@angular/material';
 import {PasswordComponent} from '../password/password.component';
+import {ProfileComponent} from '../profile/profile.component';
 
 @Component({
   selector: 'app-user-center',
@@ -20,6 +21,7 @@ export class UserCenterComponent implements OnInit {
   url = Consts.IMAGE_HOST;
   user: User = new User();
   userId: string = null;
+
   // result: any = null;
 
   ngOnInit() {
@@ -34,16 +36,18 @@ export class UserCenterComponent implements OnInit {
   }
 
   updatePassword() {
-    // const dialogRef = this.dialog.open(PasswordComponent, {
     this.dialog.open(PasswordComponent, {
       width: '650px',
       height: '400px',
       data: {name: this.user.name, id: this.user.id}
     });
+  }
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   this.result = result;
-    // });
+  updateProfile() {
+    this.dialog.open(ProfileComponent, {
+      width: '650px',
+      height: '400px',
+      data: {name: this.user.name, id: this.user.id}
+    });
   }
 }

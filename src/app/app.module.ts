@@ -67,6 +67,7 @@ import {LoveService} from './service/love.service';
 import {FocusService} from './service/focus.service';
 import {MyAnswerComponent} from './my-answer/my-answer.component';
 import {PasswordComponent} from './password/password.component';
+import {ProfileComponent} from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import {PasswordComponent} from './password/password.component';
     AnswerListComponent,
     HtmlPipe,
     MyAnswerComponent,
-    PasswordComponent
+    PasswordComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -134,7 +136,8 @@ import {PasswordComponent} from './password/password.component';
   ],
   // dialog content factory，里面的组件作为dialog的内容
   entryComponents: [
-    PasswordComponent
+    PasswordComponent,
+    ProfileComponent
   ],
   providers: [
     ArticleService,
