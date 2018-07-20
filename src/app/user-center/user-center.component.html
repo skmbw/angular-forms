@@ -1,8 +1,8 @@
 <div class="container">
   <mat-card class="example-card">
     <mat-card-header>
-      <div mat-card-avatar>
-        <img src="{{url}}{{user.avatar}}" alt="头像" class="img-fluid">
+      <div mat-card-avatar class="mr-2">
+        <img src="{{url}}{{user.avatar}}" alt="头像" class="header-image">
       </div>
       <mat-card-title>{{user.name}}</mat-card-title>
       <mat-card-subtitle>{{user.title}}</mat-card-subtitle>
@@ -16,25 +16,25 @@
         </div>
         <div class="col-md-4">
           <b class="font-size-lg">帐号：</b>
-          <a> {{user.account}}</a>
+          <span class="primary-color"> {{user.account}}</span>
         </div>
         <div class="col-md-4">
           <b class="font-size-lg">昵称：</b>
-          <a>{{user.nickName}}</a>
+          <span class="primary-color">{{user.nickName}}</span>
         </div>
       </div>
       <div class="row mb-2">
         <div class="col-md-4">
           <b class="font-size-lg">手机：</b>
-          <a>model.mobile</a>
+          <span class="primary-color">{{user.mobile}}</span>
         </div>
         <div class="col-md-4">
           <b class="font-size-lg">微信：</b>
-          <a>model.weixin</a>
+          <span class="primary-color">{{user.weixin}}</span>
         </div>
         <div class="col-md-4">
           <b class="font-size-lg">支付宝：</b>
-          <a>model.alipay</a>
+          <span class="primary-color">{{user.alipay}}</span>
         </div>
       </div>
 
@@ -42,7 +42,7 @@
         <!--<div class="col-lg-2 col-sm-12">-->
           <!--<img src="{{url}}{{user.avatar}}" alt="头像" class="img-fluid">-->
         <!--</div>-->
-        <div class="col-lg-10">
+        <div class="col-lg-12">
           <table class="table table-bordered">
             <tr>
               <th>文章数</th><th>提问数</th><th>回答数</th><th>评论数</th>
@@ -80,7 +80,7 @@
       <app-article-list [userId]="userId"></app-article-list>
     </mat-tab>
     <mat-tab label="订单">
-
+      <app-order-list></app-order-list>
     </mat-tab>
     <mat-tab label="账户">
       <app-account></app-account>

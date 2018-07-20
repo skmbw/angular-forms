@@ -16,7 +16,9 @@ export class User {
               public summary?: string,
               public birthday?: string,
               public signature?: string,
-              public nickName?: string) {
+              public nickName?: string,
+              public weixin?: string,
+              public alipay?: string) {
 
   }
 }

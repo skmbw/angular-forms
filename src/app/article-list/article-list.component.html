@@ -3,33 +3,33 @@
     <!--<div mat-card-avatar class="mr-2">-->
     <!--<img src="{{imageHost}}img/avatar/{{question.asker}}.jpeg" class="header-image">-->
     <!--</div>-->
-    <mat-card-title>{{article.authorName}}</mat-card-title>
-    <mat-card-subtitle>{{article.createDate | date:'yyyy-MM-dd HH:mm:ss'}}</mat-card-subtitle>
+    <mat-card-title><a routerLink="/article/detail/{{article.id}}"><span class="font-size-lg">{{article.title}}</span></a></mat-card-title>
+    <mat-card-subtitle>写作时间： {{article.createDate | date:'yyyy-MM-dd HH:mm:ss'}}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content class="container mt-xl-4 mt-4">
-    <a routerLink="/article/detail/{{article.id}}">
-      <div class="row">
-        <div class="col-xl-2" *ngIf="article.fileList">
-          <img mat-card-image src="{{imageHost}}{{article.fileList[0].filePath}}{{article.fileList[0].type}}">
-        </div>
-        <div class="col-xl-10">
-          <div class="container">
-            <div class="row">
-              {{article.title}}
-            </div>
+    <div class="row">
+      <div class="col-xl-2" *ngIf="article.fileList">
+        <img mat-card-image src="{{imageHost}}{{article.fileList[0].filePath}}{{article.fileList[0].type}}">
+      </div>
+      <div class="col-xl-10">
+        <div class="container">
+          <div class="row">
+            {{article.summary}}
           </div>
         </div>
       </div>
-      <!--<p>-->
-        <!--{{article.summary}}-->
-      <!--</p>-->
-    </a>
+    </div>
+    <!--<p>-->
+    <!--{{article.summary}}-->
+    <!--</p>-->
   </mat-card-content>
   <mat-card-actions>
-    <div class="ml-4">
-      <!--<span class="primary-color hand" (click)="zan(question)" title="点赞"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{question.loveNumber}}</span>-->
-      <span class="primary-color hand" routerLink="/article/detail/{{article.id}}" title="详情"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon></span>
+    <!--<span class="primary-color hand" (click)="zan(question)" title="点赞"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{question.loveNumber}}</span>-->
+    <div class="clearfix">
+      <!--<span class="primary-color hand" routerLink="/article/detail/{{article.id}}" title="详情"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon></span>-->
+      <button class="btn btn-outline-success float-right">修改</button>
+      <button class="btn btn-outline-danger mr-3 float-right">删除</button>
     </div>
   </mat-card-actions>
 </mat-card>
