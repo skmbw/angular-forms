@@ -28,4 +28,8 @@ export class UserService extends CommonService {
   detail(id: string): Observable<JsonBean> {
     return this.httpClient.get(Consts.URL + 'user/detail/' + id);
   }
+
+  updatePasswd(user: User): Observable<JsonBean> {
+    return this.httpClient.post(Consts.URL + 'user/updatePassword', user, Consts.JSON);
+  }
 }
