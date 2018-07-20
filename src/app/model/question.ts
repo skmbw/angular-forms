@@ -33,7 +33,9 @@ export class Question {
               public terminal?: number,
               public filePath?: string,
               public type?: string,
-              public account?: string) {
+              public account?: string,
+              public page?: number,
+              public pageSize?: number) {
 
   }
 }

@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http';
 import {Consts} from '../common/consts';
 import {catchError} from 'rxjs/internal/operators';
 import {CommonService} from './common.service';
+import {JsUtils} from '../common/js-utils';
 
 /**
  * 问题服务
@@ -18,7 +19,8 @@ export class QuestionService extends CommonService {
   }
 
   public list(question: Question): Observable<JsonBean> {
-    return this.httpClient.get<JsonBean>(Consts.URL + 'question/list?pageSize=20')
+    const params = JsUtils.toQueryString(question);
+    return this.httpClient.get<JsonBean>(Consts.URL + 'question/list?' + params)
       .pipe(catchError(this.handleError()));
   }
 

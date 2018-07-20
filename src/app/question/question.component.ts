@@ -26,13 +26,7 @@ export class QuestionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.questionService.list({}).subscribe(jsonBean => {
-      if (jsonBean.code === 1) {
-        this.questionList = jsonBean.data;
-      } else {
-        this.snackBar.open(jsonBean.message, null, {duration: 2000});
-      }
-    });
+    this.nextPage();
   }
 
   zan(question: Question) {
@@ -59,6 +53,19 @@ export class QuestionComponent implements OnInit {
       if (jsonBean.code === 1) {
         this.toastr.success('亲，关注成功！');
         question.focusNumber++;
+      }
+    });
+  }
+
+  nextPage() {
+    const question = new Question();
+    question.page = this.page;
+    this.questionService.list(question).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.questionList = jsonBean.data;
+        this.page++;
+      } else {
+        this.snackBar.open(jsonBean.message, null, {duration: 2000});
       }
     });
   }
