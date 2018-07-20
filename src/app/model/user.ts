@@ -15,7 +15,8 @@ export class User {
               public avatar?: string,
               public summary?: string,
               public birthday?: string,
-              public signature?: string) {
+              public signature?: string,
+              public nickName?: string) {
 
   }
 }
