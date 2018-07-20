@@ -64,6 +64,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {LoveService} from './service/love.service';
 import {FocusService} from './service/focus.service';
+import {MyAnswerComponent} from './my-answer/my-answer.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import {FocusService} from './service/focus.service';
     QuestionDetailComponent,
     AnswerComponent,
     AnswerListComponent,
-    HtmlPipe
+    HtmlPipe,
+    MyAnswerComponent
   ],
   imports: [
     BrowserModule,

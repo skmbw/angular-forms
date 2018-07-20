@@ -70,14 +70,14 @@
   </mat-card>
 
   <mat-tab-group class="mt-xl-4 mt-md-4 mt-4">
+    <mat-tab label="文章">
+      <app-article-list [userId]="userId"></app-article-list>
+    </mat-tab>
     <mat-tab label="问题">
       <app-question-list [userId]="userId"></app-question-list>
     </mat-tab>
     <mat-tab label="回答">
-
-    </mat-tab>
-    <mat-tab label="文章">
-      <app-article-list [userId]="userId"></app-article-list>
+      <app-my-answer></app-my-answer>
     </mat-tab>
     <mat-tab label="订单">
       <app-order-list></app-order-list>
