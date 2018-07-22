@@ -45,9 +45,9 @@ export class UserCenterComponent implements OnInit {
 
   updateProfile() {
     this.dialog.open(ProfileComponent, {
-      width: '650px',
-      height: '400px',
-      data: {name: this.user.name, id: this.user.id}
+      width: '900px',
+      height: '700px',
+      data: {name: this.user.name, id: this.user.id, account: this.user.account}
     });
   }
 }

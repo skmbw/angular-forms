@@ -32,4 +32,8 @@ export class UserService extends CommonService {
   updatePasswd(user: User): Observable<JsonBean> {
     return this.httpClient.post(Consts.URL + 'user/updatePassword', user, Consts.JSON);
   }
+
+  updateInfo(user: User): Observable<JsonBean> {
+    return this.httpClient.post(Consts.URL + 'user/update', user, Consts.JSON);
+  }
 }

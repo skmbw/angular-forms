@@ -1,3 +1,41 @@
-<p>
-  profile works!
-</p>
+<div class="container">
+  <form #userForm="ngForm" (ngSubmit)="update()">
+    <div class="row mt-md-4">
+      <h2 class="col-md-12 text-md-center">修改个人信息</h2>
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="姓名" [(ngModel)]="user.name" name="name" #name="ngModel" type="text" required>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="帐号（readonly）" type="text" [(ngModel)]="user.account" name="account" #account="ngModel" readonly>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="手机号码" type="text" [(ngModel)]="user.mobile" name="mobile" #mobile="ngModel">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="昵称" type="text" [(ngModel)]="user.nickName" name="nickName" #nickName="ngModel">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="支付宝帐号" type="text" [(ngModel)]="user.alipay" name="alipay" #alipay="ngModel">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="微信帐号" type="text" [(ngModel)]="user.weixin" name="weixin" #weixin="ngModel">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-12">
+        <input matInput placeholder="简介" type="text" [(ngModel)]="user.summary" name="summary" #summary="ngModel">
+      </mat-form-field>
+    </div>
+
+    <div class="row mt-md-4">
+      <div class="col-md-12">
+        <button type="reset" mat-dialog-close class="col-md-2 col-sm-12 mb-2 btn btn-outline-success mr-2 offset-lg-4 offset-md-4">取 消</button>
+        <button type="submit" class="col-md-2 col-sm-12 mb-2 btn btn-success">修 改</button>
+      </div>
+    </div>
+  </form>
+</div>
