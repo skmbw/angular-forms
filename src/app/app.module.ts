@@ -70,6 +70,7 @@ import {PasswordComponent} from './password/password.component';
 import {ProfileComponent} from './profile/profile.component';
 import { MyCommentComponent } from './my-comment/my-comment.component';
 import { MyFavoriteComponent } from './my-favorite/my-favorite.component';
+import { MyScoreComponent } from './my-score/my-score.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { MyFavoriteComponent } from './my-favorite/my-favorite.component';
     PasswordComponent,
     ProfileComponent,
     MyCommentComponent,
-    MyFavoriteComponent
+    MyFavoriteComponent,
+    MyScoreComponent
   ],
   imports: [
     BrowserModule,
