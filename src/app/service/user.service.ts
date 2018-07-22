@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {JsonBean} from '../model/jsonbean';
 import {User} from '../model/user';
@@ -35,5 +35,15 @@ export class UserService extends CommonService {
 
   updateInfo(user: User): Observable<JsonBean> {
     return this.httpClient.post(Consts.URL + 'user/update', user, Consts.JSON);
+  }
+
+  uploadAvatar(userId: string, image: any): Observable<JsonBean> {
+    // const body = 'userId=' + userId + '&avatarFile=' + image;
+    const data = new FormData();
+    data.append('userId', userId);
+    data.append('avatarFile', image);
+    // 上传文件不要自作多情去添加头部 no multipart boundary was found
+    // https://blog.csdn.net/sanjay_f/article/details/47407063
+    return this.httpClient.post<JsonBean>(Consts.URL + 'user/avatar', data);
   }
 }

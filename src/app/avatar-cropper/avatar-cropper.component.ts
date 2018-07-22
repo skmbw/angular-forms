@@ -10,7 +10,7 @@ import {User} from '../model/user';
   styleUrls: ['./avatar-cropper.component.css']
 })
 export class AvatarCropperComponent implements OnInit {
-
+  user: User;
   imageChangedEvent: any = '';
   croppedImage: any = '';
   croppedFile: any = null;
@@ -20,6 +20,7 @@ export class AvatarCropperComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = this.data;
   }
 
   fileChangeEvent(event: any): void {
@@ -46,6 +47,13 @@ export class AvatarCropperComponent implements OnInit {
   }
 
   upload() {
-    this.dialogRef.close();
+    this.userService.uploadAvatar(this.user.id, this.croppedFile).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.dialogRef.close();
+        this.toastr.success('上传头像成功！');
+      } else {
+        this.toastr.info(jsonBean.message);
+      }
+    });
   }
 }
