@@ -29,6 +29,10 @@
       <mat-form-field class="col-md-12">
         <input matInput placeholder="简介" type="text" [(ngModel)]="user.summary" name="summary" #summary="ngModel">
       </mat-form-field>
+
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="职称" type="text" [(ngModel)]="user.title" name="title" #title="ngModel">
+      </mat-form-field>
     </div>
 
     <div class="row mt-md-4">

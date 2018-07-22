@@ -68,9 +68,11 @@ import {FocusService} from './service/focus.service';
 import {MyAnswerComponent} from './my-answer/my-answer.component';
 import {PasswordComponent} from './password/password.component';
 import {ProfileComponent} from './profile/profile.component';
-import { MyCommentComponent } from './my-comment/my-comment.component';
-import { MyFavoriteComponent } from './my-favorite/my-favorite.component';
-import { MyScoreComponent } from './my-score/my-score.component';
+import {MyCommentComponent} from './my-comment/my-comment.component';
+import {MyFavoriteComponent} from './my-favorite/my-favorite.component';
+import {MyScoreComponent} from './my-score/my-score.component';
+import {AvatarCropperComponent} from './avatar-cropper/avatar-cropper.component';
+import {ImageCropperModule} from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -99,7 +101,8 @@ import { MyScoreComponent } from './my-score/my-score.component';
     ProfileComponent,
     MyCommentComponent,
     MyFavoriteComponent,
-    MyScoreComponent
+    MyScoreComponent,
+    AvatarCropperComponent
   ],
   imports: [
     BrowserModule,
@@ -138,12 +141,14 @@ import { MyScoreComponent } from './my-score/my-score.component';
     // 如果不在这里配置，chrome会提示脏检查错误
     ToastrModule.forRoot({timeOut: 3000,
       positionClass: 'toast-top-center'}),
-    FontAwesomeModule
+    FontAwesomeModule,
+    ImageCropperModule
   ],
   // dialog content factory，里面的组件作为dialog的内容
   entryComponents: [
     PasswordComponent,
-    ProfileComponent
+    ProfileComponent,
+    AvatarCropperComponent
   ],
   providers: [
     ArticleService,

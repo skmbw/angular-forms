@@ -6,6 +6,7 @@ import {Consts} from '../common/consts';
 import {MatDialog} from '@angular/material';
 import {PasswordComponent} from '../password/password.component';
 import {ProfileComponent} from '../profile/profile.component';
+import {AvatarCropperComponent} from '../avatar-cropper/avatar-cropper.component';
 
 @Component({
   selector: 'app-user-center',
@@ -45,6 +46,14 @@ export class UserCenterComponent implements OnInit {
 
   updateProfile() {
     this.dialog.open(ProfileComponent, {
+      width: '900px',
+      height: '700px',
+      data: {name: this.user.name, id: this.user.id, account: this.user.account}
+    });
+  }
+
+  updateAvatar() {
+    this.dialog.open(AvatarCropperComponent, {
       width: '900px',
       height: '700px',
       data: {name: this.user.name, id: this.user.id, account: this.user.account}

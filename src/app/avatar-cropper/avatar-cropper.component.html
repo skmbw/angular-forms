@@ -1,0 +1,31 @@
+<div class="container">
+  <h2 class="col-md-12 text-md-center">上传头像</h2>
+  <div class="row col-md-12">
+    <input class="offset-md-4" type="file" (change)="fileChangeEvent($event)"/>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="1"
+        [resizeToWidth]="128"
+        format="jpeg"
+        (imageCroppedBase64)="imageCropped($event)"
+        (imageCroppedFile)="imageCroppedFile($event)"
+        (imageLoaded)="imageLoaded()"
+        (loadImageFailed)="loadImageFailed()"
+      ></image-cropper>
+    </div>
+    <div class="col-md-2">
+      <img [src]="croppedImage" class="img-fluid"/>
+    </div>
+  </div>
+
+  <div class="row mt-md-4">
+    <div class="col-md-12">
+      <button type="button" mat-dialog-close class="col-md-2 col-sm-12 mb-2 btn btn-outline-success mr-2 offset-lg-4 offset-md-4">取 消</button>
+      <button type="button" (click)="upload()" class="col-md-2 col-sm-12 mb-2 btn btn-success">上 传</button>
+    </div>
+  </div>
+</div>
