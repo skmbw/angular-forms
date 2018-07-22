@@ -1,3 +1,26 @@
-<p>
-  my-answer works!
-</p>
+<mat-card *ngFor="let answer of answerList" class="col-12 mt-1">
+  <mat-card-header>
+    <mat-card-title>回答时间： {{answer.answerDate | date:'yyyy-MM-dd HH:mm:ss'}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="container mt-xl-4 mt-4">
+    <a routerLink="/question/detail/{{answer.questionId}}">
+      <div class="row">
+        <!--<div class="col-xl-2" *ngIf="answer.answerUserId">-->
+          <!--<img mat-card-image src="{{imageHost}}{{answer.filePath}}{{answer.type}}">-->
+        <!--</div>-->
+        <div class="col-xl-10">
+          <div class="container">
+            <div class="row" [innerHTML]="answer.content | html"></div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="ml-4">
+      <!--<span class="primary-color hand" (click)="zan(answer)" title="点赞"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{answer.loveNumber}}</span>-->
+      <span class="primary-color hand" routerLink="/question/detail/{{answer.questionId}}" title="关联问题">关联问题</span>
+    </div>
+  </mat-card-actions>
+</mat-card>
