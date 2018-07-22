@@ -68,6 +68,7 @@ import {FocusService} from './service/focus.service';
 import {MyAnswerComponent} from './my-answer/my-answer.component';
 import {PasswordComponent} from './password/password.component';
 import {ProfileComponent} from './profile/profile.component';
+import { MyCommentComponent } from './my-comment/my-comment.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import {ProfileComponent} from './profile/profile.component';
     HtmlPipe,
     MyAnswerComponent,
     PasswordComponent,
-    ProfileComponent
+    ProfileComponent,
+    MyCommentComponent
   ],
   imports: [
     BrowserModule,
