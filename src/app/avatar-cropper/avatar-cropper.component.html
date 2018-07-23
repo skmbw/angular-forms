@@ -11,11 +11,10 @@
         [aspectRatio]="1"
         [resizeToWidth]="128"
         format="jpeg"
-        (imageCroppedBase64)="imageCropped($event)"
         (imageCroppedFile)="imageCroppedFile($event)"
         (imageLoaded)="imageLoaded()"
-        (loadImageFailed)="loadImageFailed()"
-      ></image-cropper>
+        (loadImageFailed)="loadImageFailed()">
+      </image-cropper>
     </div>
     <div class="col-md-2">
       <img [src]="croppedImage" class="img-fluid"/>
