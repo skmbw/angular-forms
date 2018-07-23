@@ -12,7 +12,7 @@ import {User} from '../model/user';
 export class AvatarCropperComponent implements OnInit {
   user: User;
   imageChangedEvent: any = '';
-  // croppedImage: any = '';
+  croppedImage: any = '';
   croppedFile: any = null;
 
   constructor(private userService: UserService, private toastr: ToastrService,
@@ -28,9 +28,9 @@ export class AvatarCropperComponent implements OnInit {
   }
 
   // base64 image
-  // imageCropped(image: string) {
-  //   this.croppedImage = image;
-  // }
+  imageCropped(image: string) {
+    this.croppedImage = image;
+  }
 
   // file image
   imageCroppedFile(image: any) {

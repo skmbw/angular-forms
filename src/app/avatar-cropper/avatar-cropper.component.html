@@ -11,6 +11,7 @@
         [aspectRatio]="1"
         [resizeToWidth]="128"
         format="jpeg"
+        (imageCroppedBase64)="imageCropped($event)"
         (imageCroppedFile)="imageCroppedFile($event)"
         (imageLoaded)="imageLoaded()"
         (loadImageFailed)="loadImageFailed()">
