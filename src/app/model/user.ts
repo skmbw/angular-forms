@@ -19,7 +19,8 @@ export class User {
               public signature?: string,
               public nickName?: string,
               public weixin?: string,
-              public alipay?: string) {
+              public alipay?: string,
+              public email?: string) {
 
   }
 }

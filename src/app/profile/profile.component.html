@@ -15,7 +15,7 @@
       </mat-form-field>
 
       <mat-form-field class="col-md-6">
-        <input matInput placeholder="昵称" type="text" [(ngModel)]="user.nickName" name="nickName" #nickName="ngModel">
+        <input matInput placeholder="邮箱" type="text" [(ngModel)]="user.email" name="email" #email="ngModel">
       </mat-form-field>
 
       <mat-form-field class="col-md-6">
@@ -26,12 +26,27 @@
         <input matInput placeholder="微信帐号" type="text" [(ngModel)]="user.weixin" name="weixin" #weixin="ngModel">
       </mat-form-field>
 
-      <mat-form-field class="col-md-12">
-        <input matInput placeholder="简介" type="text" [(ngModel)]="user.summary" name="summary" #summary="ngModel">
+      <mat-form-field class="col-md-6">
+        <mat-select placeholder="性别" [(ngModel)]="user.gender" name="gender" #gender="ngModel">
+          <mat-option value="1">男</mat-option>
+          <mat-option value="2">女</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="生日" type="date" [(ngModel)]="user.birthday" name="birthday" #birthday="ngModel">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="昵称" type="text" [(ngModel)]="user.nickName" name="nickName" #nickName="ngModel">
       </mat-form-field>
 
       <mat-form-field class="col-md-6">
         <input matInput placeholder="职称" type="text" [(ngModel)]="user.title" name="title" #title="ngModel">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-12">
+        <textarea matInput placeholder="简介" type="text" [(ngModel)]="user.summary" name="summary" #summary="ngModel"></textarea>
       </mat-form-field>
     </div>
 
