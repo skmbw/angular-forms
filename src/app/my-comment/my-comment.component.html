@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngFor="let comment of commentList" class="mt-3" style="">
+  <div *ngFor="let comment of commentList" class="mt-3">
     <div class="row col-12">{{comment.commentDate}}</div>
     <div [innerHTML]="comment.content" class="row col-12 mt-2"></div>
     <div class="row col-12 mt-3"><button class="btn btn-outline-success" routerLink="/article/detail/{{comment.articleId}}">关联文章</button></div>
@@ -7,6 +7,6 @@
     <mat-divider class="mt-2"></mat-divider>
   </div>
   <div *ngIf="commentList.length === 0" class="row col-12 mt-3">
-    您还没有人吐槽过，来一发吧，亲！
+    您还没有吐槽过，亲！
   </div>
 </div>

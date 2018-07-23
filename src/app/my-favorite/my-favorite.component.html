@@ -1,3 +1,23 @@
-<p>
-  my-favorite works!
-</p>
+<div class="container">
+  <div *ngFor="let model of favoriteList" class="mt-3">
+    <div class="row col-12">{{model.favoriteDate}}</div>
+    <div [ngSwitch]="model.targetType">
+      <div *ngSwitchCase="1">
+        <a routerLink="/article/detail/{{model.targetId}}">
+          <div [innerHTML]="model.remark" class="row col-12 mt-2"></div>
+        </a>
+        <div class="row col-12 mt-3">分类：<span class="primary-color">文章</span></div>
+      </div>
+      <div *ngSwitchCase="2">
+        <a routerLink="/article/detail/{{model.targetId}}">
+          <div [innerHTML]="model.remark" class="row col-12 mt-2"></div>
+        </a>
+        <div class="row col-12 mt-3">分类：<span class="primary-color">用户</span></div>
+      </div>
+    </div>
+    <mat-divider class="mt-2"></mat-divider>
+  </div>
+  <div *ngIf="favoriteList.length === 0" class="row col-12 mt-3">
+    您还没有关注过，亲！
+  </div>
+</div>

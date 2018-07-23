@@ -11,5 +11,9 @@ export class Love {
               public focusNumber?: number,
               public loveNumber?: number,
               public number?: number,
-              public despiseNumber?: number) {}
+              public despiseNumber?: number,
+              public targetId?: string,
+              public targetType?: string,
+              public state?: number,
+              public favoriteDate?: string) {}
 }
