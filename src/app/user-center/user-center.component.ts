@@ -48,7 +48,7 @@ export class UserCenterComponent implements OnInit {
     this.dialog.open(ProfileComponent, {
       width: '900px',
       height: '700px',
-      data: {name: this.user.name, id: this.user.id, account: this.user.account}
+      data: this.user
     });
   }
 

@@ -64,7 +64,7 @@ import {CommentService} from './service/comment.service';
 import {ToastrModule} from 'ngx-toastr';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {LoveService} from './service/love.service';
-import {FocusService} from './service/focus.service';
+import {FavoriteService} from './service/favorite.service';
 import {MyAnswerComponent} from './my-answer/my-answer.component';
 import {PasswordComponent} from './password/password.component';
 import {ProfileComponent} from './profile/profile.component';
@@ -160,7 +160,7 @@ import {ImageCropperModule} from 'ngx-image-cropper';
     AnswerService,
     CommentService,
     LoveService,
-    FocusService
+    FavoriteService
   ],
   bootstrap: [AppComponent]
 })
