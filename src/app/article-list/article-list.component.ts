@@ -63,5 +63,13 @@ export class ArticleListComponent implements OnInit {
   }
 
   update(article: Article) {}
-  delete(article: Article) {}
+  delete(article: Article) {
+    this.articleService.delete(article).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.toastr.success('文章删除成功！');
+      } else {
+        this.toastr.info(jsonBean.message);
+      }
+    });
+  }
 }

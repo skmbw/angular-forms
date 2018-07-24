@@ -36,4 +36,12 @@ export class ArticleService extends CommonService {
     return this.httpClient.post<JsonBean>(Consts.URL + 'article/doAdd', article, Consts.JSON)
       .pipe(catchError(this.handleError('', {})));
   }
+
+  delete(article: Article): Observable<JsonBean> {
+    return this.post(Consts.URL + 'article/delete', 'id=' + article.id);
+  }
+
+  update(article: Article): Observable<JsonBean> {
+    return this.postJson(Consts.URL + 'article/update', article);
+  }
 }
