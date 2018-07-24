@@ -3,7 +3,7 @@ import {QuestionService} from '../service/question.service';
 import {ToastrService} from 'ngx-toastr';
 import {Consts} from '../common/consts';
 import {Question} from '../model/question';
-import {faBars} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-question-list',
@@ -16,6 +16,8 @@ export class QuestionListComponent implements OnInit {
   imageHost = Consts.IMAGE_HOST;
   questionList: Question[] = [];
   faBars = faBars;
+  faHeart = faHeart;
+  faPlus = faPlus;
 
   constructor(private questionService: QuestionService, private toastr: ToastrService) {
   }

@@ -6,6 +6,10 @@ import {BaseComponent} from '../common/base.component';
 import {MatSnackBar} from '@angular/material';
 import {Consts} from '../common/consts';
 import {Question} from '../model/question';
+import {faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {LoveService} from '../service/love.service';
+import {Love} from '../model/love';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-question-detail',
@@ -15,9 +19,12 @@ import {Question} from '../model/question';
 export class QuestionDetailComponent extends BaseComponent implements OnInit {
   question: Question = new Question();
   content: any;
+  faHeart = faHeart;
+  faPlus = faPlus;
 
   constructor(private questionService: QuestionService, private router: ActivatedRoute,
-              private sanitizer: DomSanitizer, snackBar: MatSnackBar) {
+              private sanitizer: DomSanitizer, snackBar: MatSnackBar,
+              private loveService: LoveService, private toastr: ToastrService) {
     super(snackBar);
   }
 
@@ -30,9 +37,37 @@ export class QuestionDetailComponent extends BaseComponent implements OnInit {
           this.question = jsonBean.data;
           this.content = this.sanitizer.bypassSecurityTrustHtml(this.question.content.replace('{{image.server}}', Consts.IMAGE_URL));
         } else {
-          this.alert('问题不存在，亲！');
+          this.alert(jsonBean.message);
         }
       });
+    });
+  }
+
+  zan(question: Question) {
+    const love = new Love();
+    love.id = question.id;
+    love.type = 2;
+    love.category = 0;
+    love.loveNumber = 1;
+    this.loveService.save(love).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.toastr.success('亲，点赞成功！');
+        question.loveNumber++;
+      }
+    });
+  }
+
+  focus(question: Question) {
+    const love = new Love();
+    love.id = question.id;
+    love.type = 2;
+    love.category = 2;
+    love.focusNumber = 1;
+    this.loveService.save(love).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.toastr.success('亲，关注成功！');
+        question.focusNumber++;
+      }
     });
   }
 
