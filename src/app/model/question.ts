@@ -35,7 +35,8 @@ export class Question {
               public type?: string,
               public account?: string,
               public page?: number,
-              public pageSize?: number) {
+              public pageSize?: number,
+              public ids?: string[]) {
 
   }
 }

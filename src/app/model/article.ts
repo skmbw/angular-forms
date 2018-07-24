@@ -100,4 +100,5 @@ export class Article {
   content: string;
   page?: number;
   pageSize?: number;
+  ids?: string[];
 }

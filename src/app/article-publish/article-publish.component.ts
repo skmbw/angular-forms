@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Article} from '../model/article';
-import {MatSnackBar} from '@angular/material';
 import {ArticleService} from '../service/article.service';
 import {Consts} from '../common/consts';
 import {TokenStorage} from '../token/token.storage';
@@ -14,18 +13,18 @@ import * as $ from 'jquery';
   styleUrls: ['./article-publish.component.css']
 })
 export class ArticlePublishComponent implements OnInit {
-  // content: string = null;
   article: Article = new Article();
   option: Object = null;
+  ids: string[] = [];
 
-  constructor(private snackBar: MatSnackBar, private articleService: ArticleService,
+  constructor(private articleService: ArticleService,
               private tokenStorage: TokenStorage, private toastr: ToastrService) {
 
   }
 
   ngOnInit() {
     // 在事件中要使用外部的this,因为函数内部也有this所以讲this的值赋给that
-    // const that = this;
+    const that = this;
     // 参数配置
     // https://www.froala.com/wysiwyg-editor/docs/options?utm_expid=98676916-2.gb-QgBReTCCS2F60oBIe_g.0
     // &utm_referrer=https%3A%2F%2Fwww.google.com%2F#language
@@ -54,6 +53,8 @@ export class ArticlePublishComponent implements OnInit {
           image.removeAttr('style');
           image.removeClass();
           image.addClass('img-fluid');
+          const obj = JSON.parse(response);
+          that.ids.push(obj.data[0].name);
         },
         'froalaEditor.table.inserted': function (e, editor, table) {
           // 插入的表格没有样式，因为bootstrap的问题，没有显示出来
@@ -70,26 +71,27 @@ export class ArticlePublishComponent implements OnInit {
 
   public submit() {
     if (this.article.title === null) {
-      this.snackBar.open('文章标题不能为空。', null, {duration: 2000});
+      this.toastr.info('文章标题不能为空。');
       return;
     }
     if (this.article.content === null) {
-      this.snackBar.open('文章内容不能为空。', null, {duration: 2000});
+      this.toastr.info('文章内容不能为空。');
       return;
     }
     this.article.authorId = this.tokenStorage.getUserId();
     this.article.authorName = this.tokenStorage.getAccount();
+    this.article.ids = this.ids;
     this.articleService.save(this.article).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         // 利用双向绑定，reset form
         this.article = new Article();
-        this.snackBar.open('文章保存成功。', null, {duration: 2000});
+        this.toastr.success('发表文章成功，亲。');
       } else {
         let message = jsonBean.message;
         if (message === null) {
           message = '文章保存失败。';
         }
-        this.snackBar.open(message, null, {duration: 2000});
+        this.toastr.info(message);
       }
     });
   }
