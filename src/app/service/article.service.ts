@@ -12,7 +12,7 @@ import {JsUtils} from '../common/js-utils';
 export class ArticleService extends CommonService {
 
   constructor(private httpClient: HttpClient) {
-    super();
+    super(httpClient);
   }
 
   list(article: Article): Observable<JsonBean> {

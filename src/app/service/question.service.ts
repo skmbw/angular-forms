@@ -15,7 +15,7 @@ import {JsUtils} from '../common/js-utils';
 export class QuestionService extends CommonService {
 
   constructor(private httpClient: HttpClient) {
-    super();
+    super(httpClient);
   }
 
   public list(question: Question): Observable<JsonBean> {

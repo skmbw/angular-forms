@@ -11,7 +11,7 @@ import {catchError} from 'rxjs/operators';
 export class CommentService extends CommonService {
 
   constructor(private httpClient: HttpClient) {
-    super();
+    super(httpClient);
   }
 
   save(comment: Comment): Observable<JsonBean> {

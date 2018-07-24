@@ -13,7 +13,7 @@ import {CommonService} from './common.service';
 export class UserService extends CommonService {
 
   constructor(private httpClient: HttpClient) {
-    super();
+    super(httpClient);
   }
 
   register(user: User): Observable<JsonBean> {
