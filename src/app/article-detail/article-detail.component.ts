@@ -12,6 +12,9 @@ import {BaseComponent} from '../common/base.component';
 import {MessageService} from '../service/message.service';
 import {formatDate} from '@angular/common';
 import {ToastrService} from 'ngx-toastr';
+import {Love} from '../model/love';
+import {LoveService} from '../service/love.service';
+import {faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-article-detail',
@@ -23,11 +26,14 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
   content: any;
   comment: Comment = new Comment();
   id: string = null;
+  faHeart = faHeart;
+  faPlus = faPlus;
 
   constructor(private articleService: ArticleService, snackBar: MatSnackBar,
               private router: ActivatedRoute, private sanitizer: DomSanitizer,
               private commentService: CommentService, private tokenStorage: TokenStorage,
-              private messageService: MessageService, private toastr: ToastrService) {
+              private messageService: MessageService, private toastr: ToastrService,
+              private loveService: LoveService) {
     super(snackBar);
   }
 
@@ -67,6 +73,35 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
         this.toastr.success('吐槽成功啊！亲');
       } else {
         this.snackBar.open(value.message, '', {duration: 2000});
+      }
+    });
+  }
+
+  zan(article: Article) {
+    const love = new Love();
+    love.id = article.id;
+    love.type = 1;
+    love.category = 0;
+    love.loveNumber = 1;
+    this.loveService.save(love).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.toastr.success('亲，点赞成功！');
+        article.loveNumber++;
+      }
+    });
+  }
+
+  focus(article: Article) {
+    const love = new Love();
+    love.id = article.id;
+    love.type = 1;
+    love.category = 2;
+    love.focusNumber = 1;
+    love.remark = article.title;
+    this.loveService.save(love).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.toastr.success('亲，关注成功！');
+        article.focusNumber++;
       }
     });
   }

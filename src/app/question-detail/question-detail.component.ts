@@ -63,6 +63,7 @@ export class QuestionDetailComponent extends BaseComponent implements OnInit {
     love.type = 2;
     love.category = 2;
     love.focusNumber = 1;
+    love.remark = question.title;
     this.loveService.save(love).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         this.toastr.success('亲，关注成功！');

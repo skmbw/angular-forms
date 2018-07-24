@@ -67,6 +67,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
     love.type = 1;
     love.category = 2;
     love.focusNumber = 1;
+    love.remark = article.title;
     this.loveService.save(love).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         this.toastr.success('亲，关注成功！');

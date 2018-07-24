@@ -18,6 +18,11 @@
     </div>
   </div>
 
+  <div class="row col-12 mt-2">
+    <span class="primary-color hand" (click)="zan(article)" title="点赞"><fa-icon [icon]="faHeart" class="fa-2x"></fa-icon> {{article.loveNumber}}</span>
+    <span class="primary-color hand ml-4" (click)="focus(article)" title="关注"><fa-icon [icon]="faPlus" class="fa-2x"></fa-icon> {{article.focusNumber}}</span>
+  </div>
+
   <div class="row mt-4">
     <div class="col-xl-12">
       <mat-tab-group>

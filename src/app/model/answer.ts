@@ -14,9 +14,9 @@ export class Answer {
               public state?: number,
               public open?: boolean,
               public ownerId?: string,
-              public focusNumber?: number,
-              public loveNumber?: number,
-              public despiseNumber?: number,
+              public focusNumber: number = 0,
+              public loveNumber: number = 0,
+              public despiseNumber: number = 0,
               // Parameter cannot have question mark and initializer
               // 有默认值就不需要有？号了
               public pageSize: number = 20,
