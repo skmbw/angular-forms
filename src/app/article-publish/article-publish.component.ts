@@ -81,6 +81,7 @@ export class ArticlePublishComponent implements OnInit {
     this.article.authorId = this.tokenStorage.getUserId();
     this.article.authorName = this.tokenStorage.getAccount();
     this.article.ids = this.ids;
+    this.article.firstFree = true;
     this.articleService.save(this.article).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         // 利用双向绑定，reset form

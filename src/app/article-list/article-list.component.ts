@@ -44,6 +44,7 @@ export class ArticleListComponent implements OnInit {
           const article = new Article();
           article.page = this.paginator.pageIndex + 1;
           article.firstFree = true;
+          article.authorId = this.userId;
           return this.articleService.list(article);
         }),
         map(jsonBean => {
