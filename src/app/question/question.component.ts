@@ -62,8 +62,14 @@ export class QuestionComponent implements OnInit {
     question.page = this.page;
     this.questionService.list(question).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
-        this.questionList = jsonBean.data;
-        this.page++;
+        if (jsonBean.data === undefined || jsonBean.data === null || jsonBean.data.length === 0) {
+          this.snackBar.open('没有更多问题了，亲！', null, {duration: 2000});
+        } else {
+          // 改为显示所有数据
+          jsonBean.data.forEach(val => this.questionList.push(val));
+          // this.questionList = jsonBean.data;
+          this.page++;
+        }
       } else {
         this.snackBar.open(jsonBean.message, null, {duration: 2000});
       }
