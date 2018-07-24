@@ -2,7 +2,7 @@
   <div *ngFor="let comment of commentList" class="mt-3">
     <div class="row col-12">{{comment.commentDate}}</div>
     <div [innerHTML]="comment.content" class="row col-12 mt-2"></div>
-    <div class="row col-12 mt-3"><button class="btn btn-outline-success" routerLink="/article/detail/{{comment.articleId}}">关联文章</button></div>
+    <div class="row col-12 mt-3"><a routerLink="/article/detail/{{comment.articleId}}">关联文章</a></div>
     <!--这里不显示，是因为外层的class中有row这个类，可能是使用了浮动和清除的原因-->
     <mat-divider class="mt-2"></mat-divider>
   </div>

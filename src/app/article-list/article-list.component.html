@@ -4,7 +4,10 @@
     <!--<img src="{{imageHost}}img/avatar/{{question.asker}}.jpeg" class="header-image">-->
     <!--</div>-->
     <mat-card-title><a routerLink="/article/detail/{{article.id}}"><span class="font-size-lg">{{article.title}}</span></a></mat-card-title>
-    <mat-card-subtitle>写作时间： {{article.createDate | date:'yyyy-MM-dd HH:mm:ss'}}</mat-card-subtitle>
+    <mat-card-subtitle>写作时间： {{article.createDate | date:'yyyy-MM-dd HH:mm:ss'}}
+      <span class="primary-color ml-3" title="点赞数"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{article.loveNumber}}</span>
+      <span class="primary-color ml-3" title="关注数"><fa-icon [icon]="faPlus" class="fa-lg"></fa-icon> {{article.focusNumber}}</span>
+    </mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content class="container mt-xl-4 mt-4">
@@ -25,11 +28,11 @@
     <!--</p>-->
   </mat-card-content>
   <mat-card-actions>
-    <!--<span class="primary-color hand" (click)="zan(question)" title="点赞"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{question.loveNumber}}</span>-->
+    <!--<span class="primary-color hand mt-2" title="点赞数"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{article.loveNumber}}</span>-->
     <div class="clearfix">
       <!--<span class="primary-color hand" routerLink="/article/detail/{{article.id}}" title="详情"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon></span>-->
-      <button class="btn btn-outline-success float-right">修改</button>
-      <button class="btn btn-outline-danger mr-3 float-right">删除</button>
+      <button (click)="update(article)" class="btn btn-outline-success float-right">修改</button>
+      <button (click)="delete(article)" class="btn btn-outline-danger mr-3 float-right">删除</button>
     </div>
   </mat-card-actions>
 </mat-card>

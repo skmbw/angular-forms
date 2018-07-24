@@ -4,8 +4,11 @@
       <!--<img src="{{imageHost}}img/avatar/{{question.asker}}.jpeg" class="header-image">-->
     <!--</div>-->
     <!--<mat-card-title>{{question.askerName}}</mat-card-title>-->
-    <!--<mat-card-subtitle>{{question.askDate | date:'yyyy-MM-dd HH:mm:ss'}}</mat-card-subtitle>-->
-    <mat-card-title>提问时间： {{question.askDate | date:'yyyy-MM-dd HH:mm:ss'}}</mat-card-title>
+    <mat-card-subtitle>提问时间：{{question.askDate | date:'yyyy-MM-dd HH:mm:ss'}}
+      <span class="primary-color ml-3" title="点赞数"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{question.loveNumber}}</span>
+      <span class="primary-color ml-3" title="关注数"><fa-icon [icon]="faPlus" class="fa-lg"></fa-icon> {{question.focusNumber}}</span>
+    </mat-card-subtitle>
+    <!--<mat-card-title>提问时间：{{question.askDate | date:'yyyy-MM-dd HH:mm:ss'}}</mat-card-title>-->
   </mat-card-header>
 
   <mat-card-content class="container mt-xl-4 mt-4">

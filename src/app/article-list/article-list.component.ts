@@ -6,6 +6,7 @@ import {Consts} from '../common/consts';
 import {MatPaginator} from '@angular/material';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {merge, of} from 'rxjs/index';
+import {faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-article-list',
@@ -19,7 +20,8 @@ export class ArticleListComponent implements OnInit {
   imageHost = Consts.IMAGE_HOST;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   resultLength = 0;
-  // isLoadingResults = false;
+  faHeart = faHeart;
+  faPlus = faPlus;
 
   constructor(private articleService: ArticleService, private toastr: ToastrService) {
   }
@@ -60,4 +62,6 @@ export class ArticleListComponent implements OnInit {
       });
   }
 
+  update(article: Article) {}
+  delete(article: Article) {}
 }
