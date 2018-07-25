@@ -13,7 +13,8 @@
       <div class="clearfix">
         <span class="primary-color hand float-right mr-2" (click)="focus(answer)" title="关注"><fa-icon [icon]="faPlus" class="fa-lg"></fa-icon> {{answer.focusNumber}}</span>
         <span class="primary-color hand float-right mr-4" (click)="zan(answer)" title="点赞"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{answer.loveNumber}}</span>
-        <span *ngIf="asker === userId" class="primary-color hand float-right mr-4" (click)="setupRightAnswer(answer)" title="设为最佳答案"><fa-icon [icon]="faCheck" class="fa-lg"></fa-icon> 最佳答案</span>
+        <span *ngIf="asker === userId" class="primary-color hand mr-4" (click)="setupRightAnswer(answer)" title="设为最佳答案"><fa-icon [icon]="faCheck" class="fa-lg"></fa-icon> 设为最佳答案</span>
+        <span class="primary-color hand ml-2" (click)="reply(answer)" title="回复TA"><fa-icon [icon]="faCommentDots" class="fa-lg"></fa-icon> 回复TA</span>
       </div>
     </div>
     <!--这里不显示，是因为外层的class中有row这个类，可能是使用了浮动和清除的原因-->

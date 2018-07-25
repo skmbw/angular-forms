@@ -6,7 +6,7 @@ import {MatSnackBar} from '@angular/material';
 import {Consts} from '../common/consts';
 import {ActivatedRoute} from '@angular/router';
 import {MessageService} from '../service/message.service';
-import {faCheck, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faCommentDots, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {Love} from '../model/love';
 import {LoveService} from '../service/love.service';
 import {ToastrService} from 'ngx-toastr';
@@ -26,6 +26,7 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
   faHeart = faHeart;
   faPlus = faPlus;
   faCheck = faCheck;
+  faCommentDots = faCommentDots;
   answerList: Answer[] = [];
   imageHost = Consts.IMAGE_HOST;
   userId = null;
@@ -116,5 +117,8 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
         this.toastr.info(jsonBean.message);
       }
     });
+  }
+
+  reply(answer: Answer) {
   }
 }
