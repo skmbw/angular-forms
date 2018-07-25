@@ -6,10 +6,12 @@ import {MatSnackBar} from '@angular/material';
 import {Consts} from '../common/consts';
 import {ActivatedRoute} from '@angular/router';
 import {MessageService} from '../service/message.service';
-import {faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {Love} from '../model/love';
 import {LoveService} from '../service/love.service';
 import {ToastrService} from 'ngx-toastr';
+import {TokenStorage} from '../token/token.storage';
+import {QuestionService} from '../service/question.service';
 
 @Component({
   selector: 'app-answer-list',
@@ -19,14 +21,21 @@ import {ToastrService} from 'ngx-toastr';
 export class AnswerListComponent extends BaseComponent implements OnInit {
   @Input()
   questionId: string;
+  @Input()
+  asker: string;
   faHeart = faHeart;
   faPlus = faPlus;
+  faCheck = faCheck;
   answerList: Answer[] = [];
   imageHost = Consts.IMAGE_HOST;
+  userId = null;
 
   constructor(private answerService: AnswerService, snackBar: MatSnackBar, private router: ActivatedRoute,
-              private messageService: MessageService, private loveService: LoveService, private toastr: ToastrService) {
+              private messageService: MessageService, private loveService: LoveService,
+              private toastr: ToastrService, private tokenStorage: TokenStorage,
+              private questionService: QuestionService) {
     super(snackBar);
+    this.userId = this.tokenStorage.getUserId();
   }
 
   ngOnInit() {
@@ -90,6 +99,21 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
       if (jsonBean.code === 1) {
         this.toastr.success('亲，关注成功！');
         answer.focusNumber++;
+      }
+    });
+  }
+
+  setupRightAnswer(answer: Answer) {
+    const params = new Answer();
+    params.ownerId = this.userId;
+    params.questionId = answer.questionId;
+    params.answerUserId = answer.answerUserId;
+    params.id = answer.id;
+    this.questionService.saveRightAnswer(params).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.toastr.success('设置最佳答案成功，亲！');
+      } else {
+        this.toastr.info(jsonBean.message);
       }
     });
   }

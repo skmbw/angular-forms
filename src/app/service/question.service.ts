@@ -7,6 +7,7 @@ import {Consts} from '../common/consts';
 import {catchError} from 'rxjs/internal/operators';
 import {CommonService} from './common.service';
 import {JsUtils} from '../common/js-utils';
+import {Answer} from '../model/answer';
 
 /**
  * 问题服务
@@ -32,5 +33,9 @@ export class QuestionService extends CommonService {
 
   public detail(id: string): Observable<JsonBean> {
     return this.httpClient.get<JsonBean>(Consts.URL + 'question/detail/' + id).pipe();
+  }
+
+  saveRightAnswer(answer: Answer): Observable<JsonBean> {
+    return this.post(Consts.URL + 'question/bestAnswer', answer).pipe();
   }
 }

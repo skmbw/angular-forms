@@ -28,7 +28,7 @@
     <div class="col-xl-12">
       <mat-tab-group>
         <mat-tab label="用户回答">
-          <app-answer-list [questionId]="question.id"></app-answer-list>
+          <app-answer-list [questionId]="question.id" [asker]="question.asker"></app-answer-list>
         </mat-tab>
         <mat-tab label="谁看了答案">
           <app-order-list [articleId]="question.id"></app-order-list>
