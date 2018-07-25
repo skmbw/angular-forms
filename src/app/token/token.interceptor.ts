@@ -5,7 +5,7 @@ import {TokenStorage} from './token.storage';
 import {Router} from '@angular/router';
 import {tap} from 'rxjs/internal/operators';
 
-const TOKEN_HEADER_KEY = 'Authorization';
+// const TOKEN_HEADER_KEY = 'Authorization';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -15,11 +15,13 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let request = req;
     const token = this.tokenStorage.getToken();
+    const userId = this.tokenStorage.getUserId();
     if (token !== null) {
       // request = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer' + token)});
-      if (req.url.indexOf('github.com') === -1) { // github不能带这个参数，自己的业务带上，这个是测试，后面会去掉
-        request = req.clone({headers: req.headers.set('tokenId', token)});
-      }
+      // if (req.url.indexOf('github.com') === -1) { // github不能带这个参数，自己的业务带上，这个是测试，后面会去掉
+      //   request = req.clone({headers: req.headers.set('tokenId', token)});
+      // }
+      request = req.clone({headers: req.headers.set('tokenId', token).set('userId', userId)});
     }
     // do->tap，同时编程function了
     return next.handle(request).pipe(tap((err: any) => {
