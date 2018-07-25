@@ -43,7 +43,7 @@ export class ArticlePublishComponent implements OnInit {
       },
       // 上传图片，视频等稳健配置
       imageUploadURL: Consts.URL + 'article/upload', // 文件上传接口名称
-      // imageUploadURL:"http://11.177.50.63:9999/emanager/sns/uploadPhoto",//本地路径
+      requestHeaders: {'userId': this.tokenStorage.getUserId()},
       imageUploadParams: {'tokenId': this.tokenStorage.getToken()}, // 接口其他传参,默认为空对象{},
       imageUploadMethod: 'POST', // POST/GET,
       // 事件, 每次输入,就将值传递给父组件, 或者使用失去焦点的时候传递。

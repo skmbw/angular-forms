@@ -45,6 +45,7 @@ export class AskComponent extends BaseComponent implements OnInit {
       // 上传图片，视频等配置
       imageUploadURL: Consts.URL + 'question/upload', // 文件上传接口名称
       // imageUploadFileName: 'imageList[0]', // 默认是file
+      requestHeaders: {'userId': this.tokenStorage.getUserId()},
       imageUploadParams: {'tokenId': this.tokenStorage.getToken()}, // 接口其他传参,默认为空对象{},
       imageUploadMethod: 'POST',
       // 事件, 每次输入,就将值传递给父组件, 或者使用失去焦点的时候传递。
