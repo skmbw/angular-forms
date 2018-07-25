@@ -73,6 +73,8 @@ import {MyFavoriteComponent} from './my-favorite/my-favorite.component';
 import {MyScoreComponent} from './my-score/my-score.component';
 import {AvatarCropperComponent} from './avatar-cropper/avatar-cropper.component';
 import {ImageCropperModule} from 'ngx-image-cropper';
+import {RightAnswerComponent} from './right-answer/right-answer.component';
+import {SelectAnswerComponent} from './select-answer/select-answer.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +104,9 @@ import {ImageCropperModule} from 'ngx-image-cropper';
     MyCommentComponent,
     MyFavoriteComponent,
     MyScoreComponent,
-    AvatarCropperComponent
+    AvatarCropperComponent,
+    RightAnswerComponent,
+    SelectAnswerComponent
   ],
   imports: [
     BrowserModule,
