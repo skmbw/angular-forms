@@ -26,6 +26,14 @@
 
   <div class="row mt-4">
     <div class="col-xl-12">
+      <div style="color: green"><span class="fa-2x"><fa-icon [icon]="faCheck"></fa-icon> 最佳答案</span></div>
+      <mat-divider class="mt-1"></mat-divider>
+      <app-right-answer [questionId]="question.id" [answer]="question.answer"></app-right-answer>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-xl-12">
       <mat-tab-group>
         <mat-tab label="用户回答">
           <app-answer-list [questionId]="question.id" [asker]="question.asker"></app-answer-list>

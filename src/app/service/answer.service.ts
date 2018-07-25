@@ -20,4 +20,8 @@ export class AnswerService {
   list(answer: Answer): Observable<JsonBean> {
     return this.httpClient.post<JsonBean>(Consts.URL + 'answer/list', answer, Consts.JSON).pipe();
   }
+
+  getQuestionAnswer(questionId: string): Observable<JsonBean> {
+    return this.httpClient.get(Consts.URL + 'answer/rightAnswer?questionId=' + questionId).pipe();
+  }
 }

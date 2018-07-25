@@ -6,7 +6,7 @@ import {BaseComponent} from '../common/base.component';
 import {MatSnackBar} from '@angular/material';
 import {Consts} from '../common/consts';
 import {Question} from '../model/question';
-import {faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {LoveService} from '../service/love.service';
 import {Love} from '../model/love';
 import {ToastrService} from 'ngx-toastr';
@@ -21,6 +21,7 @@ export class QuestionDetailComponent extends BaseComponent implements OnInit {
   content: any;
   faHeart = faHeart;
   faPlus = faPlus;
+  faCheck = faCheck;
 
   constructor(private questionService: QuestionService, private router: ActivatedRoute,
               private sanitizer: DomSanitizer, snackBar: MatSnackBar,

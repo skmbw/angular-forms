@@ -1,6 +1,8 @@
 /**
  * 问题实体
  */
+import {Answer} from './answer';
+
 export class Question {
   constructor(public id?: string,
               public title?: string,
@@ -36,7 +38,8 @@ export class Question {
               public account?: string,
               public page?: number,
               public pageSize?: number,
-              public ids?: string[]) {
+              public ids?: string[],
+              public answer?: Answer) {
 
   }
 }
