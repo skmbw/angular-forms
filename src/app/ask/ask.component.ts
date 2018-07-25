@@ -42,6 +42,9 @@ export class AskComponent extends BaseComponent implements OnInit {
       codeMirrorOptions: { // 配置html代码参数
         tabSize: 4
       },
+      // 选择图片的按钮，去掉管理图片
+      // imageInsertButtons: ['imageBack', '|', 'imageUpload', 'imageByURL', 'imageManager'],
+      imageInsertButtons: ['imageBack', '|', 'imageUpload', 'imageByURL'],
       // 上传图片，视频等配置
       imageUploadURL: Consts.URL + 'question/upload', // 文件上传接口名称
       // imageUploadFileName: 'imageList[0]', // 默认是file

@@ -30,6 +30,7 @@ export class AnswerComponent extends BaseComponent implements OnInit {
     codeMirrorOptions: { // 配置html代码参数
       tabSize: 4
     },
+    imageInsertButtons: ['imageBack', '|', 'imageUpload', 'imageByURL'],
     // 上传图片，视频等配置
     imageUploadURL: Consts.URL + 'answer/upload', // 文件上传接口名称
     // imageUploadFileName: 'imageList[0]',
