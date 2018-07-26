@@ -52,6 +52,7 @@ export class AnswerComponent extends BaseComponent implements OnInit {
     }
   };
   answer: Answer = new Answer();
+  replyAnswer: Answer = new Answer();
 
   constructor(snackBar: MatSnackBar, private tokenStorage: TokenStorage, private answerService: AnswerService,
               private messageService: MessageService) {
@@ -60,9 +61,10 @@ export class AnswerComponent extends BaseComponent implements OnInit {
 
   ngOnInit() {
     this.messageService.getReply().subscribe(msg => {
-      this.answer.content = msg.text.content;
-      this.answer.targetId = msg.text.id;
-      this.answer.nickName = msg.text.nickName;
+      this.replyAnswer = msg.text;
+      this.answer.content = this.replyAnswer.content;
+      this.answer.targetId = this.replyAnswer.id;
+      this.answer.nickName = this.replyAnswer.nickName;
     });
   }
 
@@ -73,16 +75,16 @@ export class AnswerComponent extends BaseComponent implements OnInit {
       return;
     }
     this.answer.questionId = this.questionId;
-    // this.answer.targetId = this.questionId;
+    this.answer.ownerId = this.replyAnswer.nickName; // 如果不是回复，这个值就是空的
     this.answer.answerUserId = this.tokenStorage.getUserId();
-
+    this.answer.nickName = this.tokenStorage.getAccount();
     this.answerService.save(this.answer).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         this.answer.avatar = '/img/avatar/' + this.answer.answerUserId + '.jpeg';
         this.answer.answerDate = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'zh');
-        this.answer.nickName = this.tokenStorage.getAccount();
-        if (this.answer.content.startsWith('您对[' + this.answer.nickName + ']说：')) {
+        if (this.answer.content.startsWith('<p>您对[' + this.replyAnswer.nickName + ']说：')) {
           this.messageService.sendDialog(this.answer);
+          this.replyAnswer.ownerId = null;
         } else {
           this.messageService.sendAnswer(this.answer);
         }

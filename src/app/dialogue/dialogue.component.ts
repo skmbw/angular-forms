@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MessageService} from '../service/message.service';
-import {Answer} from '../model/answer';
 import {AnswerService} from '../service/answer.service';
 import {Consts} from '../common/consts';
 import {Dialogue} from '../model/dialogue';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-dialogue',
@@ -21,10 +21,15 @@ export class DialogueComponent implements OnInit {
 
   ngOnInit() {
     this.messageService.getDialogue().subscribe(msg => {
-      const answer = new Answer();
-      const dialog = msg.text;
-      answer.content = dialog.content;
-      this.dialogList.push(answer);
+      const dialog = new Dialogue();
+      const asw = msg.text;
+      if (this.answerId === asw.targetId) {
+        dialog.content = asw.content;
+        dialog.dialogDate = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'zh');
+        dialog.nickName = asw.nickName;
+        dialog.userId = asw.answerUserId;
+        this.dialogList.push(dialog);
+      }
     });
   }
 
