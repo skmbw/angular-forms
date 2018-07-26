@@ -31,6 +31,7 @@ export class AnswerComponent extends BaseComponent implements OnInit {
       tabSize: 4
     },
     imageInsertButtons: ['imageBack', '|', 'imageUpload', 'imageByURL'],
+    linkList: [], // 默认有Google，Facebook，froala，去掉他们
     // 上传图片，视频等配置
     imageUploadURL: Consts.URL + 'answer/upload', // 文件上传接口名称
     // imageUploadFileName: 'imageList[0]',

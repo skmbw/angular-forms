@@ -43,6 +43,7 @@ export class ArticlePublishComponent implements OnInit {
       },
       // 选择图片的按钮，去掉管理图片
       imageInsertButtons: ['imageBack', '|', 'imageUpload', 'imageByURL'],
+      linkList: [],
       // 上传图片，视频等稳健配置
       imageUploadURL: Consts.URL + 'article/upload', // 文件上传接口名称
       requestHeaders: {'userId': this.tokenStorage.getUserId()},
