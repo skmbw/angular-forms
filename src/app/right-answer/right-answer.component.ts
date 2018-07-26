@@ -19,11 +19,12 @@ export class RightAnswerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.answerService.getQuestionAnswer(this.questionId).subscribe(jsonBean => {
-      if (jsonBean.code === 1) {
-        this.answer = jsonBean.data;
-      }
-    });
+    // 这个暂时没有使用，使用的是父组件传来的数据
+    // this.answerService.getQuestionAnswer(this.questionId).subscribe(jsonBean => {
+    //   if (jsonBean.code === 1) {
+    //     this.answer = jsonBean.data;
+    //   }
+    // });
   }
 
 }
