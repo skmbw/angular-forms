@@ -1,12 +1,9 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ArticleService} from '../service/article.service';
 import {ToastrService} from 'ngx-toastr';
 import {Article} from '../model/article';
 import {Consts} from '../common/consts';
-import {MatPaginator} from '@angular/material';
-import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {merge, of} from 'rxjs/index';
-import {faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faChevronLeft, faChevronRight, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-article-list',
@@ -18,49 +15,19 @@ export class ArticleListComponent implements OnInit {
   userId: string;
   articleList: Article[] = [];
   imageHost = Consts.IMAGE_HOST;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  resultLength = 0;
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
+  // resultLength = 0;
   faHeart = faHeart;
   faPlus = faPlus;
+  page = 0;
+  faChevronLeft = faChevronLeft;
+  faChevronRight = faChevronRight;
 
   constructor(private articleService: ArticleService, private toastr: ToastrService) {
   }
 
   ngOnInit() {
-    // this.articleService.list(1).subscribe(jsonBean => {
-    //   if (jsonBean.code === 1) {
-    //     this.articleList = jsonBean.data;
-    //   } else {
-    //     this.toastr.info(jsonBean.message);
-    //   }
-    // });
-
-    // 使用分页，但是这个分页用拿到所有的记录数，这个对于应用系统来说还好，对于互联网应用不太合适了。
-    merge(this.paginator.page)
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          // this.isLoadingResults = true;
-          const article = new Article();
-          article.page = this.paginator.pageIndex + 1;
-          article.firstFree = true;
-          article.authorId = this.userId;
-          return this.articleService.list(article);
-        }),
-        map(jsonBean => {
-          // this.isLoadingResults = false;
-          // 这个记录数，不给真实的数据，后面调整吧
-          this.resultLength = 35;
-          // this.resultLength = jsonBean.data.length;
-          return jsonBean.data;
-        }),
-        catchError(() => {
-          // this.isLoadingResults = false;
-          return of([]);
-        })
-      ).subscribe(data => {
-        this.articleList = data;
-      });
+    this.loadPage(1);
   }
 
   update(article: Article) {}
@@ -68,6 +35,37 @@ export class ArticleListComponent implements OnInit {
     this.articleService.delete(article).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
         this.toastr.success('文章删除成功！');
+      } else {
+        this.toastr.info(jsonBean.message);
+      }
+    });
+  }
+
+  loadPage(p: number) {
+    let pg = this.page;
+    if (p === -1) {
+      pg = this.page - 1;
+      if (pg < 1) {
+        pg = 1;
+      }
+    } else {
+      pg += 1;
+    }
+    const article = new Article();
+    article.page = pg;
+    article.firstFree = true;
+    article.authorId = this.userId;
+    this.articleService.list(article).subscribe(jsonBean => {
+      if (jsonBean.code === 1) {
+        this.articleList = jsonBean.data;
+        if (this.articleList !== undefined && this.articleList.length > 0) {
+          this.page += p;
+          if (this.page === 0) {
+            this.page = 1;
+          }
+        } else {
+          this.toastr.success('没有更多数据了，亲！');
+        }
       } else {
         this.toastr.info(jsonBean.message);
       }

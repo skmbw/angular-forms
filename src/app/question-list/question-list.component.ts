@@ -48,6 +48,8 @@ export class QuestionListComponent implements OnInit {
           if (this.page === 0) {
             this.page = 1;
           }
+        } else {
+          this.toastr.success('没有更多数据了，亲！');
         }
         // console.log('page=' + this.page);
       } else {
