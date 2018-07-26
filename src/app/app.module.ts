@@ -76,6 +76,8 @@ import {ImageCropperModule} from 'ngx-image-cropper';
 import {RightAnswerComponent} from './right-answer/right-answer.component';
 import {SelectAnswerComponent} from './select-answer/select-answer.component';
 import {DialogueComponent} from './dialogue/dialogue.component';
+import {ConfirmComponent} from './confirm/confirm.component';
+import {ConfirmService} from './service/confirm.service';
 
 @NgModule({
   declarations: [
@@ -108,7 +110,8 @@ import {DialogueComponent} from './dialogue/dialogue.component';
     AvatarCropperComponent,
     RightAnswerComponent,
     SelectAnswerComponent,
-    DialogueComponent
+    DialogueComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -154,7 +157,8 @@ import {DialogueComponent} from './dialogue/dialogue.component';
   entryComponents: [
     PasswordComponent,
     ProfileComponent,
-    AvatarCropperComponent
+    AvatarCropperComponent,
+    ConfirmComponent
   ],
   providers: [
     ArticleService,
@@ -166,7 +170,8 @@ import {DialogueComponent} from './dialogue/dialogue.component';
     AnswerService,
     CommentService,
     LoveService,
-    FavoriteService
+    FavoriteService,
+    ConfirmService
   ],
   bootstrap: [AppComponent]
 })

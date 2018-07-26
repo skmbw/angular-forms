@@ -4,6 +4,7 @@ import {ToastrService} from 'ngx-toastr';
 import {Article} from '../model/article';
 import {Consts} from '../common/consts';
 import {faChevronLeft, faChevronRight, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {ConfirmService} from '../service/confirm.service';
 
 @Component({
   selector: 'app-article-list',
@@ -24,14 +25,19 @@ export class ArticleListComponent implements OnInit {
   faChevronRight = faChevronRight;
   init = false;
 
-  constructor(private articleService: ArticleService, private toastr: ToastrService) {
+  constructor(private articleService: ArticleService, private toastr: ToastrService,
+              private confirmService: ConfirmService) {
   }
 
   ngOnInit() {
     this.loadPage(1);
   }
 
-  update(article: Article) {}
+  update(article: Article) {
+    this.confirmService.confirm(article).subscribe(result => {
+      console.log(result);
+    });
+  }
   delete(article: Article) {
     this.articleService.delete(article).subscribe(jsonBean => {
       if (jsonBean.code === 1) {
