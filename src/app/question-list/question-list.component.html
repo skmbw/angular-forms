@@ -1,9 +1,5 @@
 <mat-card *ngFor="let question of questionList" class="col-12 mt-1">
   <mat-card-header>
-    <!--<div mat-card-avatar class="mr-2">-->
-      <!--<img src="{{imageHost}}img/avatar/{{question.asker}}.jpeg" class="header-image">-->
-    <!--</div>-->
-    <!--<mat-card-title>{{question.askerName}}</mat-card-title>-->
     <mat-card-subtitle>提问时间：{{question.askDate | date:'yyyy-MM-dd HH:mm:ss'}}
       <span class="primary-color ml-3" title="点赞数"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{question.loveNumber}}</span>
       <span class="primary-color ml-3" title="关注数"><fa-icon [icon]="faPlus" class="fa-lg"></fa-icon> {{question.focusNumber}}</span>
@@ -34,3 +30,9 @@
     </div>
   </mat-card-actions>
 </mat-card>
+<div class="col-12 mb-4 mt-4">
+  <div class="clearfix">
+    <span class="primary-color hand float-right fa-lg ml-4" (click)="loadPage(1)" title="下一页">下一页 <fa-icon [icon]="faChevronRight"></fa-icon></span>
+    <span class="primary-color hand float-right fa-lg" (click)="loadPage(-1)" title="上一页"><fa-icon [icon]="faChevronLeft"></fa-icon> 上一页</span>
+  </div>
+</div>
