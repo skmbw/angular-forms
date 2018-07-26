@@ -27,10 +27,7 @@
       </mat-form-field>
 
       <mat-form-field class="col-md-6">
-        <mat-select placeholder="性别" [(ngModel)]="user.gender" name="gender" #gender="ngModel">
-          <mat-option value="1">男</mat-option>
-          <mat-option value="2">女</mat-option>
-        </mat-select>
+        <input matInput placeholder="身份证号码" type="text" [(ngModel)]="user.identityCard" name="identityCard" #identityCard="ngModel">
       </mat-form-field>
 
       <mat-form-field class="col-md-6">

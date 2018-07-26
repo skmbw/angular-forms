@@ -31,6 +31,7 @@ export class UserCenterComponent implements OnInit {
       this.userService.detail(this.userId).subscribe(jsonBean => {
         if (jsonBean.code === 1) {
           this.user = jsonBean.data;
+          this.user.birthday = this.user.birthday.substring(0, 10);
         }
       });
     });

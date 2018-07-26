@@ -20,7 +20,8 @@ export class User {
               public nickName?: string,
               public weixin?: string,
               public alipay?: string,
-              public email?: string) {
+              public email?: string,
+              public identityCard?: string) {
 
   }
 }
