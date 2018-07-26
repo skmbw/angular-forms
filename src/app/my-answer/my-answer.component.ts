@@ -17,6 +17,7 @@ export class MyAnswerComponent implements OnInit {
   page = 0;
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
+  init = false;
 
   constructor(private answerService: AnswerService, private tokenStorage: TokenStorage,
               private toastr: ToastrService) {
@@ -48,11 +49,16 @@ export class MyAnswerComponent implements OnInit {
             this.page = 1;
           }
         } else {
-          this.toastr.success('没有更多数据了，亲！');
+          if (this.init) {
+            this.toastr.success('没有更多数据了，亲！');
+          }
         }
       } else {
-        this.toastr.info(jsonBean.message);
+        if (this.init) {
+          this.toastr.info(jsonBean.message);
+        }
       }
+      this.init = true;
     });
   }
 }

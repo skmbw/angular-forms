@@ -21,6 +21,7 @@ export class QuestionListComponent implements OnInit {
   faChevronRight = faChevronRight;
   faChevronLeft = faChevronLeft;
   page = 0;
+  init = false;
 
   constructor(private questionService: QuestionService, private toastr: ToastrService) {
   }
@@ -49,12 +50,16 @@ export class QuestionListComponent implements OnInit {
             this.page = 1;
           }
         } else {
-          this.toastr.success('没有更多数据了，亲！');
+          if (this.init) {
+            this.toastr.success('没有更多数据了，亲！');
+          }
         }
-        // console.log('page=' + this.page);
       } else {
-        this.toastr.info(jsonBean.message);
+        if (this.init) {
+          this.toastr.info(jsonBean.message);
+        }
       }
+      this.init = true;
     });
   }
 }
