@@ -10,3 +10,9 @@
     您还没有吐槽过，亲！
   </div>
 </div>
+<div class="col-12 mb-4 mt-4">
+  <div class="clearfix">
+    <span class="primary-color hand float-right fa-lg ml-4" (click)="loadPage(1)" title="下一页">下一页 <fa-icon [icon]="faChevronRight"></fa-icon></span>
+    <span class="primary-color hand float-right fa-lg" (click)="loadPage(-1)" title="上一页"><fa-icon [icon]="faChevronLeft"></fa-icon> 上一页</span>
+  </div>
+</div>

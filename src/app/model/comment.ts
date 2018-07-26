@@ -10,6 +10,8 @@ export class Comment {
               public articleId?: string,
               public type?: number,
               public orders?: number,
-              public state?: number) {
+              public state?: number,
+              public page?: number,
+              public pageSize?: number) {
   }
 }

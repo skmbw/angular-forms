@@ -15,5 +15,7 @@ export class Love {
               public targetId?: string,
               public targetType?: string,
               public state?: number,
-              public favoriteDate?: string) {}
+              public favoriteDate?: string,
+              public page?: number,
+              public pageSize?: number) {}
 }
