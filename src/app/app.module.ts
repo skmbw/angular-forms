@@ -75,6 +75,7 @@ import {AvatarCropperComponent} from './avatar-cropper/avatar-cropper.component'
 import {ImageCropperModule} from 'ngx-image-cropper';
 import {RightAnswerComponent} from './right-answer/right-answer.component';
 import {SelectAnswerComponent} from './select-answer/select-answer.component';
+import {DialogueComponent} from './dialogue/dialogue.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import {SelectAnswerComponent} from './select-answer/select-answer.component';
     MyScoreComponent,
     AvatarCropperComponent,
     RightAnswerComponent,
-    SelectAnswerComponent
+    SelectAnswerComponent,
+    DialogueComponent
   ],
   imports: [
     BrowserModule,

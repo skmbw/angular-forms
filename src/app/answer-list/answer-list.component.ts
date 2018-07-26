@@ -120,5 +120,12 @@ export class AnswerListComponent extends BaseComponent implements OnInit {
   }
 
   reply(answer: Answer) {
+    const msg = new Answer();
+    msg.content = '您对[' + answer.nickName + ']说：';
+    msg.id = answer.id;
+    msg.questionId = answer.questionId;
+    msg.answerUserId = answer.answerUserId;
+    msg.nickName = answer.nickName;
+    this.messageService.sendReply(msg);
   }
 }

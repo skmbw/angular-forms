@@ -59,6 +59,11 @@ export class AnswerComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.messageService.getReply().subscribe(msg => {
+      this.answer.content = msg.text.content;
+      this.answer.targetId = msg.text.id;
+      this.answer.nickName = msg.text.nickName;
+    });
   }
 
   submit() {
@@ -68,7 +73,7 @@ export class AnswerComponent extends BaseComponent implements OnInit {
       return;
     }
     this.answer.questionId = this.questionId;
-    this.answer.targetId = this.questionId;
+    // this.answer.targetId = this.questionId;
     this.answer.answerUserId = this.tokenStorage.getUserId();
 
     this.answerService.save(this.answer).subscribe(jsonBean => {
@@ -76,7 +81,11 @@ export class AnswerComponent extends BaseComponent implements OnInit {
         this.answer.avatar = '/img/avatar/' + this.answer.answerUserId + '.jpeg';
         this.answer.answerDate = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'zh');
         this.answer.nickName = this.tokenStorage.getAccount();
-        this.messageService.sendAnswer(this.answer);
+        if (this.answer.content.startsWith('您对[' + this.answer.nickName + ']说：')) {
+          this.messageService.sendDialog(this.answer);
+        } else {
+          this.messageService.sendAnswer(this.answer);
+        }
         this.answer.content = null;
         this.alert('回答成功！');
       } else {
