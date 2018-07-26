@@ -35,15 +35,21 @@ export class ArticleListComponent implements OnInit {
 
   update(article: Article) {
     this.confirmService.confirm(article).subscribe(result => {
-      console.log(result);
+      if (result) {
+        alert('aa');
+      }
     });
   }
   delete(article: Article) {
-    this.articleService.delete(article).subscribe(jsonBean => {
-      if (jsonBean.code === 1) {
-        this.toastr.success('文章删除成功！');
-      } else {
-        this.toastr.info(jsonBean.message);
+    this.confirmService.confirm(article).subscribe(result => {
+      if (result) {
+        this.articleService.delete(article).subscribe(jsonBean => {
+          if (jsonBean.code === 1) {
+            this.toastr.success('文章删除成功！');
+          } else {
+            this.toastr.info(jsonBean.message);
+          }
+        });
       }
     });
   }
