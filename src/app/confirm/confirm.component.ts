@@ -9,6 +9,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 })
 export class ConfirmComponent implements OnInit {
   config: any = {};
+
   constructor(public dialogRef: MatDialogRef<PasswordComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.config = data;
   }
@@ -16,4 +17,11 @@ export class ConfirmComponent implements OnInit {
   ngOnInit() {
   }
 
+  confirm() {
+    this.dialogRef.close(true);
+  }
+
+  cancel() {
+    this.dialogRef.close(false);
+  }
 }

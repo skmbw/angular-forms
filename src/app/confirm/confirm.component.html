@@ -1,3 +1,25 @@
-<p>
-  confirm works!
-</p>
+<div class="container">
+  <form #userForm="ngForm">
+    <div class="row mt-md-4">
+      <h2 class="col-md-12 text-md-center">修改密码</h2>
+      <mat-form-field class="col-md-12">
+        <input matInput placeholder="原密码" type="text" [(ngModel)]="config.oldPassword" name="oldPassword" #oldPassword="ngModel" required>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-12">
+        <input matInput placeholder="新密码" type="text" [(ngModel)]="config.password" name="password" #password="ngModel" required>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-12">
+        <input matInput placeholder="再次输入新密码" type="text" [(ngModel)]="config.checkPasswd" name="checkPasswd" #checkPasswd="ngModel" required>
+      </mat-form-field>
+    </div>
+
+    <div class="row mt-md-4">
+      <div class="col-md-12">
+        <button type="button" (click)="cancel()" class="col-md-2 col-sm-12 mb-2 btn btn-outline-success mr-2 offset-lg-4 offset-md-4">取 消</button>
+        <button type="button" (click)="confirm()" class="col-md-2 col-sm-12 mb-2 btn btn-success">修 改</button>
+      </div>
+    </div>
+  </form>
+</div>
