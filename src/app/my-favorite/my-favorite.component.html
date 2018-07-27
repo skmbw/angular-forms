@@ -6,13 +6,18 @@
         <a routerLink="/article/detail/{{model.targetId}}">
           <div [innerHTML]="model.remark" class="row col-12 mt-2"></div>
         </a>
-        <div class="row col-12 mt-3">分类：<span class="primary-color">文章</span></div>
+        <div class="row col-12 mt-3">分类：<span class="primary-color">文章</span>
+          <span class="primary-color hand ml-4 mr-4" (click)="delete(model)" title="取消关注"><fa-icon [icon]="faMinusSquare" class="fa-lg"></fa-icon> 取消关注</span>
+          <!--<span class="primary-color hand" routerLink="/article/detail/{{comment.articleId}}" title="原文章"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon> 原文章</span>-->
+        </div>
       </div>
       <div *ngSwitchCase="2">
         <a routerLink="/article/detail/{{model.targetId}}">
           <div [innerHTML]="model.remark" class="row col-12 mt-2"></div>
         </a>
-        <div class="row col-12 mt-3">分类：<span class="primary-color">用户</span></div>
+        <div class="row col-12 mt-3">分类：<span class="primary-color">用户</span>
+          <span class="primary-color hand ml-4 mr-4" (click)="delete(model)" title="取消关注"><fa-icon [icon]="faMinusSquare" class="fa-lg"></fa-icon> 取消关注</span>
+        </div>
       </div>
     </div>
     <mat-divider class="mt-2"></mat-divider>

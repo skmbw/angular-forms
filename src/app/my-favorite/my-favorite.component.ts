@@ -3,7 +3,8 @@ import {FavoriteService} from '../service/favorite.service';
 import {ToastrService} from 'ngx-toastr';
 import {Love} from '../model/love';
 import {TokenStorage} from '../token/token.storage';
-import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import {faChevronLeft, faChevronRight, faMinusSquare} from '@fortawesome/free-solid-svg-icons';
+import {ConfirmService} from '../service/confirm.service';
 
 @Component({
   selector: 'app-my-favorite',
@@ -15,10 +16,11 @@ export class MyFavoriteComponent implements OnInit {
   page = 0;
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
+  faMinusSquare = faMinusSquare;
   init = false;
 
   constructor(private favoriteService: FavoriteService, private toastr: ToastrService,
-              private tokenStorage: TokenStorage) {
+              private tokenStorage: TokenStorage, private comfirm: ConfirmService) {
   }
 
   ngOnInit() {
@@ -57,6 +59,21 @@ export class MyFavoriteComponent implements OnInit {
         }
       }
       this.init = true;
+    });
+  }
+
+  delete(love: Love) {
+    this.comfirm.confirm('您确定取消关注？').subscribe(value => {
+      if (value) {
+        this.favoriteService.delete(love).subscribe(result => {
+          if (result.code === 1) {
+            this.toastr.success('已取消关注。');
+            this.favoriteList.splice(this.favoriteList.indexOf(love), 1);
+          } else {
+            this.toastr.info(result.message);
+          }
+        });
+      }
     });
   }
 }
