@@ -7,6 +7,7 @@ import {Consts} from '../common/consts';
 import {TokenStorage} from '../token/token.storage';
 import {ToastrService} from 'ngx-toastr';
 import * as $ from 'jquery';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-ask',
@@ -19,7 +20,8 @@ export class AskComponent extends BaseComponent implements OnInit {
   option: Object = null;
 
   constructor(private questionService: QuestionService, snackBar: MatSnackBar,
-              private tokenStorage: TokenStorage, private toastr: ToastrService) {
+              private tokenStorage: TokenStorage, private toastr: ToastrService,
+              private router: ActivatedRoute) {
     super(snackBar);
     const account = this.tokenStorage.getAccount();
     if (account === null || account === undefined) {
@@ -69,6 +71,14 @@ export class AskComponent extends BaseComponent implements OnInit {
         }
       }
     };
+    const questionId = this.router.snapshot.queryParams['id'];
+    if (questionId !== undefined) {
+      this.questionService.detail(questionId).subscribe(jsonBean => {
+        if (jsonBean.code === 1) {
+          this.question = jsonBean.data;
+        }
+      });
+    }
   }
 
   public submit() {
@@ -93,6 +103,7 @@ export class AskComponent extends BaseComponent implements OnInit {
       return;
     }
     this.question.account = this.tokenStorage.getAccount();
+    this.question.userId = this.tokenStorage.getUserId();
     this.question.terminal = 1;
     this.question.ids = this.ids;
     this.questionService.save(this.question).subscribe(result => {

@@ -26,9 +26,13 @@ export class QuestionService extends CommonService {
   }
 
   public save(question: Question): Observable<JsonBean> {
-    // 表单请求
-    return this.httpClient.post(Consts.URL + 'question/ask', question, Consts.JSON)
-      .pipe(catchError(this.handleError()));
+    let url = Consts.URL;
+    if (question.id !== undefined && question.id !== null) {
+      url += 'question/update';
+    } else {
+      url += 'question/ask';
+    }
+    return this.postJson(url, question);
   }
 
   public detail(id: string): Observable<JsonBean> {

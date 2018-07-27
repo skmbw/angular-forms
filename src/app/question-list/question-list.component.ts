@@ -3,7 +3,8 @@ import {QuestionService} from '../service/question.service';
 import {ToastrService} from 'ngx-toastr';
 import {Consts} from '../common/consts';
 import {Question} from '../model/question';
-import {faBars, faChevronLeft, faChevronRight, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faChevronLeft, faChevronRight, faEdit, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-question-list',
@@ -18,12 +19,14 @@ export class QuestionListComponent implements OnInit {
   faBars = faBars;
   faHeart = faHeart;
   faPlus = faPlus;
+  faEdit = faEdit;
   faChevronRight = faChevronRight;
   faChevronLeft = faChevronLeft;
   page = 0;
   init = false;
 
-  constructor(private questionService: QuestionService, private toastr: ToastrService) {
+  constructor(private questionService: QuestionService, private toastr: ToastrService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -61,5 +64,9 @@ export class QuestionListComponent implements OnInit {
       }
       this.init = true;
     });
+  }
+
+  update(question: Question) {
+    this.router.navigateByUrl('ask?id=' + question.id).catch();
   }
 }

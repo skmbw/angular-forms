@@ -25,8 +25,8 @@
   </mat-card-content>
   <mat-card-actions>
     <div class="ml-4">
-      <!--<span class="primary-color hand" (click)="zan(question)" title="点赞"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{question.loveNumber}}</span>-->
-      <span class="primary-color hand" routerLink="/question/detail/{{question.id}}" title="详情"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon></span>
+      <span class="primary-color hand mr-4" (click)="update(question)" title="修改"><fa-icon [icon]="faEdit" class="fa-lg"></fa-icon> 修改</span>
+      <span class="primary-color hand" routerLink="/question/detail/{{question.id}}" title="详情"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon> 详情</span>
     </div>
   </mat-card-actions>
 </mat-card>

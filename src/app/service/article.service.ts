@@ -21,10 +21,7 @@ export class ArticleService extends CommonService {
       {
         headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded;'}),
         responseType: 'json'
-      })
-      .pipe(
-        catchError(this.handleError('', {}))
-      );
+      }).pipe();
   }
 
   detail(id: string): Observable<JsonBean> {
@@ -33,8 +30,13 @@ export class ArticleService extends CommonService {
   }
 
   save(article: Article): Observable<JsonBean> {
-    return this.httpClient.post<JsonBean>(Consts.URL + 'article/doAdd', article, Consts.JSON)
-      .pipe(catchError(this.handleError('', {})));
+    let url = Consts.URL;
+    if (article.id !== undefined && article.id !== null) {
+      url += 'article/update';
+    } else {
+      url += 'article/doAdd';
+    }
+    return this.postJson(url, article);
   }
 
   delete(article: Article): Observable<JsonBean> {

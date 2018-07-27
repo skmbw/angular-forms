@@ -39,7 +39,8 @@ export class Question {
               public page?: number,
               public pageSize?: number,
               public ids?: string[],
-              public answer?: Answer) {
+              public answer?: Answer,
+              public userId?: string) {
 
   }
 }
