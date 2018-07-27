@@ -38,7 +38,7 @@ export class ArticleService extends CommonService {
   }
 
   delete(article: Article): Observable<JsonBean> {
-    return this.post(Consts.URL + 'article/delete', 'id=' + article.id);
+    return this.post(Consts.URL + 'article/delete', {'id': article.id});
   }
 
   update(article: Article): Observable<JsonBean> {

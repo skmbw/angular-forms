@@ -34,14 +34,14 @@ export class ArticleListComponent implements OnInit {
   }
 
   update(article: Article) {
-    this.confirmService.confirm(article).subscribe(result => {
+    this.confirmService.confirm('删除后无法恢复，您确定要删除该文章？').subscribe(result => {
       if (result) {
         alert('aa');
       }
     });
   }
   delete(article: Article) {
-    this.confirmService.confirm(article).subscribe(result => {
+    this.confirmService.confirm('删除后无法恢复，您确定要删除该文章？').subscribe(result => {
       if (result) {
         this.articleService.delete(article).subscribe(jsonBean => {
           if (jsonBean.code === 1) {
