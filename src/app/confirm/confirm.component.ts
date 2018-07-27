@@ -12,6 +12,13 @@ export class ConfirmComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<PasswordComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.config = data;
+    if (this.config === undefined || this.config === null || this.config.content === undefined || this.config.content === null) {
+      this.dialogRef.close(false);
+      alert('确认信息[content]不能为空！');
+    }
+    if (this.config.title === undefined) {
+      this.config.title = '温馨提示';
+    }
   }
 
   ngOnInit() {

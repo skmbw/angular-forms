@@ -10,10 +10,10 @@ export class ConfirmService {
 
   constructor(private dialog: MatDialog) { }
 
-  confirm(content: any): Observable<any> {
+  confirm(content: any, title?: string): Observable<any> {
     return this.dialog.open(ConfirmComponent, {
-      width: '650px',
-      height: '400px',
-      data: content}).afterClosed();
+      width: '480px',
+      height: '320px',
+      data: {'content': content, 'title': title}}).afterClosed();
   }
 }
