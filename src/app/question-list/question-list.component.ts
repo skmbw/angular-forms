@@ -3,8 +3,9 @@ import {QuestionService} from '../service/question.service';
 import {ToastrService} from 'ngx-toastr';
 import {Consts} from '../common/consts';
 import {Question} from '../model/question';
-import {faBars, faChevronLeft, faChevronRight, faEdit, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faChevronLeft, faChevronRight, faEdit, faHeart, faPlus, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {Router} from '@angular/router';
+import {ConfirmService} from '../service/confirm.service';
 
 @Component({
   selector: 'app-question-list',
@@ -20,13 +21,14 @@ export class QuestionListComponent implements OnInit {
   faHeart = faHeart;
   faPlus = faPlus;
   faEdit = faEdit;
+  faTrashAlt = faTrashAlt;
   faChevronRight = faChevronRight;
   faChevronLeft = faChevronLeft;
   page = 0;
   init = false;
 
   constructor(private questionService: QuestionService, private toastr: ToastrService,
-              private router: Router) {
+              private router: Router, private confirmService: ConfirmService) {
   }
 
   ngOnInit() {
@@ -68,5 +70,20 @@ export class QuestionListComponent implements OnInit {
 
   update(question: Question) {
     this.router.navigateByUrl('ask?id=' + question.id).catch();
+  }
+
+  delete(question: Question) {
+    this.confirmService.confirm('删除后不可恢复，您确定要删除该问题？').subscribe(result => {
+      if (result) {
+        this.questionService.delete(question).subscribe(jsonBean => {
+          if (jsonBean.code === 1) {
+            this.toastr.success('删除问题成功！');
+            this.questionList.splice(this.questionList.indexOf(question), 1);
+          } else {
+            this.toastr.info(jsonBean.message);
+          }
+        });
+      }
+    });
   }
 }

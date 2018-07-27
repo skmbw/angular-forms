@@ -3,7 +3,7 @@ import {ArticleService} from '../service/article.service';
 import {ToastrService} from 'ngx-toastr';
 import {Article} from '../model/article';
 import {Consts} from '../common/consts';
-import {faChevronLeft, faChevronRight, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faChevronLeft, faChevronRight, faEdit, faHeart, faPlus, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {ConfirmService} from '../service/confirm.service';
 import {Router} from '@angular/router';
 
@@ -21,6 +21,8 @@ export class ArticleListComponent implements OnInit {
   // resultLength = 0;
   faHeart = faHeart;
   faPlus = faPlus;
+  faEdit = faEdit;
+  faTrashAlt = faTrashAlt;
   page = 0;
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
@@ -46,6 +48,7 @@ export class ArticleListComponent implements OnInit {
         this.articleService.delete(article).subscribe(jsonBean => {
           if (jsonBean.code === 1) {
             this.toastr.success('文章删除成功！');
+            this.articleList.splice(this.articleList.indexOf(article), 1);
           } else {
             this.toastr.info(jsonBean.message);
           }

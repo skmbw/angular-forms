@@ -42,4 +42,8 @@ export class QuestionService extends CommonService {
   saveRightAnswer(answer: Answer): Observable<JsonBean> {
     return this.post(Consts.URL + 'question/bestAnswer', answer).pipe();
   }
+
+  delete(question: Question): Observable<JsonBean> {
+    return this.post(Consts.URL + 'question/delete', {'id': question.id});
+  }
 }

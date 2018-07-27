@@ -19,8 +19,8 @@
   </mat-card-content>
   <mat-card-actions>
     <div class="ml-4">
-      <!--<span class="primary-color hand" (click)="zan(answer)" title="点赞"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{answer.loveNumber}}</span>-->
-      <span class="primary-color hand" routerLink="/question/detail/{{answer.questionId}}">原问题</span>
+      <span class="primary-color hand mr-4" (click)="delete(answer)" title="删除"><fa-icon [icon]="faTrashAlt" class="fa-lg"></fa-icon> 删除</span>
+      <span class="primary-color hand" routerLink="/question/detail/{{answer.questionId}}" title="原问题"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon> 原问题</span>
     </div>
   </mat-card-actions>
 </mat-card>

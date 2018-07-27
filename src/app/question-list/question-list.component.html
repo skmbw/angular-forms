@@ -25,6 +25,7 @@
   </mat-card-content>
   <mat-card-actions>
     <div class="ml-4">
+      <span class="primary-color hand mr-4" (click)="delete(question)" title="删除"><fa-icon [icon]="faTrashAlt" class="fa-lg"></fa-icon> 删除</span>
       <span class="primary-color hand mr-4" (click)="update(question)" title="修改"><fa-icon [icon]="faEdit" class="fa-lg"></fa-icon> 修改</span>
       <span class="primary-color hand" routerLink="/question/detail/{{question.id}}" title="详情"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon> 详情</span>
     </div>

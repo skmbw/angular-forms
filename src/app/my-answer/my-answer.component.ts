@@ -4,7 +4,8 @@ import {Answer} from '../model/answer';
 import {Consts} from '../common/consts';
 import {TokenStorage} from '../token/token.storage';
 import {ToastrService} from 'ngx-toastr';
-import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faChevronLeft, faChevronRight, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {ConfirmService} from '../service/confirm.service';
 
 @Component({
   selector: 'app-my-answer',
@@ -17,10 +18,12 @@ export class MyAnswerComponent implements OnInit {
   page = 0;
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
+  faTrashAlt = faTrashAlt;
+  faBars = faBars;
   init = false;
 
   constructor(private answerService: AnswerService, private tokenStorage: TokenStorage,
-              private toastr: ToastrService) {
+              private toastr: ToastrService, private confirmService: ConfirmService) {
   }
 
   ngOnInit() {
@@ -59,6 +62,21 @@ export class MyAnswerComponent implements OnInit {
         }
       }
       this.init = true;
+    });
+  }
+
+  delete(answer: Answer) {
+    this.confirmService.confirm('删除后不能恢复，您确定删除该回答？').subscribe(value => {
+      if (value) {
+        this.answerService.delete(answer).subscribe(result => {
+          if (result.code === 1) {
+            this.toastr.success('删除回答成功！');
+            this.answerList.splice(this.answerList.indexOf(answer), 1);
+          } else {
+            this.toastr.info(result.message);
+          }
+        });
+      }
     });
   }
 }

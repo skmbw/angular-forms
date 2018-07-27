@@ -30,9 +30,11 @@
   <mat-card-actions>
     <!--<span class="primary-color hand mt-2" title="点赞数"><fa-icon [icon]="faHeart" class="fa-lg"></fa-icon> {{article.loveNumber}}</span>-->
     <div class="clearfix">
-      <!--<span class="primary-color hand" routerLink="/article/detail/{{article.id}}" title="详情"><fa-icon [icon]="faBars" class="fa-lg"></fa-icon></span>-->
-      <button (click)="update(article)" class="btn btn-outline-success float-right">修改</button>
-      <button (click)="delete(article)" class="btn btn-outline-danger mr-3 float-right">删除</button>
+      <span class="primary-color hand float-right" routerLink="/article/detail/{{article.id}}" title="详情"><fa-icon [icon]="faEdit" class="fa-lg"></fa-icon> 详情</span>
+      <span class="primary-color hand float-right mr-4" (click)="update(article)" title="修改"><fa-icon [icon]="faEdit" class="fa-lg"></fa-icon> 修改</span>
+      <span class="primary-color hand float-right mr-4" (click)="delete(article)" title="删除"><fa-icon [icon]="faTrashAlt" class="fa-lg"></fa-icon> 删除</span>
+      <!--<button (click)="update(article)" class="btn btn-outline-success float-right">修改</button>-->
+      <!--<button (click)="delete(article)" class="btn btn-outline-danger mr-3 float-right">删除</button>-->
     </div>
   </mat-card-actions>
 </mat-card>
