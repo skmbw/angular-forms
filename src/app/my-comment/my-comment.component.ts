@@ -4,7 +4,8 @@ import {Comment} from '../model/comment';
 import {Consts} from '../common/consts';
 import {TokenStorage} from '../token/token.storage';
 import {ToastrService} from 'ngx-toastr';
-import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faChevronLeft, faChevronRight, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {ConfirmService} from '../service/confirm.service';
 
 @Component({
   selector: 'app-my-comment',
@@ -17,10 +18,12 @@ export class MyCommentComponent implements OnInit {
   page = 0;
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
+  faBars = faBars;
+  faTrashAlt = faTrashAlt;
   init = false;
 
   constructor(private commentService: CommentService, private tokenStorage: TokenStorage,
-              private toastr: ToastrService) {
+              private toastr: ToastrService, private confirm: ConfirmService) {
   }
 
   ngOnInit() {
@@ -59,6 +62,21 @@ export class MyCommentComponent implements OnInit {
         }
       }
       this.init = true;
+    });
+  }
+
+  delete(comment: Comment) {
+    this.confirm.confirm('删除后不可恢复，您确定删除该评论？').subscribe(value => {
+      if (value) {
+        this.commentService.delete(comment).subscribe(result => {
+          if (result.code === 1) {
+            this.toastr.success('删除评论成功！');
+            this.commentList.splice(this.commentList.indexOf(comment), 1);
+          } else {
+            this.toastr.info(result.message);
+          }
+        });
+      }
     });
   }
 }

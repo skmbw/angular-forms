@@ -23,4 +23,8 @@ export class CommentService extends CommonService {
     return this.httpClient.post<JsonBean>(Consts.URL + 'comment/list', comment, Consts.JSON)
       .pipe(catchError(this.handleError('', {})));
   }
+
+  delete(comment: Comment): Observable<JsonBean> {
+    return this.post(Consts.URL + 'comment/delete', {'id': comment.id});
+  }
 }
