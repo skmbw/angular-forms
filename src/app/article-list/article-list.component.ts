@@ -5,6 +5,7 @@ import {Article} from '../model/article';
 import {Consts} from '../common/consts';
 import {faChevronLeft, faChevronRight, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {ConfirmService} from '../service/confirm.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-article-list',
@@ -26,7 +27,7 @@ export class ArticleListComponent implements OnInit {
   init = false;
 
   constructor(private articleService: ArticleService, private toastr: ToastrService,
-              private confirmService: ConfirmService) {
+              private confirmService: ConfirmService, private router: Router) {
   }
 
   ngOnInit() {
@@ -34,12 +35,11 @@ export class ArticleListComponent implements OnInit {
   }
 
   update(article: Article) {
-    this.confirmService.confirm('删除后无法恢复，您确定要删除该文章？').subscribe(result => {
-      if (result) {
-        alert('aa');
-      }
-    });
+    // this.router.navigateByUrl('/article/write?id=' + article.id, {queryParams: { page: 1 }, queryParamsHandling: 'preserve' }).catch();
+    // TODO 后面的参数好像接收不到，暂时放到url中
+    this.router.navigateByUrl('/article/write?id=' + article.id).catch();
   }
+
   delete(article: Article) {
     this.confirmService.confirm('删除后无法恢复，您确定要删除该文章？').subscribe(result => {
       if (result) {

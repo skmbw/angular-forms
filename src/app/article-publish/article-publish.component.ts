@@ -71,24 +71,14 @@ export class ArticlePublishComponent implements OnInit {
     if (account === null || account === undefined) {
       this.toastr.success('发表文章必须要先登录哦，亲！', '温馨提示');
     }
-    const params = this.router.snapshot.params;
-    console.log(params['id']);
-    console.log(params['page']);
-    const queryParams = this.router.snapshot.queryParams['id'];
-    console.log(queryParams['id']);
-    console.log(queryParams['page']);
-    const p2 = this.router.params.subscribe(value => {
-      console.log(value['id']);
-      console.log(value['page']);
-    });
-    const p3 = this.router.queryParams.subscribe(value => {
-      console.log(value['id']);
-      console.log(value['page']);
-    });
-
-    const pp = this.router.queryParams['_value']['id'];
-    const page = this.router.queryParams['_value']['page'];
-    console.log(params + pp + page);
+    const articleId = this.router.snapshot.queryParams['id'];
+    if (articleId !== undefined) {
+      this.articleService.detail(articleId).subscribe(jsonBean => {
+        if (jsonBean.code === 1) {
+          this.article = jsonBean.data;
+        }
+      });
+    }
   }
 
   public submit() {
