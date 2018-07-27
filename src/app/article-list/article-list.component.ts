@@ -35,7 +35,7 @@ export class ArticleListComponent implements OnInit {
   }
 
   update(article: Article) {
-    // this.router.navigateByUrl('/article/write?id=' + article.id, {queryParams: { page: 1 }, queryParamsHandling: 'preserve' }).catch();
+    // this.router.navigate(['/article/write'], {queryParams: { page: 1, id: article.id }, queryParamsHandling: 'preserve' }).catch();
     // TODO 后面的参数好像接收不到，暂时放到url中
     this.router.navigateByUrl('/article/write?id=' + article.id).catch();
   }
