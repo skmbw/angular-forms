@@ -7,6 +7,8 @@ import {Consts} from '../common/consts';
 import {CommonService} from './common.service';
 import {Article} from '../model/article';
 import {JsUtils} from '../common/js-utils';
+import {request} from '../article-detail/request';
+import GrpcRequest = request.GrpcRequest;
 
 @Injectable()
 export class ArticleService extends CommonService {
@@ -45,5 +47,13 @@ export class ArticleService extends CommonService {
 
   update(article: Article): Observable<JsonBean> {
     return this.postJson(Consts.URL + 'article/update', article);
+  }
+
+  grpc(req: GrpcRequest): Observable<any> {
+    const body: Uint8Array = GrpcRequest.encode(req).finish();
+    return this.httpClient.post(Consts.URL + 'article/grpc', body.buffer, {
+      headers: new HttpHeaders({'Content-Type': 'application/x-protobuf;charset=utf-8'}),
+      responseType: 'json'
+    }).pipe();
   }
 }

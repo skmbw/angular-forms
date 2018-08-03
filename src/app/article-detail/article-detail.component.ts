@@ -15,6 +15,8 @@ import {ToastrService} from 'ngx-toastr';
 import {Love} from '../model/love';
 import {LoveService} from '../service/love.service';
 import {faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {request} from './request';
+import GrpcRequest = request.GrpcRequest;
 
 @Component({
   selector: 'app-article-detail',
@@ -51,6 +53,12 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
           this.toastr.warning('文章不存在，亲！');
         }
       });
+    });
+
+    const req = GrpcRequest.fromObject({'name': '尹磊'});
+    this.articleService.grpc(req).subscribe(result => {
+      console.log(result);
+      // GrpcRequest.decode(result.slice(0));
     });
   }
 
