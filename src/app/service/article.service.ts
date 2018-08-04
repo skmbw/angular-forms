@@ -52,9 +52,9 @@ export class ArticleService extends CommonService {
 
   grpc(req: GrpcRequest): Observable<ArrayBuffer> {
     const body = GrpcRequest.encode(req).finish();
-    body.forEach((num, i) => {
-      console.log(num);
-    });
+    // body.forEach((num, i) => {
+    //   console.log(num);
+    // });
     const buffer = new ArrayBuffer(body.byteLength);
     const buf = new Int8Array(buffer);
     // java 的字节数组是有符号的8位的byte，要转一下
