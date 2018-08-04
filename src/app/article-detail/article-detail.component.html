@@ -5,6 +5,7 @@
     <span class="ml-xl-3 primary-color">价格：{{article.price}} 元</span>
     <span class="ml-xl-3">写作时间：{{article.createDate}}</span>
     <span class="ml-xl-3">阅读数：</span><span> {{article.number}}</span>
+    <button class="btn btn-outline-success" (click)="protobuf()">protobuf</button>
   </div>
   <div class="row mt-4">
     <div class="col-xl-12" [innerHTML]="content">

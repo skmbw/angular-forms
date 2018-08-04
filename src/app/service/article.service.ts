@@ -7,8 +7,9 @@ import {Consts} from '../common/consts';
 import {CommonService} from './common.service';
 import {Article} from '../model/article';
 import {JsUtils} from '../common/js-utils';
-import {request} from '../article-detail/request';
+import {request} from '../article-detail/bundle';
 import GrpcRequest = request.GrpcRequest;
+import {FormArray} from '@angular/forms';
 
 @Injectable()
 export class ArticleService extends CommonService {
@@ -49,11 +50,22 @@ export class ArticleService extends CommonService {
     return this.postJson(Consts.URL + 'article/update', article);
   }
 
-  grpc(req: GrpcRequest): Observable<any> {
-    const body: Uint8Array = GrpcRequest.encode(req).finish();
-    return this.httpClient.post(Consts.URL + 'article/grpc', body.buffer, {
+  grpc(req: GrpcRequest): Observable<ArrayBuffer> {
+    const body = GrpcRequest.encode(req).finish();
+    body.forEach((num, i) => {
+      console.log(num);
+    });
+    const buffer = new ArrayBuffer(body.byteLength);
+    const buf = new Int8Array(buffer);
+    // java 的字节数组是有符号的8位的byte，要转一下
+    body.forEach((num, i) => {
+      buf[i] = num;
+    });
+    return this.httpClient.request('post', Consts.URL + 'article/grpc', {
+      body: buffer,
+      // body: [26, 6, 229, 176, 185, 231, 163, 138],
       headers: new HttpHeaders({'Content-Type': 'application/x-protobuf;charset=utf-8'}),
-      responseType: 'json'
+      responseType: 'arraybuffer'
     }).pipe();
   }
 }

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package request;
+
+// The request message containing the user's name.
+message GrpcRequest {
+  int32 age = 1;
+  string birthday = 2;
+  string name = 3;
+}

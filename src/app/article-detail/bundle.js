@@ -24,9 +24,9 @@ $root.request = (function() {
          * Properties of a GrpcRequest.
          * @memberof request
          * @interface IGrpcRequest
-         * @property {string|null} [name] GrpcRequest name
          * @property {number|null} [age] GrpcRequest age
-         * @property {number|Long|null} [birthday] GrpcRequest birthday
+         * @property {string|null} [birthday] GrpcRequest birthday
+         * @property {string|null} [name] GrpcRequest name
          */
 
         /**
@@ -45,14 +45,6 @@ $root.request = (function() {
         }
 
         /**
-         * GrpcRequest name.
-         * @member {string} name
-         * @memberof request.GrpcRequest
-         * @instance
-         */
-        GrpcRequest.prototype.name = "";
-
-        /**
          * GrpcRequest age.
          * @member {number} age
          * @memberof request.GrpcRequest
@@ -62,11 +54,19 @@ $root.request = (function() {
 
         /**
          * GrpcRequest birthday.
-         * @member {number|Long} birthday
+         * @member {string} birthday
          * @memberof request.GrpcRequest
          * @instance
          */
-        GrpcRequest.prototype.birthday = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+        GrpcRequest.prototype.birthday = "";
+
+        /**
+         * GrpcRequest name.
+         * @member {string} name
+         * @memberof request.GrpcRequest
+         * @instance
+         */
+        GrpcRequest.prototype.name = "";
 
         /**
          * Creates a new GrpcRequest instance using the specified properties.
@@ -92,12 +92,12 @@ $root.request = (function() {
         GrpcRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.name != null && message.hasOwnProperty("name"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
             if (message.age != null && message.hasOwnProperty("age"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.age);
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.age);
             if (message.birthday != null && message.hasOwnProperty("birthday"))
-                writer.uint32(/* id 3, wireType 0 =*/24).int64(message.birthday);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.birthday);
+            if (message.name != null && message.hasOwnProperty("name"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.name);
             return writer;
         };
 
@@ -132,14 +132,14 @@ $root.request = (function() {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 3:
-                    message.name = reader.string();
-                    break;
                 case 1:
                     message.age = reader.int32();
                     break;
                 case 2:
-                    message.birthday = reader.int64();
+                    message.birthday = reader.string();
+                    break;
+                case 3:
+                    message.name = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -176,15 +176,15 @@ $root.request = (function() {
         GrpcRequest.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.name != null && message.hasOwnProperty("name"))
-                if (!$util.isString(message.name))
-                    return "name: string expected";
             if (message.age != null && message.hasOwnProperty("age"))
                 if (!$util.isInteger(message.age))
                     return "age: integer expected";
             if (message.birthday != null && message.hasOwnProperty("birthday"))
-                if (!$util.isInteger(message.birthday) && !(message.birthday && $util.isInteger(message.birthday.low) && $util.isInteger(message.birthday.high)))
-                    return "birthday: integer|Long expected";
+                if (!$util.isString(message.birthday))
+                    return "birthday: string expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
             return null;
         };
 
@@ -200,19 +200,12 @@ $root.request = (function() {
             if (object instanceof $root.request.GrpcRequest)
                 return object;
             var message = new $root.request.GrpcRequest();
-            if (object.name != null)
-                message.name = String(object.name);
             if (object.age != null)
                 message.age = object.age | 0;
             if (object.birthday != null)
-                if ($util.Long)
-                    (message.birthday = $util.Long.fromValue(object.birthday)).unsigned = false;
-                else if (typeof object.birthday === "string")
-                    message.birthday = parseInt(object.birthday, 10);
-                else if (typeof object.birthday === "number")
-                    message.birthday = object.birthday;
-                else if (typeof object.birthday === "object")
-                    message.birthday = new $util.LongBits(object.birthday.low >>> 0, object.birthday.high >>> 0).toNumber();
+                message.birthday = String(object.birthday);
+            if (object.name != null)
+                message.name = String(object.name);
             return message;
         };
 
@@ -230,23 +223,16 @@ $root.request = (function() {
                 options = {};
             var object = {};
             if (options.defaults) {
-                object.name = "";
                 object.age = 0;
-                if ($util.Long) {
-                    var long = new $util.Long(0, 0, false);
-                    object.birthday = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.birthday = options.longs === String ? "0" : 0;
+                object.birthday = "";
+                object.name = "";
             }
-            if (message.name != null && message.hasOwnProperty("name"))
-                object.name = message.name;
             if (message.age != null && message.hasOwnProperty("age"))
                 object.age = message.age;
             if (message.birthday != null && message.hasOwnProperty("birthday"))
-                if (typeof message.birthday === "number")
-                    object.birthday = options.longs === String ? String(message.birthday) : message.birthday;
-                else
-                    object.birthday = options.longs === String ? $util.Long.prototype.toString.call(message.birthday) : options.longs === Number ? new $util.LongBits(message.birthday.low >>> 0, message.birthday.high >>> 0).toNumber() : message.birthday;
+                object.birthday = message.birthday;
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
             return object;
         };
 

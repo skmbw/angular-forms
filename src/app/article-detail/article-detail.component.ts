@@ -15,7 +15,7 @@ import {ToastrService} from 'ngx-toastr';
 import {Love} from '../model/love';
 import {LoveService} from '../service/love.service';
 import {faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
-import {request} from './request';
+import {request} from './bundle';
 import GrpcRequest = request.GrpcRequest;
 
 @Component({
@@ -53,12 +53,6 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
           this.toastr.warning('文章不存在，亲！');
         }
       });
-    });
-
-    const req = GrpcRequest.fromObject({'name': '尹磊'});
-    this.articleService.grpc(req).subscribe(result => {
-      console.log(result);
-      // GrpcRequest.decode(result.slice(0));
     });
   }
 
@@ -111,6 +105,16 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
         this.toastr.success('亲，关注成功！');
         article.focusNumber++;
       }
+    });
+  }
+
+  protobuf() {
+    const req = GrpcRequest.fromObject({'name': '尹磊'});
+    this.articleService.grpc(req).subscribe(result => {
+      console.log(result);
+      const byte = new Uint8Array(result, 0, result.byteLength);
+      const r = GrpcRequest.decode(byte);
+      console.log(r);
     });
   }
 }
