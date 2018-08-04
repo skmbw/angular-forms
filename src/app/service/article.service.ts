@@ -61,8 +61,8 @@ export class ArticleService extends CommonService {
     body.forEach((num, i) => {
       buf[i] = num;
     });
-    return this.httpClient.request('post', Consts.URL + 'article/grpc', {
-      body: buffer,
+    return this.httpClient.post(Consts.URL + 'article/grpc', buffer, {
+      // body: buffer,
       // body: [26, 6, 229, 176, 185, 231, 163, 138],
       headers: new HttpHeaders({'Content-Type': 'application/x-protobuf;charset=utf-8'}),
       responseType: 'arraybuffer'
