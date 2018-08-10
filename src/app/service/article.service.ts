@@ -9,7 +9,6 @@ import {Article} from '../model/article';
 import {JsUtils} from '../common/js-utils';
 import {request} from '../article-detail/bundle';
 import GrpcRequest = request.GrpcRequest;
-import {FormArray} from '@angular/forms';
 
 @Injectable()
 export class ArticleService extends CommonService {
@@ -52,14 +51,11 @@ export class ArticleService extends CommonService {
 
   grpc(req: GrpcRequest): Observable<ArrayBuffer> {
     const body = GrpcRequest.encode(req).finish();
-    // body.forEach((num, i) => {
-    //   console.log(num);
-    // });
     const buffer = new ArrayBuffer(body.byteLength);
-    const buf = new Int8Array(buffer);
+    const int8Array = new Int8Array(buffer);
     // java 的字节数组是有符号的8位的byte，要转一下
     body.forEach((num, i) => {
-      buf[i] = num;
+      int8Array[i] = num;
     });
     return this.httpClient.post(Consts.URL + 'article/grpc', buffer, {
       // body: buffer,
