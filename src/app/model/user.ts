@@ -9,7 +9,7 @@ export class User {
               public checkPasswd?: string,
               public account?: string,
               public mobile?: string,
-              public license?: string,
+              public agreement?: string,
               public gender?: number,
               public tokenId?: string,
               public title?: string,
