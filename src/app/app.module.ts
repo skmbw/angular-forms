@@ -78,6 +78,7 @@ import {SelectAnswerComponent} from './select-answer/select-answer.component';
 import {DialogueComponent} from './dialogue/dialogue.component';
 import {ConfirmComponent} from './confirm/confirm.component';
 import {ConfirmService} from './service/confirm.service';
+import {AgreementComponent} from './agreement/agreement.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import {ConfirmService} from './service/confirm.service';
     RightAnswerComponent,
     SelectAnswerComponent,
     DialogueComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    AgreementComponent
   ],
   imports: [
     BrowserModule,
