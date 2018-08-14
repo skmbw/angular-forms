@@ -8,7 +8,7 @@
       </mat-form-field>
 
       <mat-form-field class="col-md-8">
-        <input matInput [type]="hide ? 'password' : 'text'" placeholder="密码" [(ngModel)]="user.password" name="password" required #password="ngModel">
+        <input matInput [type]="hide ? 'password' : 'text'" placeholder="密码，最少为8位" [(ngModel)]="user.password" name="password" required #password="ngModel">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
 
