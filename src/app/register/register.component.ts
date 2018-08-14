@@ -38,18 +38,24 @@ export class RegisterComponent implements OnInit {
       });
       return;
     }
+    if (this.user.agreement !== true) {
+      this.snackBar.open('您必须阅读并同意用户协议才能继续注册学而上达！', '确定', {
+        duration: 2000,
+      });
+      return;
+    }
     // 这里是测试，直接跳转（应用内路由跳转）
     // this.router.navigateByUrl('/login').catch();
-    this.userService.register(this.user).subscribe(jsonBean => {
-      if (jsonBean.code === 1) {
-        this.snackBar.open('注册成功，请登录。', '确定', {duration: 2000});
-        // 两秒后跳转
-        setTimeout(() => {
-          this.router.navigateByUrl('/login').catch();
-        }, 2000);
-      } else {
-        this.snackBar.open(jsonBean.message, '确定', {duration: 2000});
-      }
-    });
+    // this.userService.register(this.user).subscribe(jsonBean => {
+    //   if (jsonBean.code === 1) {
+    //     this.snackBar.open('注册成功，请登录，2秒后跳转。', '确定', {duration: 2000});
+    //     // 两秒后跳转
+    //     setTimeout(() => {
+    //       this.router.navigateByUrl('/login').catch();
+    //     }, 2000);
+    //   } else {
+    //     this.snackBar.open(jsonBean.message, '确定', {duration: 2000});
+    //   }
+    // });
   }
 }
