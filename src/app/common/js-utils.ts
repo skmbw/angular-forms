@@ -1,5 +1,5 @@
 // deprecate
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export class JsUtils {
   // 获取滚动条当前的位置

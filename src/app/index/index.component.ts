@@ -9,7 +9,7 @@ import {Article} from '../model/article';
 import {JsonBean} from '../model/jsonbean';
 import {Consts} from '../common/consts';
 import {ImageFile} from '../model/image-file';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {MessageService} from '../service/message.service';
 import {faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {DomSanitizer} from '@angular/platform-browser';

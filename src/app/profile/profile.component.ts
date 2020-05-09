@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {UserService} from '../service/user.service';
 import {ToastrService} from 'ngx-toastr';
 import {User} from '../model/user';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {PasswordComponent} from '../password/password.component';
 
 @Component({

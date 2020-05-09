@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {QuestionService} from '../service/question.service';
 import {Question} from '../model/question';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {Consts} from '../common/consts';
 import {faBars, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {ToastrService} from 'ngx-toastr';

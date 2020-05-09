@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Question} from '../model/question';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {QuestionService} from '../service/question.service';
 import {BaseComponent} from '../common/base.component';
 import {Consts} from '../common/consts';

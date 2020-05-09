@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleService} from '../service/article.service';
 import {Article} from '../model/article';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {ActivatedRoute} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Consts} from '../common/consts';

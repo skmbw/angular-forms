@@ -3,7 +3,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {ActivatedRoute} from '@angular/router';
 import {QuestionService} from '../service/question.service';
 import {BaseComponent} from '../common/base.component';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {Consts} from '../common/consts';
 import {Question} from '../model/question';
 import {faCheck, faHeart, faPlus} from '@fortawesome/free-solid-svg-icons';

@@ -3,7 +3,7 @@ import {CommentService} from '../service/comment.service';
 import {Comment} from '../model/comment';
 import {Consts} from '../common/consts';
 import {BaseComponent} from '../common/base.component';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {MessageService} from '../service/message.service';
 import {ToastrService} from 'ngx-toastr';
 

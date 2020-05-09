@@ -3,7 +3,7 @@ import {UserService} from '../service/user.service';
 import {User} from '../model/user';
 import {ActivatedRoute} from '@angular/router';
 import {Consts} from '../common/consts';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 import {PasswordComponent} from '../password/password.component';
 import {ProfileComponent} from '../profile/profile.component';
 import {AvatarCropperComponent} from '../avatar-cropper/avatar-cropper.component';

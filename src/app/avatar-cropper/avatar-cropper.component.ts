@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {UserService} from '../service/user.service';
 import {ToastrService} from 'ngx-toastr';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {User} from '../model/user';
 
 @Component({

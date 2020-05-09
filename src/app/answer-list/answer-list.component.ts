@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AnswerService} from '../service/answer.service';
 import {Answer} from '../model/answer';
 import {BaseComponent} from '../common/base.component';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {Consts} from '../common/consts';
 import {ActivatedRoute} from '@angular/router';
 import {MessageService} from '../service/message.service';

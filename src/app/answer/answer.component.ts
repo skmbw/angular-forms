@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Consts} from '../common/consts';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {TokenStorage} from '../token/token.storage';
 import {Answer} from '../model/answer';
 import {AnswerService} from '../service/answer.service';

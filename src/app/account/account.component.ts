@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material';
+import {MatPaginator} from '@angular/material/paginator';
 import {HttpClient} from '@angular/common/http';
 import {merge, Observable, of} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
