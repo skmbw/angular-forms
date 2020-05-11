@@ -10,6 +10,9 @@
 
 * 有时候使用SafeHtml也无法显示html片段，可能是html字符被转义了，就是一个段字符了
 
+## package-lock.json 和 package.json
+* npm i 根据package.json来安装，npm ci根据package-lock.json来安装，保证版本不变化。
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
