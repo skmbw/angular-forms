@@ -4,7 +4,7 @@
 * 同时还实现了waterfall，也就是瀑布流。使用指令实现的。样式使用了bootstrap 4.1.0。在布局上也使用了谷歌的FlexLayout和bootstrap的grid
 ，结合起来使用的。
 * 创建组件时，如果存在多个module（同一级中，例如和app.module在同一个目录中），那么命令中需要添加--module=app（举例）参数
-* 项目使用了 [Angular CLI](https://github.com/angular/angular-cli) 1.7.3. Angular是6.0的版本。基本都是最新的版本。
+* 项目使用了 [Angular CLI](https://github.com/angular/angular-cli) 1.7.3. Angular是9.0的版本。基本都是最新的版本。
 * masonry模组就是实现瀑布流的代码，可以单独拿出去使用，对应的例子是masonry-demo，其中使用使用了一个本地的http，可以去掉，或者换成你的。或者
 使用内部的模拟数据（将注释放开）。
 
