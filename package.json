@@ -45,7 +45,7 @@
     "quill-mention": "^1.0.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.5",
+    "@angular-devkit/build-angular": "~21.0.1",
     "@angular/cli": "~9.1.5",
     "@angular/compiler-cli": "~9.1.6",
     "@types/node": "^12.11.1",
